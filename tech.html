@@ -1,0 +1,147 @@
+<!-- ========================================================
+     FULL PROJECTS GRID — cards now trigger a modal instead
+     of a dead "#" link
+========================================================= -->
+<section class="projects-page">
+    <div class="projects-page__grid" id="projectsGrid">
+        <!-- cards injected by JS -->
+    </div>
+</section>
+
+<!-- ======================= PROJECT DETAILS MODAL ======================= -->
+<div class="project-modal-overlay" id="projectModalOverlay">
+    <div class="project-modal">
+        <button class="project-modal__close" id="projectModalClose" aria-label="Close">&times;</button>
+
+        <img src="" alt="" class="project-modal__img" id="projectModalImg">
+
+        <div class="project-modal__right">
+            <h3 id="projectModalTitle"></h3>
+            <p class="project-modal__body" id="projectModalBody"></p>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <p>&copy; 2026 Manstal Limited. All rights reserved.</p>
+    <a href="/#contact" class="footer__contact-link">Contact Us</a>
+</footer>
+
+<script src="app.js"></script>
+
+<script>
+
+// =========================================================
+// 1. PROJECT DATA — EDIT THIS TO ADD / REMOVE / CHANGE PROJECTS
+// =========================================================
+const PROJECTS = [
+    {
+        title: "Project One",
+        image: "images/project-1.jpg",
+        colorClass: "project-card--amber",
+        summary: "Short summary of the project goes here.",
+        details: "A longer description of Project One goes here — what it involved, the challenges, and the outcome for the client."
+    },
+    {
+        title: "Project Two",
+        image: "images/project-2.jpg",
+        colorClass: "project-card--coral",
+        summary: "Short summary of the project goes here.",
+        details: "A longer description of Project Two goes here — what it involved, the challenges, and the outcome for the client."
+    },
+    {
+        title: "Project Three",
+        image: "images/project-3.jpg",
+        colorClass: "project-card--teal",
+        summary: "Short summary of the project goes here.",
+        details: "A longer description of Project Three goes here — what it involved, the challenges, and the outcome for the client."
+    },
+    {
+        title: "Project Four",
+        image: "images/project-4.jpg",
+        colorClass: "project-card--violet",
+        summary: "Short summary of the project goes here.",
+        details: "A longer description of Project Four goes here — what it involved, the challenges, and the outcome for the client."
+    },
+    {
+        title: "Project Five",
+        image: "images/project-5-a.jpg",
+        colorClass: "project-card--amber",
+        summary: "Short summary of the project goes here.",
+        details: "A longer description of Project Five goes here — what it involved, the challenges, and the outcome for the client."
+    },
+    {
+        title: "Project Six",
+        image: "images/project-6-a.jpg",
+        colorClass: "project-card--coral",
+        summary: "Short summary of the project goes here.",
+        details: "A longer description of Project Six goes here — what it involved, the challenges, and the outcome for the client."
+    }
+    // Add more projects here following the same format...
+];
+
+// =========================================================
+// 2. BUILD THE CARDS
+// =========================================================
+const projectsGrid = document.getElementById('projectsGrid');
+
+PROJECTS.forEach((project, index) => {
+    const card = document.createElement('div');
+    card.className = `case-slideshow ${project.colorClass}`;
+    card.innerHTML = `
+        <div class="case-slideshow__slide case-slideshow__slide--active" style="background-image: url('${project.image}');">
+            <div class="case-slideshow__overlay"></div>
+            <div class="case-slideshow__content">
+                <h3>${project.title}</h3>
+                <p>${project.summary}</p>
+                <a href="#" class="case-card__link" data-index="${index}">Find Out More</a>
+            </div>
+        </div>
+    `;
+    projectsGrid.appendChild(card);
+});
+
+// =========================================================
+// 3. MODAL LOGIC
+// =========================================================
+const projectOverlay   = document.getElementById('projectModalOverlay');
+const projectModalImg   = document.getElementById('projectModalImg');
+const projectModalTitle = document.getElementById('projectModalTitle');
+const projectModalBody  = document.getElementById('projectModalBody');
+const projectModalClose = document.getElementById('projectModalClose');
+
+function openProjectModal(project) {
+    projectModalImg.src   = project.image;
+    projectModalImg.alt   = project.title;
+    projectModalTitle.textContent = project.title;
+    projectModalBody.textContent  = project.details;
+
+    projectOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeProjectModal() {
+    projectOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// Links are added dynamically, so listen on the whole grid
+projectsGrid.addEventListener('click', (e) => {
+    if (e.target.classList.contains('case-card__link')) {
+        e.preventDefault();
+        const index = e.target.dataset.index;
+        openProjectModal(PROJECTS[index]);
+    }
+});
+
+projectModalClose.addEventListener('click', closeProjectModal);
+
+projectOverlay.addEventListener('click', (e) => {
+    if (e.target === projectOverlay) closeProjectModal();
+});
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && projectOverlay.classList.contains('active')) closeProjectModal();
+});
+
+</script>

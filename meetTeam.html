@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet The Team | Manstal Limited</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ======================= NAVBAR (same as every other page) ======================= -->
+    <nav class="navbar navbar--solid">
+        <div class="navbar__container">
+            <div class="navbar__logo-ribbon"></div>
+            <div class="navbar__toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <a href="/" id="navbar__logo">
+                <img src="images/logo.png" alt="Manstal Limited icon" id="navbar__logo-icon">
+                <div class="navbar__logo-text">
+                    <span class="navbar__logo-main">Manstal</span>
+                    <span class="navbar__logo-sub">Limited</span>
+                </div>
+            </a>
+            <ul class="navbar__menu">
+                <li class="navbar__item"><a href="/" class="navbar__links">Home</a></li>
+                <li class="navbar__item"><a href="/about.html" class="navbar__links">About</a></li>
+                <li class="navbar__item"><a href="services.html" class="navbar__links">Services</a></li>
+                <li class="navbar__item"><a href="/caseStudies.html" class="navbar__links">Case Studies</a></li>
+                <li class="navbar__item"><a href="projects.html" class="navbar__links">Projects</a></li>
+                <li class="navbar__item"><a href="meetTeam.html" class="navbar__links">Meet the Team</a></li>
+                <li class="navbar__btn"><a href="contactUs.html" class="button">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ======================= PAGE HERO ======================= -->
+    <section class="team-hero">
+        <h1>Meet The Team</h1>
+        <p>The people behind Manstal Limited — click "Read Bio" on any card to find out more.</p>
+    </section>
+
+    <!-- ======================= TEAM GRID =======================
+         This stays EMPTY in the HTML. JavaScript below reads the
+         TEAM_MEMBERS array and builds one card per person into
+         this container automatically. You never touch this div.
+    ========================================================= -->
+    <section class="team-page">
+        <div class="team-grid" id="teamGrid">
+            <!-- cards injected by JS -->
+        </div>
+    </section>
+
+    <!-- ======================= BIO MODAL (POP-UP) =======================
+         Only ONE modal exists in the whole page. When you click
+         "Read Bio" on any card, JS just changes what's INSIDE this
+         box (image / name / role / bio / linkedin link) and shows it.
+    ========================================================= -->
+    <div class="team-modal-overlay" id="teamModalOverlay">
+        <div class="team-modal">
+            <button class="team-modal__close" id="teamModalClose" aria-label="Close">&times;</button>
+
+            <div class="team-modal__left">
+                <img src="" alt="" class="team-modal__img" id="teamModalImg">
+
+                <!-- LinkedIn icon sits under the image, left column -->
+                <a href="#" target="_blank" rel="noopener" class="team-modal__linkedin" id="teamModalLinkedin" aria-label="LinkedIn profile">
+                    <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor">
+                        <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="team-modal__right">
+                <h3 id="teamModalName"></h3>
+                <p class="team-modal__role" id="teamModalRole"></p>
+                <p class="team-modal__bio" id="teamModalBio"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======================= FOOTER (same as every other page) ======================= -->
+    <footer class="footer">
+    <div class="footer__container">
+
+        <div class="footer__block">
+            <h3 class="footer__title">Get In Touch</h3>
+            <div class="footer__row">
+                <div class="footer__item">
+                    <span class="footer__label">Contact No.</span>
+                    <a href="tel:+441234567890">01234 567890</a>
+                </div>
+                <div class="footer__item">
+                    <span class="footer__label">Email</span>
+                    <a href="mailto:info@manstal.co.uk">info@manstal.co.uk</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer__divider"></div>
+
+        <div class="footer__block footer__block--address">
+            <h3 class="footer__title">Address</h3>
+            <p class="footer__address">
+                123 Example Street<br>
+                Example City<br>
+                AB1 2CD
+            </p>
+        </div>
+
+    </div>
+
+    <div class="footer__bottom">
+        <p>&copy; 2026 Manstal Limited. All rights reserved.</p>
+       <a href="contactUs.html"  class="footer__contact-link">Contact Us</a>
+    </div>
+</footer>
+
+    <!-- Shared site script (hamburger menu, navbar scroll, etc.) -->
+    <script src="app.js"></script>
+
+    <!-- ================================================================
+         TEAM PAGE SCRIPT
+         Everything below is specific to this page. The data array is
+         the ONLY part you need to edit to add, remove, or change people.
+    ================================================================= -->
+    <script>
+
+    // =========================================================
+    // 1. TEAM DATA — EDIT THIS TO ADD / REMOVE / CHANGE PEOPLE
+    // =========================================================
+    // To ADD someone: copy an object below, paste it as a new
+    //                  entry, change the details.
+    // To REMOVE someone: delete their whole { ... } object.
+    // Nothing else on the page needs to change.
+    //
+    // image     -> path to their photo (put photos in /images/team/)
+    // linkedin  -> full https://linkedin.com/in/... URL
+    // bio       -> shown in the pop-up only (keep cards clean)
+    // =========================================================
+    const TEAM_MEMBERS = [
+        {
+            name: "Jane Doe",
+            role: "Managing Director",
+            image: "images/team/jane-doe.jpg",
+            linkedin: "https://www.linkedin.com/in/jane-doe",
+            bio: "A short bio about Jane's background, experience, and role at Manstal Limited goes here."
+        },
+        {
+            name: "John Smith",
+            role: "Head of Operations",
+            image: "images/team/john-smith.jpg",
+            linkedin: "https://www.linkedin.com/in/john-smith",
+            bio: "A short bio about John's background, experience, and role at Manstal Limited goes here."
+        },
+        {
+            name: "Amara Okafor",
+            role: "Lead Engineer",
+            image: "images/team/amara-okafor.jpg",
+            linkedin: "https://www.linkedin.com/in/amara-okafor",
+            bio: "A short bio about Amara's background, experience, and role at Manstal Limited goes here."
+        }
+        // Add more people here following the same format...
+    ];
+
+    // =========================================================
+    // 2. BUILD THE CARDS (you shouldn't need to edit this)
+    // =========================================================
+    const teamGrid = document.getElementById('teamGrid');
+
+    TEAM_MEMBERS.forEach((member, index) => {
+        const card = document.createElement('div');
+        card.className = 'team-card';
+        card.innerHTML = `
+            <img src="${member.image}" alt="${member.name}" class="team-card__img">
+            <h3 class="team-card__name">${member.name}</h3>
+            <p class="team-card__role">${member.role}</p>
+            <button class="team-card__readbio" data-index="${index}">Read Bio</button>
+        `;
+        teamGrid.appendChild(card);
+    });
+
+    // =========================================================
+    // 3. MODAL (POP-UP) LOGIC (you shouldn't need to edit this)
+    // =========================================================
+    const overlay      = document.getElementById('teamModalOverlay');
+    const modalImg      = document.getElementById('teamModalImg');
+    const modalName     = document.getElementById('teamModalName');
+    const modalRole      = document.getElementById('teamModalRole');
+    const modalBio       = document.getElementById('teamModalBio');
+    const modalLinkedin  = document.getElementById('teamModalLinkedin');
+    const modalClose     = document.getElementById('teamModalClose');
+
+    function openModal(member) {
+        modalImg.src       = member.image;
+        modalImg.alt       = member.name;
+        modalName.textContent = member.name;
+        modalRole.textContent = member.role;
+        modalBio.textContent  = member.bio;
+        modalLinkedin.href    = member.linkedin;
+
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden'; // stop background scroll while open
+    }
+
+    function closeModal() {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // "Read Bio" buttons are added dynamically, so we listen on
+    // the whole grid rather than on buttons that don't exist yet
+    teamGrid.addEventListener('click', (e) => {
+        if (e.target.classList.contains('team-card__readbio')) {
+            const index = e.target.dataset.index;
+            openModal(TEAM_MEMBERS[index]);
+        }
+    });
+
+    modalClose.addEventListener('click', closeModal);
+
+    // Click outside the modal box (on the dark overlay) to close it too
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) closeModal();
+    });
+
+    // Escape key also closes it
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && overlay.classList.contains('active')) closeModal();
+    });
+
+    </script>
+</body>
+</html>

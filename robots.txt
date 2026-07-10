@@ -1,0 +1,6 @@
+ look into this
+User-agent: *
+Disallow: /images/clients/
+
+Sitemap: https://yourdomain.com/sitemap.xml
+- do we have a sitemap

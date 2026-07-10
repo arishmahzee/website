@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join The Team | Manstal Limited</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ======================= NAVBAR ======================= -->
+    <nav class="navbar navbar--solid">
+        <div class="navbar__container">
+            <div class="navbar__logo-ribbon"></div>
+            <div class="navbar__toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <a href="/" id="navbar__logo">
+                <img src="images/logo.png" alt="Manstal Limited icon" id="navbar__logo-icon">
+                <div class="navbar__logo-text">
+                    <span class="navbar__logo-main">Manstal</span>
+                    <span class="navbar__logo-sub">Limited</span>
+                </div>
+            </a>
+            <ul class="navbar__menu">
+                <li class="navbar__item"><a href="/" class="navbar__links">Home</a></li>
+                <li class="navbar__item"><a href="/about.html" class="navbar__links">About</a></li>
+                <li class="navbar__item"><a href="services.html" class="navbar__links">Services</a></li>
+                <li class="navbar__item"><a href="/caseStudies.html" class="navbar__links">Case Studies</a></li>
+                <li class="navbar__item"><a href="projects.html" class="navbar__links">Projects</a></li>
+                <li class="navbar__item"><a href="meetTeam.html" class="navbar__links">Meet the Team</a></li>
+                <li class="navbar__btn"><a href="contactUs.html" class="button">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ======================= PAGE HERO ======================= -->
+    <section class="jobs-hero">
+        <h1>Join The Team</h1>
+        <p>Explore current opportunities at Manstal Limited — click "View Role" on any listing for full details.</p>
+    </section>
+
+    <!-- ======================= JOBS GRID =======================
+         Empty in the HTML — JS builds one card per job from the
+         JOB_LISTINGS array below.
+    ========================================================= -->
+    <section class="jobs-page">
+        <div class="jobs-grid" id="jobsGrid">
+            <!-- cards injected by JS -->
+        </div>
+    </section>
+
+    <!-- ======================= JOB MODAL (POP-UP) =======================
+         One modal, reused for every job. JS swaps its contents
+         (title, location, type, description, requirements, apply
+         link) depending on which card was clicked.
+    ========================================================= -->
+    <div class="job-modal-overlay" id="jobModalOverlay">
+        <div class="job-modal">
+            <button class="job-modal__close" id="jobModalClose" aria-label="Close">&times;</button>
+
+            <h3 id="jobModalTitle"></h3>
+            <div class="job-modal__meta">
+                <span id="jobModalLocation"></span>
+                <span id="jobModalType"></span>
+            </div>
+
+            <p class="job-modal__section-label">About the Role</p>
+            <p id="jobModalDescription"></p>
+
+            <p class="job-modal__section-label">What We're Looking For</p>
+            <ul id="jobModalRequirements"></ul>
+
+            <a href="#" class="button button--wide job-modal__apply" id="jobModalApply" target="_blank" rel="noopener">Apply Now</a>
+        </div>
+    </div>
+
+    <!-- ======================= FOOTER ======================= -->
+    <footer class="footer">
+    <div class="footer__container">
+
+        <div class="footer__block">
+            <h3 class="footer__title">Get In Touch</h3>
+            <div class="footer__row">
+                <div class="footer__item">
+                    <span class="footer__label">Contact No.</span>
+                    <a href="tel:+441234567890">01234 567890</a>
+                </div>
+                <div class="footer__item">
+                    <span class="footer__label">Email</span>
+                    <a href="mailto:info@manstal.co.uk">info@manstal.co.uk</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer__divider"></div>
+
+        <div class="footer__block footer__block--address">
+            <h3 class="footer__title">Address</h3>
+            <p class="footer__address">
+                123 Example Street<br>
+                Example City<br>
+                AB1 2CD
+            </p>
+        </div>
+
+    </div>
+
+    <div class="footer__bottom">
+        <p>&copy; 2026 Manstal Limited. All rights reserved.</p>
+        <a href="contactUs.html" class="footer__contact-link">Contact Us</a>
+    </div>
+</footer>
+
+    <script src="app.js"></script>
+
+    <!-- ================================================================
+         JOBS PAGE SCRIPT — edit JOB_LISTINGS to add/remove/change roles
+    ================================================================= -->
+    <script>
+
+    // =========================================================
+    // 1. JOB DATA — EDIT THIS TO ADD / REMOVE / CHANGE ROLES
+    // =========================================================
+    // To ADD a job: copy an object below, paste it, change details.
+    // To REMOVE a job: delete its whole { ... } object.
+    // To CLOSE a role temporarily without deleting it, just remove
+    // it from the array and paste it back in later.
+    //
+    // requirements -> array of short bullet points shown in the pop-up
+    // applyLink    -> mailto:, application form URL, or job board link
+    // =========================================================
+    const JOB_LISTINGS = [
+        {
+            title: "Site Engineer",
+            location: "Birmingham, UK",
+            type: "Full-Time",
+            description: "We're looking for a Site Engineer to oversee day-to-day operations on active project sites, ensuring work is delivered safely, on time, and to specification.",
+            requirements: [
+                "Relevant engineering or construction qualification",
+                "2+ years' site experience",
+                "Strong communication and problem-solving skills",
+                "Full UK driving licence"
+            ],
+            applyLink: "mailto:careers@manstallimited.com?subject=Application - Site Engineer"
+        },
+        {
+            title: "Project Coordinator",
+            location: "Birmingham, UK",
+            type: "Full-Time",
+            description: "Support our project managers with scheduling, supplier coordination, and day-to-day admin to keep projects running smoothly from start to finish.",
+            requirements: [
+                "Excellent organisational skills",
+                "Comfortable using Microsoft Office / project software",
+                "Experience in construction or a similar industry preferred",
+                "Strong attention to detail"
+            ],
+            applyLink: "mailto:careers@manstallimited.com?subject=Application - Project Coordinator"
+        },
+        {
+            title: "Business Development Executive",
+            location: "Hybrid / Birmingham, UK",
+            type: "Full-Time",
+            description: "Help grow our client base by identifying new opportunities, building relationships, and representing Manstal Limited at industry events.",
+            requirements: [
+                "Proven track record in B2B sales or business development",
+                "Confident communicator and relationship builder",
+                "Self-motivated with a target-driven mindset",
+                "Willingness to travel for client meetings"
+            ],
+            applyLink: "mailto:careers@manstallimited.com?subject=Application - Business Development Executive"
+        }
+        // Add more roles here following the same format...
+    ];
+
+    // =========================================================
+    // 2. BUILD THE CARDS (shouldn't need to edit this)
+    // =========================================================
+    const jobsGrid = document.getElementById('jobsGrid');
+
+    function renderJobs() {
+        jobsGrid.innerHTML = '';
+
+        if (JOB_LISTINGS.length === 0) {
+            jobsGrid.innerHTML = '<p class="jobs-empty">There are no open roles right now — check back soon.</p>';
+            return;
+        }
+
+        JOB_LISTINGS.forEach((job, index) => {
+            const card = document.createElement('div');
+            card.className = 'job-card';
+            card.innerHTML = `
+                <h3 class="job-card__title">${job.title}</h3>
+                <div class="job-card__meta">
+                    <span>${job.location}</span>
+                    <span>${job.type}</span>
+                </div>
+                <button class="job-card__viewrole" data-index="${index}">View Role</button>
+            `;
+            jobsGrid.appendChild(card);
+        });
+    }
+
+    renderJobs();
+
+    // =========================================================
+    // 3. MODAL (POP-UP) LOGIC (shouldn't need to edit this)
+    // =========================================================
+    const overlay        = document.getElementById('jobModalOverlay');
+    const modalTitle      = document.getElementById('jobModalTitle');
+    const modalLocation   = document.getElementById('jobModalLocation');
+    const modalType       = document.getElementById('jobModalType');
+    const modalDesc       = document.getElementById('jobModalDescription');
+    const modalReqs       = document.getElementById('jobModalRequirements');
+    const modalApply      = document.getElementById('jobModalApply');
+    const modalClose      = document.getElementById('jobModalClose');
+
+    function openModal(job) {
+        modalTitle.textContent    = job.title;
+        modalLocation.textContent = job.location;
+        modalType.textContent     = job.type;
+        modalDesc.textContent     = job.description;
+        modalApply.href           = job.applyLink;
+
+        modalReqs.innerHTML = '';
+        job.requirements.forEach(req => {
+            const li = document.createElement('li');
+            li.textContent = req;
+            modalReqs.appendChild(li);
+        });
+
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    jobsGrid.addEventListener('click', (e) => {
+        if (e.target.classList.contains('job-card__viewrole')) {
+            const index = e.target.dataset.index;
+            openModal(JOB_LISTINGS[index]);
+        }
+    });
+
+    modalClose.addEventListener('click', closeModal);
+
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && overlay.classList.contains('active')) closeModal();
+    });
+
+    </script>
+
+
+
+</body>
+</html>

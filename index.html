@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manstal Limited</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="navbar__container">
+            <div class="navbar__logo-ribbon"></div>
+            <div class="navbar__toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <a href="/" id="navbar__logo">
+                <img src="images/logo.png" alt="Manstal Limited icon" id="navbar__logo-icon">
+                <div class="navbar__logo-text">
+                    <span class="navbar__logo-main">Manstal</span>
+                    <span class="navbar__logo-sub">Limited</span>
+                </div>
+            </a>
+            <ul class="navbar__menu">
+                <li class="navbar__item"><a href="/" class="navbar__links">Home</a></li>
+                <li class="navbar__item"><a href="/about.html" class="navbar__links">About</a></li>
+                <li class="navbar__item"><a href="services.html" class="navbar__links">Services</a></li>
+                <li class="navbar__item"><a href="/caseStudies.html" class="navbar__links">Case Studies</a></li>
+                <li class="navbar__item"><a href="/projects.html" class="navbar__links">Projects</a></li>
+                <li class="navbar__item"><a href="/meetTeam.html" class="navbar__links">Meet the Team</a></li>
+                <li class="navbar__btn"><a href="/contactUs.html" class="button">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero" id="hero">
+        <div class="hero__slideshow">
+            <div class="hero__slide hero__slide--active" style="background-image: url('images/replaceCAD.jpg');"></div>
+            <div class="hero__slide" style="background-image: url('images/replaceTeam.jpg');"></div>
+            <div class="hero__slide" style="background-image: url('images/replaceCAD.jpg');"></div>
+            <div class="hero__slide" style="background-image: url('images/replaceTeam.jpg');"></div>
+        </div>
+        <div class="hero__overlay"></div>
+        <div class="hero__content">
+            <p class="hero__subtitle">A short line about what the company does goes here.</p>
+        </div>
+        <a href="mission.html" class="hero__mission-btn">Our Mission</a>
+    </header>
+
+    <section class="about" id="about">
+        <div class="about__container">
+            <div class="about__text">
+                <h2 class="section__title">About Us</h2>
+                <p class="section__text">
+                    A brief description about the company's story, values, or approach goes here
+                </p>
+                <a href="about.html" class="button button--wide">Learn More</a>
+            </div>
+            <div class="about__image">
+                <img src="images/about-us.jpg" alt="About Manstal Limited">
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="stats" id="stats">
+        <div class="stat">
+            <span class="stat__number" data-target="150">0</span>
+            <p class="stat__label">Businesses helped</p>
+        </div>
+        <div class="stat">
+            <span class="stat__number" data-target="80">0</span>
+            <p class="stat__label">Projects completed</p>
+        </div>
+        <div class="stat">
+            <span class="stat__number" data-target="12">0</span>
+            <p class="stat__label">Years of experience</p>
+        </div>
+    </section>
+
+
+
+
+    
+
+    <!-- ========================================================
+     SCREEN 3: PROJECTS (home page preview)
+     Grid stays EMPTY in the HTML — app.js reads the HOME_PROJECTS
+     array and builds cards into it, same popup pattern as
+     projects.html
+    ========================================================= -->
+    <section class="history-projects" id="history-projects">
+
+        <div id="projects-panel">
+            <h2 class="section__title">Our Projects</h2>
+
+            <div class="projects-list" id="homeProjectsGrid">
+                <!-- cards injected by JS -->
+            </div>
+        </div>
+
+        <div class="toggle-buttons">
+            <a href="projects.html" class="toggle-btn">More Projects</a>
+        </div>
+
+    </section>
+
+    <!-- ========================================================
+         CASE STUDIES (home page preview)
+         Grid stays EMPTY in the HTML — app.js reads the
+         HOME_CASE_STUDIES array and builds cards into it, same
+         popup pattern as caseStudies.html
+    ========================================================= -->
+    <section class="case-studies" id="case-studies">
+        <h2 class="section__title">Case Studies</h2>
+
+        <div class="case-studies__grid" id="homeCaseStudiesGrid">
+            <!-- cards injected by JS -->
+        </div>
+
+        <a href="caseStudies.html" class="more__cases-btn">More Case Studies</a>
+    </section>
+
+    
+    <!-- ========================================================
+     SUSTAINABILITY & SOCIAL VALUE
+     Heading + intro on the left, 3 value points on the right
+     with a green-blue accent theme (distinct from the primary
+     blue used elsewhere on the site)
+    ========================================================= -->
+    <section class="sustainability" id="sustainability">
+    <div class="sustainability__container">
+
+        <div class="sustainability__text">
+            <h2 class="sustainability__title">
+                Sustainability<br>
+                <span>and</span><br>
+                Social Value
+            </h2>
+            <p class="sustainability__intro">
+                A brief line on how sustainability and social value shape the way we work goes here.
+            </p>
+        </div>
+
+        <div class="sustainability__points">
+            <div class="sustainability__point">
+                <span class="sustainability__icon">🌱</span>
+                <p>Short line about an environmental commitment or initiative goes here.</p>
+            </div>
+            <div class="sustainability__point">
+                <span class="sustainability__icon">🤝</span>
+                <p>Short line about community impact or social value goes here.</p>
+            </div>
+            <div class="sustainability__point">
+                <span class="sustainability__icon">♻️</span>
+                <p>Short line about responsible practices or ethics goes here.</p>
+            </div>
+        </div>
+
+    </div>
+    </section>
+
+
+
+    <section class="who-we-help" id="who-we-help">
+        <h2 class="section__title">Who We Help</h2>
+        <p class="section__text">
+            A brief line on ethics and the kinds of businesses or people you support goes here.
+        </p>
+
+        <div class="logo-slider">
+            <div class="logo-slider__track">
+                <img src="images/Clients/Aldi-Logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/Argos-Logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/BCH-Logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/clients/BCU-Logo.jpg" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/boots-logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/centrica-logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/GallifordTry-Logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/Homebase_logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/Marriot-logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/morgan-sindall-logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/NHS-Logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/O2_Logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/Sainsbury_Logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/UOB-Logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/Aldi-Logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/Argos-Logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/BCH-Logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/clients/BCU-Logo.jpg" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/boots-logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/centrica-logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/GallifordTry-Logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/Homebase_logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/Marriot-logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/morgan-sindall-logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/NHS-Logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/O2_Logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/Sainsbury_Logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/UOB-Logo.png" alt="Client logo" class="logo-slider__logo">
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================
+         NEWS (home page preview)
+         Row stays EMPTY in the HTML — app.js reads the HOME_NEWS
+         array and builds cards into it, same popup pattern
+    ========================================================= -->
+    <section class="news" id="news">
+        <h2 class="section__title">Our Latest News &amp; Insights</h2>
+
+        <div class="news-scroller" id="homeNewsScroller">
+            <!-- cards injected by JS -->
+        </div>
+    </section>
+
+    <section class="careers" id="careers">
+        <h2 class="section__title">Join The Team</h2>
+        <p class="section__text">Find out about current opportunities at Manstal Limited.</p>
+        <a href="joinTeam.html" class="button button--wide">View Opportunities</a>
+    </section>
+
+    <section class="contact" id="contact">
+    <h2 class="section__title">Send an Inquiry</h2>
+
+    <form class="contact-form" id="contact-form">
+        <div class="contact-form__row">
+            <input type="text" name="firstName" placeholder="Your first name" required>
+            <input type="text" name="lastName" placeholder="Surname" required>
+        </div>
+
+        <input type="email" name="email" placeholder="Email Address" required>
+
+        <select name="enquiryType" id="enquiryType" required>
+            <option value="" disabled selected>Type of enquiry</option>
+            <option value="general">General</option>
+            <option value="work">Work Related</option>
+        </select>
+
+        <!-- ============================================================
+             WORK-RELATED FIELDS
+             Hidden by default. app.js shows this block (and makes its
+             fields required) only when "Work Related" is selected in
+             the dropdown above.
+        ============================================================= -->
+        <div class="contact-form__work-fields" id="workFields">
+
+            <input type="tel" name="phone" placeholder="Phone Number">
+
+            <select name="projectType" id="projectType">
+                <option value="" disabled selected>Project type</option>
+                <option value="new-build">New Build</option>
+                <option value="refurbishment">Refurbishment</option>
+                <option value="ppm">Planned Maintenance (PPM)</option>
+                <option value="reactive">Reactive / 24hr Cover</option>
+                <option value="other">Other</option>
+            </select>
+
+            <select name="budget" id="budget">
+                <option value="" disabled selected>Indicative budget</option>
+                <option value="prefer-not-to-say">Prefer not to say</option>
+                <option value="under-250k">Under £250k</option>
+                <option value="250k-1m">£250k - £1m</option>
+                <option value="1m-3m">£1m - £3m</option>
+                <option value="3m-8m">£3m - £8m</option>
+                <option value="8m-plus">£8m+</option>
+            </select>
+
+        </div>
+
+        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+
+        <button type="submit" class="button button--wide">Send Enquiry</button>
+    </form>
+</section>
+
+
+    <!-- ========================================================
+         PROJECT DETAILS MODAL (POP-UP) — shared by home Projects
+    ========================================================= -->
+    <div class="project-modal-overlay" id="homeProjectModalOverlay">
+        <div class="project-modal">
+            <button class="project-modal__close" id="homeProjectModalClose" aria-label="Close">&times;</button>
+            <img src="" alt="" class="project-modal__img" id="homeProjectModalImg">
+            <div class="project-modal__right">
+                <h3 id="homeProjectModalTitle"></h3>
+                <p class="project-modal__body" id="homeProjectModalBody"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================
+         CASE STUDY DETAILS MODAL (POP-UP) — shared by home Case Studies
+    ========================================================= -->
+    <div class="case-modal-overlay" id="homeCaseModalOverlay">
+        <div class="case-modal">
+            <button class="case-modal__close" id="homeCaseModalClose" aria-label="Close">&times;</button>
+            <img src="" alt="" class="case-modal__img" id="homeCaseModalImg">
+            <div class="case-modal__right">
+                <h3 id="homeCaseModalTitle"></h3>
+                <p class="case-modal__body" id="homeCaseModalBody"></p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <!-- ========================================================
+         NEWS DETAILS MODAL (POP-UP) — shared by home News
+    ========================================================= -->
+    <div class="news-modal-overlay" id="homeNewsModalOverlay">
+        <div class="news-modal">
+            <button class="news-modal__close" id="homeNewsModalClose" aria-label="Close">&times;</button>
+            <img src="" alt="" class="news-modal__img" id="homeNewsModalImg">
+            <div class="news-modal__right">
+                <h3 id="homeNewsModalTitle"></h3>
+                <p class="news-modal__body" id="homeNewsModalBody"></p>
+            </div>
+        </div>
+    </div>
+
+
+
+
+<!--
+FOOTER
+-->
+   <footer class="footer">
+    <div class="footer__container">
+
+        <div class="footer__block">
+            <h3 class="footer__title">Get In Touch</h3>
+            <div class="footer__row">
+                <div class="footer__item">
+                    <span class="footer__label">Contact No.</span>
+                    <a href="tel:+441234567890">01234 567890</a>
+                </div>
+                <div class="footer__item">
+                    <span class="footer__label">Email</span>
+                    <a href="mailto:info@manstal.co.uk">info@manstal.co.uk</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer__divider"></div>
+
+        <div class="footer__block footer__block--address">
+            <h3 class="footer__title">Address</h3>
+            <p class="footer__address">
+                123 Example Street<br>
+                Example City<br>
+                AB1 2CD
+            </p>
+        </div>
+
+    </div>
+
+    <div class="footer__bottom">
+        <p>&copy; 2026 Manstal Limited. All rights reserved.</p>
+        <a href="contactUs.html" class="footer__contact-link">Contact Us</a>
+    </div>
+</footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

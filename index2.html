@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manstal Limited</title>
+
+    <!-- Favicon (tab icon) — points to your logo image -->
+    <link rel="icon" type="image/png" href="images/logo.png">
+
+    <!-- All CSS for every page lives in this one shared file -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ========================================================
+         NAVBAR
+         Fixed to the top of the page (position: fixed in CSS),
+         so it stays visible while scrolling. Transparent on this
+         page so it floats over the hero image.
+    ========================================================= -->
+    <nav class="navbar">
+        <div class="navbar__container">
+
+            <!-- Blue ribbon behind the logo/hamburger block — hidden
+                 at the top of the page, faded in via app.js once the
+                 user scrolls down (see .navbar.scrolled in CSS) -->
+            <div class="navbar__logo-ribbon"></div>
+
+            <!-- Hamburger icon: 3 bars. Click handling + open/close
+                 animation are in app.js -->
+            <div class="navbar__toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+
+            <!-- Logo block: icon image + "Manstal / Limited" text
+                 stacked next to it, styled in .navbar__logo-text CSS -->
+            <a href="/" id="navbar__logo">
+                <img src="images/logo.png" alt="Manstal Limited icon" id="navbar__logo-icon">
+                <div class="navbar__logo-text">
+                    <span class="navbar__logo-main">Manstal</span>
+                    <span class="navbar__logo-sub">Limited</span>
+                </div>
+            </a>
+
+            <!-- Slide-out nav menu. Hidden off-screen by default;
+                 app.js toggles the "active" class to slide it in -->
+            <ul class="navbar__menu">
+                <li class="navbar__item"><a href="/" class="navbar__links">Home</a></li>
+                <li class="navbar__item"><a href="/about.html" class="navbar__links">About</a></li>
+                <li class="navbar__item"><a href="services.html" class="navbar__links">Services</a></li>
+                <li class="navbar__item"><a href="/caseStudies.html" class="navbar__links">Case Studies</a></li>
+                <li class="navbar__item"><a href="/projects.html" class="navbar__links">Projects</a></li>
+                <li class="navbar__item"><a href="/meetTeam.html" class="navbar__links">Meet the Team</a></li>
+                <li class="navbar__btn"><a href="/contactUs.html" class="button">Contact Us</a></li>
+            </ul>
+
+        </div>
+    </nav>
+
+    <!-- ========================================================
+         SCREEN 1: HERO
+         Full-height section with a rotating background slideshow,
+         a dark overlay for text readability, and the "Our Mission"
+         button straddling the bottom edge of the section.
+    ========================================================= -->
+    <header class="hero" id="hero">
+
+        <!-- 4 stacked slides. Only one has "hero__slide--active" at a
+             time — app.js swaps this class every 5 seconds to fade
+             between them (see .hero__slide opacity transition in CSS) -->
+        <div class="hero__slideshow">
+            <div class="hero__slide hero__slide--active" style="background-image: url('images/replaceCAD.jpg');"></div>
+            <div class="hero__slide" style="background-image: url('images/replaceTeam.jpg');"></div>
+            <div class="hero__slide" style="background-image: url('images/replaceCAD.jpg');"></div>
+            <div class="hero__slide" style="background-image: url('images/replaceTeam.jpg');"></div>
+        </div>
+
+        <!-- Dark semi-transparent layer over the slideshow so white
+             text stays readable no matter which photo is showing -->
+        <div class="hero__overlay"></div>
+
+        <!-- Text content sits above the overlay (z-index in CSS) -->
+        <div class="hero__content">
+            <p class="hero__subtitle">A short line about what the company does goes here.</p>
+        </div>
+
+        <!-- Positioned independently of .hero__content so it can sit
+             half on the slideshow / half on the section below
+             (see transform: translate(-50%, -50%) in CSS).
+             Links to a separate page, mission.html -->
+        <a href="mission.html" class="hero__mission-btn">Our Mission</a>
+
+    </header>
+
+    <!-- ========================================================
+     ABOUT US
+     Brief intro text + button on the left, image on the right.
+     Links to a separate page, about.html
+========================================================= -->
+<section class="about" id="about">
+    <div class="about__container">
+        <div class="about__text">
+            <h2 class="section__title">About Us</h2>
+            <p class="section__text">
+                A brief description about the company's story, values, or approach goes here
+               
+            </p>
+            <a href="about.html" class="button button--wide">Learn More</a>
+        </div>
+        <div class="about__image">
+            <img src="images/about-us.jpg" alt="About Manstal Limited">
+        </div>
+    </div>
+</section>
+
+
+
+
+    <!-- ========================================================
+     SCREEN 3: HISTORY / PROJECTS
+     "History" is a toggle button that shows/hides the History
+     panel. "Our Projects" is always visible below it.
+
+    ========================================================= -->
+    
+    <section class="history-projects" id="history-projects">
+    <!-- Always visible -->
+   
+    <div id="projects-panel">
+
+        <h2 class="section__title">Our Projects</h2>
+
+        <div class="projects-list">
+
+            <div class="project-row">
+                <div class="project-row__text">
+                    <h3>Project One</h3>
+                    <p>Short description of the project goes here and what it involved and the outcome for the client.</p>
+                    <a href="#" class="button button--wide project-row__link">Learn More <span class="arrow">&#8594;</span></a>
+                </div>
+                <div class="project-row__image">
+                    <img src="images/project-1.jpg" alt="Project One">
+                </div>
+            </div>
+
+            <div class="project-row project-row--reverse">
+                <div class="project-row__text">
+                    <h3>Project Two</h3>
+                    <p>Short description of the project goes here and what it involved and the outcome for the client.</p>
+                    <a href="#" class="button button--wide project-row__link">Learn More <span class="arrow">&#8594;</span></a>
+                </div>
+                <div class="project-row__image">
+                    <img src="images/project-2.jpg" alt="Project Two">
+                </div>
+            </div>
+
+            <div class="project-row">
+                <div class="project-row__text">
+                    <h3>Project Three</h3>
+                    <p>Short description of the project goes here and what it involved and the outcome for the client.</p>
+                    <a href="#" class="button button--wide project-row__link">Learn More <span class="arrow">&#8594;</span></a>
+                </div>
+                <div class="project-row__image">
+                    <img src="images/project-3.jpg" alt="Project Three">
+                </div>
+            </div>
+
+            <div class="project-row project-row--reverse">
+                <div class="project-row__text">
+                    <h3>Project Four</h3>
+                    <p>Short description of the project goes here and what it involved and the outcome for the client.</p>
+                    <a href="#" class="button button--wide project-row__link">Learn More <span class="arrow">&#8594;</span></a>
+                </div>
+                <div class="project-row__image">
+                    <img src="images/project-4.jpg" alt="Project Four">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="toggle-buttons">
+        <a href="projects.html" class="toggle-btn">More Projects</a>
+    </div>
+
+    
+    
+</section>
+
+
+
+<!-- ========================================================
+         CASE STUDIES
+         Now 4 quadrants, each its own auto-rotating mini-slideshow
+         (same fade technique as the hero), showing an image,
+         short description, and "Find Out More" link.
+    ========================================================= -->
+    <section class="case-studies" id="case-studies">
+        <h2 class="section__title">Case Studies</h2>
+
+        <div class="case-studies__grid">
+
+            <div class="case-slideshow">
+                <div class="case-slideshow__slide case-slideshow__slide--active" style="background-image: url('images/case-1-a.jpg');">
+                    <div class="case-slideshow__overlay"></div>
+                    <div class="case-slideshow__content">
+                        <h3>Case Study One</h3>
+                        <p>Short summary of the project goes here.</p>
+                        <a href="#" class="case-card__link">Find Out More</a>
+                    </div>
+                </div>
+                <div class="case-slideshow__slide" style="background-image: url('images/case-1-b.jpg');">
+                    <div class="case-slideshow__overlay"></div>
+                    <div class="case-slideshow__content">
+                        <h3>Case Study One</h3>
+                        <p>Short summary of the project goes here.</p>
+                        <a href="#" class="case-card__link">Find Out More</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="case-slideshow">
+                <div class="case-slideshow__slide case-slideshow__slide--active" style="background-image: url('images/case-2-a.jpg');">
+                    <div class="case-slideshow__overlay"></div>
+                    <div class="case-slideshow__content">
+                        <h3>Case Study Two</h3>
+                        <p>Short summary of the project goes here.</p>
+                        <a href="#" class="case-card__link">Find Out More</a>
+                    </div>
+                </div>
+                <div class="case-slideshow__slide" style="background-image: url('images/case-2-b.jpg');">
+                    <div class="case-slideshow__overlay"></div>
+                    <div class="case-slideshow__content">
+                        <h3>Case Study Two</h3>
+                        <p>Short summary of the project goes here.</p>
+                        <a href="#" class="case-card__link">Find Out More</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="case-slideshow">
+                <div class="case-slideshow__slide case-slideshow__slide--active" style="background-image: url('images/case-3-a.jpg');">
+                    <div class="case-slideshow__overlay"></div>
+                    <div class="case-slideshow__content">
+                        <h3>Case Study Three</h3>
+                        <p>Short summary of the project goes here.</p>
+                        <a href="#" class="case-card__link">Find Out More</a>
+                    </div>
+                </div>
+                <div class="case-slideshow__slide" style="background-image: url('images/case-3-b.jpg');">
+                    <div class="case-slideshow__overlay"></div>
+                    <div class="case-slideshow__content">
+                        <h3>Case Study Three</h3>
+                        <p>Short summary of the project goes here.</p>
+                        <a href="#" class="case-card__link">Find Out More</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="case-slideshow">
+                <div class="case-slideshow__slide case-slideshow__slide--active" style="background-image: url('images/case-4-a.jpg');">
+                    <div class="case-slideshow__overlay"></div>
+                    <div class="case-slideshow__content">
+                        <h3>Case Study Four</h3>
+                        <p>Short summary of the project goes here.</p>
+                        <a href="#" class="case-card__link">Find Out More</a>
+                    </div>
+                </div>
+                <div class="case-slideshow__slide" style="background-image: url('images/case-4-b.jpg');">
+                    <div class="case-slideshow__overlay"></div>
+                    <div class="case-slideshow__content">
+                        <h3>Case Study Four</h3>
+                        <p>Short summary of the project goes here.</p>
+                        <a href="#" class="case-card__link">Find Out More</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <a href="caseStudies.html" class="more__cases-btn">More Case Studies</a>
+    </section>
+
+
+    <!-- ========================================================
+         STATS
+         Numbers start at 0 in the HTML; app.js uses an
+         IntersectionObserver to detect when this section scrolls
+         into view, then counts each number up to its
+         "data-target" value.
+       ========================================================= -->
+
+    <section class="stats" id="stats">
+        <div class="stat">
+            <span class="stat__number" data-target="150">0</span>
+            <p class="stat__label">Businesses helped</p>
+        </div>
+        <div class="stat">
+            <span class="stat__number" data-target="80">0</span>
+            <p class="stat__label">Projects completed</p>
+        </div>
+        <div class="stat">
+            <span class="stat__number" data-target="12">0</span>
+            <p class="stat__label">Years of experience</p>
+        </div>
+    </section>
+
+
+    <!-- ========================================================
+         SCREEN 2: WHO WE HELP
+         Intro text + a continuously auto-scrolling row of client
+         logos (pure CSS animation, no JS involved)
+    ========================================================= -->
+    <section class="who-we-help" id="who-we-help">
+        <h2 class="section__title">Who We Help</h2>
+        <p class="section__text">
+            A brief line on ethics and the kinds of businesses or people you support goes here.
+        </p>
+
+        <!-- .logo-slider hides overflow; .logo-slider__track is the
+             strip of logos that scrolls left forever via @keyframes.
+             The logo list is duplicated below so the loop looks
+             seamless (no visible jump when it restarts) -->
+        <div class="logo-slider">
+            <div class="logo-slider__track">
+                <img src="images/Clients/Aldi-Logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/Argos-Logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/BCH-Logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/clients/BCU-Logo.jpg" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/boots-logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/centrica-logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/GallifordTry-Logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/Homebase_logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/Marriot-logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/morgan-sindall-logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/NHS-Logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/O2_Logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/Sainsbury_Logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/UOB-Logo.png" alt="Client logo" class="logo-slider__logo">
+                <!-- duplicate set starts here, for the seamless loop -->
+                <img src="images/Clients/Aldi-Logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/Argos-Logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/BCH-Logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/clients/BCU-Logo.jpg" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/boots-logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/centrica-logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/GallifordTry-Logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/Homebase_logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/Marriot-logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/morgan-sindall-logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/NHS-Logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/O2_Logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/Sainsbury_Logo.png" alt="Client logo" class="logo-slider__logo">
+                <img src="images/Clients/UOB-Logo.png" alt="Client logo" class="logo-slider__logo">
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ========================================================
+         SCREEN 4: NEWS
+         Horizontally scrollable row of news cards, same
+         overflow-x technique as the project scroller above
+    ========================================================= -->
+    <section class="news" id="news">
+        <h2 class="section__title">Our Latest News &amp; Insights</h2>
+
+        <div class="news-scroller">
+            <div class="news-card">
+                <img src="images/news1.jpg" alt="News item" class="news-card__img">
+                <h3>News Title One</h3>
+                <p>Short paragraph summary goes here.</p>
+                <a href="#" class="case-card__link">Read More</a>
+            </div>
+            <div class="news-card">
+                <img src="images/news2.jpg" alt="News item" class="news-card__img">
+                <h3>News Title Two</h3>
+                <p>Short paragraph summary goes here.</p>
+                <a href="#" class="case-card__link">Read More</a>
+            </div>
+            <div class="news-card">
+                <img src="images/news3.jpg" alt="News item" class="news-card__img">
+                <h3>News Title Three</h3>
+                <p>Short paragraph summary goes here.</p>
+                <a href="#" class="case-card__link">Read More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================
+         CAREERS
+         Simple text + button. Now links to joinTeam.html, the
+         dedicated jobs/opportunities page.
+    ========================================================= -->
+    <section class="careers" id="careers">
+        <h2 class="section__title">Join The Team</h2>
+        <p class="section__text">Find out about current opportunities at Manstal Limited.</p>
+        <a href="joinTeam.html" class="button button--wide">View Opportunities</a>
+    </section>
+
+    <!-- ========================================================
+         CONTACT FORM
+         On submit, app.js intercepts it (event.preventDefault()),
+         reads the field values, and currently just logs them to
+         the browser console + shows an alert. This is the section
+         that will eventually POST to a real backend (Node.js).
+    ========================================================= -->
+    <section class="contact" id="contact">
+        <h2 class="section__title">Get In Touch</h2>
+
+        <form class="contact-form" id="contact-form">
+            <div class="contact-form__row">
+                <input type="text" name="firstName" placeholder="First Name" required>
+                <input type="text" name="lastName" placeholder="Last Name" required>
+            </div>
+            <input type="email" name="email" placeholder="Email Address" required>
+            <input type="text" name="subject" placeholder="Reason for Contacting" required>
+            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit" class="button button--wide">Send Message</button>
+        </form>
+    </section>
+
+    <!-- ========================================================
+         FOOTER
+         Simple copyright line + a link that jumps back up to the
+         contact section (href="#contact" matches id="contact" above)
+    ========================================================= -->
+    <footer class="footer">
+        <p>&copy; 2026 Manstal Limited. All rights reserved.</p>
+        <a href="#contact" class="footer__contact-link">Contact Us</a>
+    </footer>
+
+    <!-- Loaded at the very end of the page (not in <head>) so all
+         the HTML above exists in the browser before this script
+         tries to find and control it -->
+    <script src="app.js"></script>
+</body>
+</html>

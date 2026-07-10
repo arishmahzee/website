@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Manstal Limited</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav class="navbar navbar--solid">
+        <div class="navbar__container">
+            <div class="navbar__logo-ribbon"></div>
+            <div class="navbar__toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <a href="/" id="navbar__logo">
+                <img src="images/logo.png" alt="Manstal Limited icon" id="navbar__logo-icon">
+                <div class="navbar__logo-text">
+                    <span class="navbar__logo-main">Manstal</span>
+                    <span class="navbar__logo-sub">Limited</span>
+                </div>
+            </a>
+            <ul class="navbar__menu">
+                <li class="navbar__item"><a href="/" class="navbar__links">Home</a></li>
+                <li class="navbar__item"><a href="/about.html" class="navbar__links">About</a></li>
+                <li class="navbar__item"><a href="services.html" class="navbar__links">Services</a></li>
+                <li class="navbar__item"><a href="/caseStudies.html" class="navbar__links">Case Studies</a></li>
+                <li class="navbar__item"><a href="projects.html" class="navbar__links">Projects</a></li>
+                <li class="navbar__item"><a href="meetTeam.html" class="navbar__links">Meet the Team</a></li>
+                <li class="navbar__btn"><a href="contactUs.html" class="button">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ========================================================
+         PAGE HERO — warm sunset gradient instead of blue, so
+         Projects feels distinct from Case Studies
+    ========================================================= -->
+    <section class="projects-hero">
+        <span class="projects-hero__ghost">Projects</span>
+        <h1>Our Projects</h1>
+        <p>Every build tells a story. Here's a look at the work we're proud to have delivered.</p>
+    </section>
+
+    <!-- ========================================================
+         FULL PROJECTS GRID — this stays EMPTY in the HTML.
+         JavaScript reads the PROJECTS array (in app.js) and
+         builds one card per project into this container.
+    ========================================================= -->
+
+<section class="projects-page">
+
+    <!-- ========================================================
+         PROJECT FILTERS
+         Two dropdowns, built dynamically from the PROJECTS array
+         in app.js. Selecting one narrows the grid below; "All"
+         resets that filter. Also shows a "no results" message
+         and a "Clear Filters" button when needed.
+    ========================================================= -->
+    <div class="projects-filters">
+        <div class="projects-filters__group">
+            <label for="filterSector">Sector</label>
+            <select id="filterSector">
+                <option value="all">All Sectors</option>
+                <option value="Retail">Retail</option>
+                <option value="Hotel & Leisure">Hotel & Leisure</option>
+                <option value="Education">Education</option>
+                <option value="Industrial">Industrial</option>
+                <option value="Commercial">Commercial</option>
+                <option value="Health">Health</option>
+                <option value="Public Sector">Public Sector</option>
+                <option value="Residential">Residential</option>
+            </select>
+        </div>
+
+        <div class="projects-filters__group">
+            <label for="filterService">Service</label>
+            <select id="filterService">
+                <option value="all">All Services</option>
+                <option value="Electrical Installation">Electrical Installation</option>
+                <option value="Mechanical Installation">Mechanical Installation</option>
+                <option value="Project Design & BIM">Project Design & BIM</option>
+                <option value="Project Management">Project Management</option>
+                <option value="Planned & Reactive Maintainance">Planned & Reactive Maintainance</option>
+                <option value="Renewables & Energy Efficiency">Renewables & Energy Efficiency</option>
+            </select>
+        </div>
+
+        <button type="button" id="filterClear" class="projects-filters__clear">Clear Filters</button>
+    </div>
+
+    <p class="projects-filters__empty" id="projectsEmptyMsg">No projects match those filters.</p>
+
+    <div class="projects-page__grid" id="projectsGrid">
+        <!-- cards injected by JS -->
+    </div>
+
+    </section>
+
+    <!-- ========================================================
+         PROJECT DETAILS MODAL (POP-UP)
+         Only ONE modal exists on the page. Clicking "Find Out
+         More" on any card fills this box with that project's
+         info and shows it.
+    ========================================================= -->
+    <div class="project-modal-overlay" id="projectModalOverlay">
+        <div class="project-modal">
+            <button class="project-modal__close" id="projectModalClose" aria-label="Close">&times;</button>
+
+            <img src="" alt="" class="project-modal__img" id="projectModalImg">
+
+            <div class="project-modal__right">
+                <h3 id="projectModalTitle"></h3>
+                <p class="project-modal__body" id="projectModalBody"></p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="footer__container">
+
+        <div class="footer__block">
+            <h3 class="footer__title">Get In Touch</h3>
+            <div class="footer__row">
+                <div class="footer__item">
+                    <span class="footer__label">Contact No.</span>
+                    <a href="tel:+441234567890">01234 567890</a>
+                </div>
+                <div class="footer__item">
+                    <span class="footer__label">Email</span>
+                    <a href="mailto:info@manstal.co.uk">info@manstal.co.uk</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer__divider"></div>
+
+        <div class="footer__block footer__block--address">
+            <h3 class="footer__title">Address</h3>
+            <p class="footer__address">
+                123 Example Street<br>
+                Example City<br>
+                AB1 2CD
+            </p>
+        </div>
+
+    </div>
+
+    <div class="footer__bottom">
+        <p>&copy; 2026 Manstal Limited. All rights reserved.</p>
+        <a href="contactUs.html" class="footer__contact-link">Contact Us</a>
+    </div>
+</footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -166,7 +166,6 @@ if (enquiryType && workFields) {
     toggleWorkFields();
 }
 
-
 // ============================= //
 // CASE STUDY SLIDESHOWS (Screen 2.5) //
 // ============================= //
@@ -183,7 +182,6 @@ document.querySelectorAll('.case-slideshow').forEach((slideshow, i) => {
         caseSlides[currentCaseSlide].classList.add('case-slideshow__slide--active');
     }, 4000 + i * 500);
 });
-
 
 // =========================================================
 // PROJECTS PAGE — DATA
@@ -365,6 +363,8 @@ if (projectsGrid) {
         applyFilters();
     });
 }
+
+
 
 
 // =========================================================
@@ -581,6 +581,9 @@ if (servicesGrid) {
         if (e.key === 'Escape' && serviceOverlay.classList.contains('active')) closeServiceModal();
     });
 }
+
+
+
 
 
 // =========================================================

@@ -347,10 +347,6 @@ html {
 /* ============================= */
 /* ABOUT US                       */
 /* ============================= */
-/* Accreditations badge image (CHAS/Constructionline/etc logos),
-   sits above the "About Us" heading. Fluid width via clamp() so
-   it scales with the viewport instead of being locked to a fixed
-   px size — never smaller than 160px, never bigger than 340px */
 .accreditations-img {
   width: clamp(160px, 32vw, 340px);
   height: auto;
@@ -478,8 +474,6 @@ html {
 /* flex-wrap lets cards drop to a new row on narrower screens
    instead of squeezing or overflowing */
 
-/* --- OLD/UNUSED CARD-GRID VERSION OF CASE STUDIES, kept commented
-       out for reference — replaced by the slideshow version below --- */
 /*
 .case-studies {
     display: flex;
@@ -659,8 +653,6 @@ html {
 /* STATS                          */
 /* ============================= */
 
-/* --- OLD/UNUSED PLAIN STATS VERSION, kept commented out for
-       reference — replaced by the "card" version below --- */
 /*
 .stats {
     display: flex;
@@ -739,6 +731,7 @@ html {
     min-height: 100vh;
 }
 
+/*screen3 and 4 /*
 /* ============================= */
 /* SCREEN 3: HISTORY / PROJECTS TOGGLE */
 /* ============================= */
@@ -875,6 +868,8 @@ html {
 }
 
 
+
+
 /* ============================= */
 /* SCREEN 4: NEWS                 */
 /* ============================= */
@@ -899,6 +894,9 @@ html {
     max-width: 1100px;
     margin: 0 auto;
 }
+
+
+
 
 .news-card {
     flex: 0 0 280px;
@@ -939,6 +937,7 @@ html {
 .news-card .case-card__link {
     margin-left: 20px;
 }
+
 
 
 /* ============================= */
@@ -1056,7 +1055,6 @@ html {
 .contact-form__work-fields--active {
     display: flex;
 }
-
 /* ============================= */
 /* FOOTER                         */
 /* ============================= */
@@ -1181,6 +1179,8 @@ html {
         text-align: center;
     }
 }
+
+
 
 
 /* ============================= */
@@ -1394,7 +1394,6 @@ html {
         margin: 0 auto;
     }
 }
-
 /* ============================= */
 /* ABOUT HERO (about.html)        */
 /* ============================= */
@@ -1549,7 +1548,6 @@ html {
         margin-left: 25px;
     }
 }
-
 /* ============================= */
 /* MISSION PILLARS                */
 /* ============================= */
@@ -1651,7 +1649,6 @@ html {
         font-size: 5.5rem;
     }
 }
-
 /* ============================= */
 /* MISSION PULL QUOTE             */
 /* ============================= */
@@ -1920,7 +1917,6 @@ html {
         height: 160px;
     }
 }
-
 /* ============================= */
 /* PROJECTS PAGE HERO             */
 /* ============================= */
@@ -2138,7 +2134,6 @@ html {
         width: 100%;
     }
 }
-
 /* ============================= */
 /* PROJECT DETAILS MODAL (POP-UP) */
 /* ============================= */
@@ -2233,7 +2228,6 @@ html {
         height: 160px;
     }
 }
-
 /* ============================= */
 /* SERVICES PAGE GRID             */
 /* ============================= */
@@ -2950,3 +2944,7 @@ html {
         font-size: 2.2rem;
     }
 }
+
+
+
+

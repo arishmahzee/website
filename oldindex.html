@@ -252,25 +252,11 @@
          General enquiry form. "Work Related" fields are hidden by
          default and shown/required via app.js based on the
          enquiryType dropdown selection
-
-         NETLIFY FORMS: data-netlify="true" + name="contact" tell
-         Netlify to detect and store this form at deploy time. The
-         hidden "form-name" input and the honeypot field below are
-         both required for that detection + spam filtering to work.
     ========================================================= -->
     <section class="contact" id="contact">
     <h2 class="section__title">Send an Enquiry</h2>
 
-   <form class="contact-form" id="contact-form" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
-
-    <!-- Required so Netlify's build process recognises which form this is -->
-    <input type="hidden" name="form-name" value="contact">
-
-    <!-- Honeypot spam trap: real visitors never see or fill this in.
-         Any bot that does gets silently rejected by Netlify. -->
-    <p style="position:absolute; left:-9999px; top:-9999px;" aria-hidden="true">
-        <label>Leave this field blank if you're human: <input name="bot-field" tabindex="-1" autocomplete="off"></label>
-    </p>
+   <form class="contact-form" id="contact-form">
 
     <div class="enquiry-toggle">
         <button type="button" class="enquiry-toggle__btn" id="btnGeneral" data-type="general">General Enquiry</button>
@@ -316,8 +302,6 @@
         <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
 
         <button type="submit" class="button button--wide">Send Enquiry</button>
-
-        <p id="formStatus" role="status" aria-live="polite"></p>
 
     </div>
 

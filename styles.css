@@ -322,6 +322,28 @@ html {
     color: var(--color-dark);
     transition: all 0.3s ease;
 }
+/*
+.hero__enquire-btn {
+    display: inline-block;
+    margin-top: 25px;
+    background: var(--color-accent);
+    color: var(--color-dark);
+    text-decoration: none;
+    padding: 14px 36px;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    box-shadow: 0 4px 16px rgba(93, 193, 245, 0.4);
+    transition: all 0.3s ease;
+}
+
+.hero__enquire-btn:hover {
+    background: var(--color-primary);
+    color: var(--color-white);
+}
+
+*/
+
 
 /* ============================= */
 /* SHARED SECTION STYLES          */
@@ -1054,6 +1076,44 @@ html {
 }
 
 .contact-form__work-fields--active {
+    display: flex;
+}.enquiry-toggle {
+    display: flex;
+    gap: 15px;
+}
+
+.enquiry-toggle__btn {
+    flex: 1;
+    padding: 12px 15px;
+    border: 2px solid var(--color-primary);
+    background: transparent;
+    color: var(--color-primary);
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.enquiry-toggle__btn:hover {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-dark);
+}
+
+.enquiry-toggle__btn--active {
+    background: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary);
+}
+
+.contact-form__fields {
+    display: none;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form__fields--active {
     display: flex;
 }
 

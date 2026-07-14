@@ -117,68 +117,21 @@ if (historyToggleBtn && historyPanel) {
 
 // ============================= //
 // CONTACT FORM (Screen 4)        //
-// Submits to Netlify Forms via fetch (AJAX) so the page never
-// reloads. Netlify collects the submission, runs it through spam
-// filtering (honeypot field in the HTML), and — once you add a
-// notification in the Netlify dashboard — emails it to you.
 // ============================= //
 
 const contactForm = document.getElementById('contact-form');
-const formStatus = document.getElementById('formStatus');
-
-// Helper that turns a FormData object into the
-// "application/x-www-form-urlencoded" string Netlify expects.
-function encodeFormData(formData) {
-    return new URLSearchParams(formData).toString();
-}
 
 if (contactForm) {
     contactForm.addEventListener('submit', (event) => {
-        event.preventDefault(); // we're handling the submission ourselves, via fetch
-
-        // Make sure an enquiry type was actually chosen (the hidden
-        // #enquiryType input only gets a value once a toggle button
-        // has been clicked — see the WORK ENQUIRY TOGGLE section below).
-        const enquiryTypeInput = document.getElementById('enquiryType');
-        if (enquiryTypeInput && !enquiryTypeInput.value) {
-            if (formStatus) {
-                formStatus.textContent = 'Please choose "General Enquiry" or "Business Enquiry" above first.';
-                formStatus.style.color = '#c0392b';
-            }
-            return;
-        }
+        event.preventDefault(); // stops the default page-reload behaviour
 
         const formData = new FormData(contactForm);
+        const data = Object.fromEntries(formData);
 
-        fetch('/', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: encodeFormData(formData)
-        })
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error('Network response was not OK');
-                }
+        console.log('Form submitted (not yet sent anywhere):', data);
+        alert('Thanks! This form isn\'t connected to a server yet — that\'s our next step.');
 
-                if (formStatus) {
-                    formStatus.textContent = "Thanks — your enquiry has been sent. We'll be in touch soon.";
-                    formStatus.style.color = '#1F9678';
-                }
-
-                contactForm.reset();
-
-                // Collapse the form back to its "choose a type" starting state
-                if (formFields) formFields.classList.remove('contact-form__fields--active');
-                if (workFields) workFields.classList.remove('contact-form__work-fields--active');
-                if (btnGeneral) btnGeneral.classList.remove('enquiry-toggle__btn--active');
-                if (btnWork) btnWork.classList.remove('enquiry-toggle__btn--active');
-            })
-            .catch(() => {
-                if (formStatus) {
-                    formStatus.textContent = 'Sorry, something went wrong sending your enquiry. Please try again, or email us directly at info@manstal.co.uk.';
-                    formStatus.style.color = '#c0392b';
-                }
-            });
+        contactForm.reset();
     });
 }
 

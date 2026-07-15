@@ -135,5 +135,116 @@
     <!-- Shared site script (hamburger menu, navbar scroll, etc.) -->
     <script src="app.js"></script>
 
+    <!-- ================================================================
+         TEAM PAGE SCRIPT
+         Everything below is specific to this page. The data array is
+         the ONLY part you need to edit to add, remove, or change people.
+    ================================================================= -->
+    <script>
+
+    // =========================================================
+    // 1. TEAM DATA — EDIT THIS TO ADD / REMOVE / CHANGE PEOPLE
+    // =========================================================
+    // To ADD someone: copy an object below, paste it as a new
+    //                  entry, change the details.
+    // To REMOVE someone: delete their whole { ... } object.
+    // Nothing else on the page needs to change.
+    //
+    // image     -> path to their photo (put photos in /images/team/)
+    // linkedin  -> full https://linkedin.com/in/... URL
+    // bio       -> shown in the pop-up only (keep cards clean)
+    // =========================================================
+    const TEAM_MEMBERS = [
+        {
+            name: "Jane Doe",
+            role: "Managing Director",
+            image: "images/team/jane-doe.jpg",
+            linkedin: "https://www.linkedin.com/in/jane-doe",
+            bio: "A short bio about Jane's background, experience, and role at Manstal Limited goes here."
+        },
+        {
+            name: "John Smith",
+            role: "Head of Operations",
+            image: "images/team/john-smith.jpg",
+            linkedin: "https://www.linkedin.com/in/john-smith",
+            bio: "A short bio about John's background, experience, and role at Manstal Limited goes here."
+        },
+        {
+            name: "Amara Okafor",
+            role: "Lead Engineer",
+            image: "images/team/amara-okafor.jpg",
+            linkedin: "https://www.linkedin.com/in/amara-okafor",
+            bio: "A short bio about Amara's background, experience, and role at Manstal Limited goes here."
+        }
+        // Add more people here following the same format...
+    ];
+
+    // =========================================================
+    // 2. BUILD THE CARDS (you shouldn't need to edit this)
+    // =========================================================
+    const teamGrid = document.getElementById('teamGrid');
+
+    TEAM_MEMBERS.forEach((member, index) => {
+        const card = document.createElement('div');
+        card.className = 'team-card';
+        card.innerHTML = `
+            <img src="${member.image}" alt="${member.name}" class="team-card__img">
+            <h3 class="team-card__name">${member.name}</h3>
+            <p class="team-card__role">${member.role}</p>
+            <button class="team-card__readbio" data-index="${index}">Read Bio</button>
+        `;
+        teamGrid.appendChild(card);
+    });
+
+    // =========================================================
+    // 3. MODAL (POP-UP) LOGIC (you shouldn't need to edit this)
+    // =========================================================
+    const overlay      = document.getElementById('teamModalOverlay');
+    const modalImg      = document.getElementById('teamModalImg');
+    const modalName     = document.getElementById('teamModalName');
+    const modalRole      = document.getElementById('teamModalRole');
+    const modalBio       = document.getElementById('teamModalBio');
+    const modalLinkedin  = document.getElementById('teamModalLinkedin');
+    const modalClose     = document.getElementById('teamModalClose');
+
+    function openModal(member) {
+        modalImg.src       = member.image;
+        modalImg.alt       = member.name;
+        modalName.textContent = member.name;
+        modalRole.textContent = member.role;
+        modalBio.textContent  = member.bio;
+        modalLinkedin.href    = member.linkedin;
+
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden'; // stop background scroll while open
+    }
+
+    function closeModal() {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // "Read Bio" buttons are added dynamically, so we listen on
+    // the whole grid rather than on buttons that don't exist yet
+    teamGrid.addEventListener('click', (e) => {
+        if (e.target.classList.contains('team-card__readbio')) {
+            const index = e.target.dataset.index;
+            openModal(TEAM_MEMBERS[index]);
+        }
+    });
+
+    modalClose.addEventListener('click', closeModal);
+
+    // Click outside the modal box (on the dark overlay) to close it too
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) closeModal();
+    });
+
+    // Escape key also closes it
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && overlay.classList.contains('active')) closeModal();
+    });
+
+    </script>
 </body>
 </html>

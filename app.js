@@ -944,3 +944,292 @@ if (cookieBanner && cookieAccept) {
         cookieBanner.classList.remove('active');
     });
 }
+
+
+// =========================================================
+// CONTACT US FORM — sends data to the backend server
+// =========================================================
+// While testing on your own computer, this points at
+// http://localhost:3000 — that's the small backend server
+// from the "manstal-backend" folder, running via `npm start`.
+//
+// Once your backend is hosted live on the internet, change
+// BACKEND_URL below to that live address, e.g.
+// "https://your-backend-address.com/api/contact"
+// =========================================================
+
+const contactUsForm = document.getElementById('contact-us-form');
+
+if (contactUsForm) {
+    const BACKEND_URL = "http://localhost:3000/api/contact";
+    const statusEl = document.getElementById('contact-form-status');
+    const submitBtn = document.getElementById('contact-submit-btn');
+
+    contactUsForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(contactUsForm);
+        const data = Object.fromEntries(formData);
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending...";
+        statusEl.textContent = "";
+
+        try {
+            const response = await fetch(BACKEND_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                statusEl.textContent = "Thanks! Your message has been sent — we'll be in touch soon.";
+                statusEl.style.color = "#1F4E96";
+                contactUsForm.reset();
+            } else {
+                statusEl.textContent = "Something went wrong sending your message. Please try again, or email us directly.";
+                statusEl.style.color = "#c0392b";
+            }
+        } catch (error) {
+            console.error('Contact form error:', error);
+            statusEl.textContent = "Couldn't reach the server. Please try again, or email us directly at info@manstallimited.com.";
+            statusEl.style.color = "#c0392b";
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Send Message";
+        }
+    });
+}
+
+
+
+// =========================================================
+// JOBS PAGE — edit JOB_LISTINGS to add/remove/change roles
+// =========================================================
+const jobsGrid = document.getElementById('jobsGrid');
+
+if (jobsGrid) {
+    // ---- 1. JOB DATA — EDIT THIS TO ADD / REMOVE / CHANGE ROLES ----
+    // To ADD a job: copy an object below, paste it, change details.
+    // To REMOVE a job: delete its whole { ... } object.
+    // requirements -> array of short bullet points shown in the pop-up
+    // applyLink    -> mailto:, application form URL, or job board link
+    const JOB_LISTINGS = [
+        {
+            title: "Site Engineer",
+            location: "Birmingham, UK",
+            type: "Full-Time",
+            description: "We're looking for a Site Engineer to oversee day-to-day operations on active project sites, ensuring work is delivered safely, on time, and to specification.",
+            requirements: [
+                "Relevant engineering or construction qualification",
+                "2+ years' site experience",
+                "Strong communication and problem-solving skills",
+                "Full UK driving licence"
+            ],
+            applyLink: "mailto:careers@manstallimited.com?subject=Application - Site Engineer"
+        },
+        {
+            title: "Project Coordinator",
+            location: "Birmingham, UK",
+            type: "Full-Time",
+            description: "Support our project managers with scheduling, supplier coordination, and day-to-day admin to keep projects running smoothly from start to finish.",
+            requirements: [
+                "Excellent organisational skills",
+                "Comfortable using Microsoft Office / project software",
+                "Experience in construction or a similar industry preferred",
+                "Strong attention to detail"
+            ],
+            applyLink: "mailto:careers@manstallimited.com?subject=Application - Project Coordinator"
+        },
+        {
+            title: "Business Development Executive",
+            location: "Hybrid / Birmingham, UK",
+            type: "Full-Time",
+            description: "Help grow our client base by identifying new opportunities, building relationships, and representing Manstal Limited at industry events.",
+            requirements: [
+                "Proven track record in B2B sales or business development",
+                "Confident communicator and relationship builder",
+                "Self-motivated with a target-driven mindset",
+                "Willingness to travel for client meetings"
+            ],
+            applyLink: "mailto:careers@manstallimited.com?subject=Application - Business Development Executive"
+        }
+        // Add more roles here following the same format...
+    ];
+
+    // ---- 2. BUILD THE CARDS (shouldn't need to edit this) ----
+    function renderJobs() {
+        jobsGrid.innerHTML = '';
+
+        if (JOB_LISTINGS.length === 0) {
+            jobsGrid.innerHTML = '<p class="jobs-empty">There are no open roles right now — check back soon.</p>';
+            return;
+        }
+
+        JOB_LISTINGS.forEach((job, index) => {
+            const card = document.createElement('div');
+            card.className = 'job-card';
+            card.innerHTML = `
+                <h3 class="job-card__title">${job.title}</h3>
+                <div class="job-card__meta">
+                    <span>${job.location}</span>
+                    <span>${job.type}</span>
+                </div>
+                <button class="job-card__viewrole" data-index="${index}">View Role</button>
+            `;
+            jobsGrid.appendChild(card);
+        });
+    }
+
+    renderJobs();
+
+    // ---- 3. MODAL (POP-UP) LOGIC (shouldn't need to edit this) ----
+    const jobModalOverlay   = document.getElementById('jobModalOverlay');
+    const jobModalTitle     = document.getElementById('jobModalTitle');
+    const jobModalLocation  = document.getElementById('jobModalLocation');
+    const jobModalType      = document.getElementById('jobModalType');
+    const jobModalDesc      = document.getElementById('jobModalDescription');
+    const jobModalReqs      = document.getElementById('jobModalRequirements');
+    const jobModalApply     = document.getElementById('jobModalApply');
+    const jobModalClose     = document.getElementById('jobModalClose');
+
+    function openJobModal(job) {
+        jobModalTitle.textContent    = job.title;
+        jobModalLocation.textContent = job.location;
+        jobModalType.textContent     = job.type;
+        jobModalDesc.textContent     = job.description;
+        jobModalApply.href           = job.applyLink;
+
+        jobModalReqs.innerHTML = '';
+        job.requirements.forEach(req => {
+            const li = document.createElement('li');
+            li.textContent = req;
+            jobModalReqs.appendChild(li);
+        });
+
+        jobModalOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeJobModal() {
+        jobModalOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    jobsGrid.addEventListener('click', (e) => {
+        if (e.target.classList.contains('job-card__viewrole')) {
+            const index = e.target.dataset.index;
+            openJobModal(JOB_LISTINGS[index]);
+        }
+    });
+
+    jobModalClose.addEventListener('click', closeJobModal);
+
+    jobModalOverlay.addEventListener('click', (e) => {
+        if (e.target === jobModalOverlay) closeJobModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && jobModalOverlay.classList.contains('active')) closeJobModal();
+    });
+}
+
+// =========================================================
+// TEAM PAGE — edit TEAM_MEMBERS to add/remove/change people
+// =========================================================
+const teamGrid = document.getElementById('teamGrid');
+
+if (teamGrid) {
+    // ---- 1. TEAM DATA — EDIT THIS TO ADD / REMOVE / CHANGE PEOPLE ----
+    // image     -> path to their photo (put photos in /images/team/)
+    // linkedin  -> full https://linkedin.com/in/... URL
+    // bio       -> shown in the pop-up only (keep cards clean)
+    const TEAM_MEMBERS = [
+        {
+            name: "Jane Doe",
+            role: "Managing Director",
+            image: "images/team/jane-doe.jpg",
+            linkedin: "https://www.linkedin.com/in/jane-doe",
+            bio: "A short bio about Jane's background, experience, and role at Manstal Limited goes here."
+        },
+        {
+            name: "John Smith",
+            role: "Head of Operations",
+            image: "images/team/john-smith.jpg",
+            linkedin: "https://www.linkedin.com/in/john-smith",
+            bio: "A short bio about John's background, experience, and role at Manstal Limited goes here."
+        },
+        {
+            name: "Amara Okafor",
+            role: "Lead Engineer",
+            image: "images/team/amara-okafor.jpg",
+            linkedin: "https://www.linkedin.com/in/amara-okafor",
+            bio: "A short bio about Amara's background, experience, and role at Manstal Limited goes here."
+        },
+        {
+            name: "Arishmah Zeeshan",
+            role: "Best Intern Ever",
+            image: "images/team/amara-okafor.jpg",
+            linkedin: "https://www.linkedin.com/in/arishmah-zeeshan",
+            bio: "A short bio about background, experience, and role at Manstal Limited goes here."
+        }
+    ];
+
+    // ---- 2. BUILD THE CARDS (you shouldn't need to edit this) ----
+    TEAM_MEMBERS.forEach((member, index) => {
+        const card = document.createElement('div');
+        card.className = 'team-card';
+        card.innerHTML = `
+            <img src="${member.image}" alt="${member.name}" class="team-card__img">
+            <h3 class="team-card__name">${member.name}</h3>
+            <p class="team-card__role">${member.role}</p>
+            <button class="team-card__readbio" data-index="${index}">Read Bio</button>
+        `;
+        teamGrid.appendChild(card);
+    });
+
+    // ---- 3. MODAL (POP-UP) LOGIC (you shouldn't need to edit this) ----
+    const teamModalOverlay  = document.getElementById('teamModalOverlay');
+    const teamModalImg      = document.getElementById('teamModalImg');
+    const teamModalName     = document.getElementById('teamModalName');
+    const teamModalRole     = document.getElementById('teamModalRole');
+    const teamModalBio      = document.getElementById('teamModalBio');
+    const teamModalLinkedin = document.getElementById('teamModalLinkedin');
+    const teamModalClose    = document.getElementById('teamModalClose');
+
+    function openTeamModal(member) {
+        teamModalImg.src       = member.image;
+        teamModalImg.alt       = member.name;
+        teamModalName.textContent = member.name;
+        teamModalRole.textContent = member.role;
+        teamModalBio.textContent  = member.bio;
+        teamModalLinkedin.href    = member.linkedin;
+
+        teamModalOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeTeamModal() {
+        teamModalOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    teamGrid.addEventListener('click', (e) => {
+        if (e.target.classList.contains('team-card__readbio')) {
+            const index = e.target.dataset.index;
+            openTeamModal(TEAM_MEMBERS[index]);
+        }
+    });
+
+    teamModalClose.addEventListener('click', closeTeamModal);
+
+    teamModalOverlay.addEventListener('click', (e) => {
+        if (e.target === teamModalOverlay) closeTeamModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && teamModalOverlay.classList.contains('active')) closeTeamModal();
+    });
+}

@@ -1,15 +1,23 @@
 /* ============================= */
 /* COLOUR SCHEME — from your logo */
 /* ============================= */
+/* CSS variables (custom properties). Defined once here, then reused
+   everywhere else via var(--color-name) — change a colour here and
+   it updates across the entire site automatically. */
 :root {
     --color-primary: #1F4E96;
     --color-primary-dark: #163A73;
-    --color-accent: #5DC1F5;
+    --color-accent: #5DC1F5;   /* light blue — fun accent touches */
     --color-dark: #1E2124;
     --color-light: #F4F6F9;
     --color-white: #FFFFFF;
+  
 }
 
+
+/* Universal reset — removes browser default spacing and makes
+   padding/border count INSIDE an element's width (box-sizing),
+   so sizes behave predictably everywhere */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -17,6 +25,8 @@
     font-family: 'Open Sans', sans-serif;
 }
 
+/* Makes anchor links (like footer "Contact Us") scroll smoothly
+   instead of jumping instantly */
 html {
     scroll-behavior: smooth;
 }
@@ -24,6 +34,8 @@ html {
 /* ============================= */
 /* NAVBAR                         */
 /* ============================= */
+/* Fixed to the top of the viewport, transparent by default so it
+   floats over the hero image on the homepage */
 .navbar {
     background: transparent;
     height: 100px;
@@ -34,10 +46,16 @@ html {
     z-index: 999;
 }
 
+/* Alternate navbar style for pages with no dark hero behind it
+   (e.g. mission.html) — gives it a solid background so the logo
+   and hamburger stay visible against a plain page */
 .navbar--solid {
     background: var(--color-dark);
 }
 
+/* Centers and constrains the navbar content, spacing hamburger/logo/menu apart.
+   position: relative so the absolutely-positioned ribbon below anchors
+   correctly to this container's left edge */
 .navbar__container {
     position: relative;
     display: flex;
@@ -45,9 +63,13 @@ html {
     align-items: center;
     height: 100%;
     width: 100%;
-    padding: 0 20px;
+    padding: 0 20px; /* small edge padding instead of a capped max-width */
 }
 
+/* Full-width coloured bar across the navbar — hidden at the top of
+   the page, faded in via app.js once the user scrolls down. Spans
+   the entire navbar width so it sits behind the hamburger, logo,
+   company name, and nav menu button all at once. */
 .navbar__logo-ribbon {
     position: absolute;
     top: 0;
@@ -61,16 +83,18 @@ html {
     pointer-events: none;
 }
 
+/* Applied by app.js (adds "scrolled" to .navbar) once window.scrollY
+   passes a threshold — fades the ribbon above into view */
 .navbar.scrolled .navbar__logo-ribbon {
     opacity: 1;
 }
 
+/* Logo block: icon + stacked "Manstal / Limited" text, matching your logo file */
 #navbar__logo {
     display: flex;
     align-items: center;
     gap: 12px;
     text-decoration: none;
-    min-width: 0; /* allows text truncation to work inside a flex child */
 }
 
 #navbar__logo-icon {
@@ -81,32 +105,32 @@ html {
     padding: 6px;
     border-radius: 6px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-    flex-shrink: 0;
 }
 
+/* Stacks "Manstal" on top of "Limited" vertically */
 .navbar__logo-text {
     display: flex;
     flex-direction: column;
     line-height: 1;
-    min-width: 0;
 }
 
 .navbar__logo-main {
     font-size: 1.4rem;
     font-weight: bold;
     color: var(--color-white);
-    white-space: nowrap;
 }
 
 .navbar__logo-sub {
     font-size: 0.8rem;
-    color: var(--color-light);
-    align-self: flex-end;
+    color: var(--color-light);   /* light blue touch */
+    align-self: flex-end;         /* pushes "Limited" to the right, under the tail end of "Manstal" */
     letter-spacing: 0.5px;
     margin-top: 2px;
-    white-space: nowrap;
 }
 
+/* Slide-out menu: hidden off-screen to the left by default
+   (left: -280px). app.js adds the "active" class below to slide
+   it into view */
 .navbar__menu {
     list-style: none;
     position: fixed;
@@ -122,6 +146,7 @@ html {
     z-index: 998;
 }
 
+/* Applied by app.js on click — slides the menu fully into view */
 .navbar__menu.active {
     left: 0;
 }
@@ -148,6 +173,8 @@ html {
     padding: 1.5rem 2rem;
 }
 
+/* Generic reusable button style — used for "Contact Us" in the
+   nav and other buttons across the site */
 .button {
     display: flex;
     align-items: center;
@@ -168,6 +195,7 @@ html {
     transition: all 0.3s ease;
 }
 
+/* The 3-bar hamburger icon itself */
 .navbar__toggle {
     z-index: 1000;
     cursor: pointer;
@@ -176,7 +204,6 @@ html {
     justify-content: space-between;
     width: 30px;
     height: 21px;
-    flex-shrink: 0;
 }
 
 .navbar__toggle .bar {
@@ -187,38 +214,20 @@ html {
     transition: 0.3s ease;
 }
 
+/* When app.js adds "active" to the hamburger (menu is open), these
+   three rules rotate/hide the bars to form an X shape */
 .navbar__toggle.active .bar:nth-child(1) { transform: translateY(9px) rotate(45deg); }
 .navbar__toggle.active .bar:nth-child(2) { opacity: 0; }
 .navbar__toggle.active .bar:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
-
-/* Small-phone navbar tightening — prevents logo/hamburger/button collision */
-@media (max-width: 480px) {
-    .navbar__container {
-        padding: 0 12px;
-    }
-
-    #navbar__logo-icon {
-        height: 36px;
-    }
-
-    .navbar__logo-main {
-        font-size: 1.1rem;
-    }
-
-    .navbar__logo-sub {
-        font-size: 0.7rem;
-    }
-
-    .navbar__menu {
-        width: 220px;
-        left: -250px;
-    }
-}
 
 
 /* ============================= */
 /* HERO                           */
 /* ============================= */
+/* Full-viewport-height section. Centers its content both ways.
+   overflow is intentionally NOT hidden here (only on
+   .hero__slideshow below) so the mission button can poke outside
+   this section's bottom edge */
 .hero {
     position: relative;
     width: 100%;
@@ -228,6 +237,9 @@ html {
     justify-content: center;
 }
 
+/* Container for the slide images. overflow:hidden here keeps the
+   images clipped to this box without clipping the button, since
+   the button lives outside this element */
 .hero__slideshow {
     position: absolute;
     top: 0;
@@ -238,6 +250,10 @@ html {
     overflow: hidden;
 }
 
+/* Each individual slide — stacked exactly on top of each other
+   (position: absolute), invisible by default (opacity: 0).
+   background-color is a fallback grey shown while a real image
+   loads, or if the file path is wrong/missing */
 .hero__slide {
     position: absolute;
     top: 0;
@@ -251,10 +267,14 @@ html {
     transition: opacity 1.5s ease-in-out;
 }
 
+/* app.js adds/removes this class every 5 seconds to fade between
+   slides (only one slide has this class at a time) */
 .hero__slide--active {
     opacity: 1;
 }
 
+/* Dark semi-transparent layer over the slideshow so white text
+   stays readable no matter which photo is currently showing */
 .hero__overlay {
     position: absolute;
     top: 0;
@@ -265,6 +285,7 @@ html {
     z-index: 2;
 }
 
+/* Sits above the overlay (higher z-index) so text isn't darkened */
 .hero__content {
     position: relative;
     z-index: 3;
@@ -279,6 +300,11 @@ html {
     margin: 0 auto;
 }
 
+/* Positioned independently of .hero__content, pinned to the
+   bottom edge of .hero. transform: translate(-50%, -50%) shifts
+   it left by half its own width (to center it horizontally) and
+   up by half its own height (so it straddles the section's
+   bottom edge — half in the hero, half in whatever comes next) */
 .hero__mission-btn {
     position: absolute;
     bottom: 0;
@@ -292,8 +318,7 @@ html {
     padding: 15px 40px;
     border-radius: 4px;
     font-size: 1rem;
-    box-shadow: 0 4px 16px rgba(93, 193, 245, 0.4);
-    white-space: nowrap;
+    box-shadow: 0 4px 16px rgba(93, 193, 245, 0.4); /* light blue glow */
 }
 
 .hero__mission-btn:hover {
@@ -301,23 +326,35 @@ html {
     color: var(--color-dark);
     transition: all 0.3s ease;
 }
-
-@media (max-width: 480px) {
-    .hero__subtitle {
-        font-size: 1.05rem;
-        padding: 0 10px;
-    }
-
-    .hero__mission-btn {
-        padding: 12px 24px;
-        font-size: 0.9rem;
-    }
+/*
+.hero__enquire-btn {
+    display: inline-block;
+    margin-top: 25px;
+    background: var(--color-accent);
+    color: var(--color-dark);
+    text-decoration: none;
+    padding: 14px 36px;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    box-shadow: 0 4px 16px rgba(93, 193, 245, 0.4);
+    transition: all 0.3s ease;
 }
+
+.hero__enquire-btn:hover {
+    background: var(--color-primary);
+    color: var(--color-white);
+}
+
+*/
 
 
 /* ============================= */
 /* SHARED SECTION STYLES          */
 /* ============================= */
+/* Reused heading/paragraph styles — applied across multiple
+   sections (Who We Help, History, News, Careers, Contact, etc.)
+   so headings and body text stay visually consistent everywhere */
 .section__title {
     text-align: center;
     font-size: 2.2rem;
@@ -333,26 +370,18 @@ html {
     line-height: 1.6;
 }
 
-@media (max-width: 480px) {
-    .section__title {
-        font-size: 1.6rem;
-    }
-
-    .section__text {
-        font-size: 0.95rem;
-        padding: 0 8px;
-    }
-}
-
-
 /* ============================= */
 /* ABOUT US                       */
 /* ============================= */
+/* Accreditations badge image (CHAS/Constructionline/etc logos),
+   sits above the "About Us" heading. Fluid width via clamp() so
+   it scales with the viewport instead of being locked to a fixed
+   px size — never smaller than 160px, never bigger than 340px */
 .accreditations-img {
   width: clamp(160px, 32vw, 340px);
   height: auto;
   display: block;
-  margin: 20px 0 25px 0;
+  margin: 20px 0 25px 0; /* added top spacing */
   background: var(--color-white);
   padding: 12px 16px;
   border-radius: 6px;
@@ -360,7 +389,7 @@ html {
 .about {
     padding: 80px 20px;
     background: var(--color-dark);
-    border-top: 1px solid rgba(93, 193, 245, 0.2);
+    border-top: 1px solid rgba(93, 193, 245, 0.2); /* separates from whatever light section comes before it */
 }
 
 .about__container {
@@ -398,7 +427,7 @@ html {
     object-fit: cover;
     border-radius: 8px;
     display: block;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); /* a little depth against the dark bg */
 }
 
 @media (max-width: 768px) {
@@ -413,38 +442,25 @@ html {
     }
 }
 
-@media (max-width: 480px) {
-    .about {
-        padding: 50px 16px;
-    }
-
-    .about__image img {
-        height: 240px;
-    }
-
-    .accreditations-img {
-        margin: 15px auto 20px;
-    }
-}
-
 
 /* ============================= */
 /* WHO WE HELP                    */
 /* ============================= */
+/* Extra top padding clears space for the "Our Mission" button
+   hanging down from the hero section above it */
+
+
+
 .who-we-help {
     padding: 100px 20px 100px;
     background: var(--color-light);
 }
 
-@media (max-width: 480px) {
-    .who-we-help {
-        padding: 60px 16px;
-    }
-}
-
 /* ============================= */
 /* LOGO SLIDER                    */
 /* ============================= */
+/* Outer wrapper clips anything outside its width, so only a
+   "window" of the scrolling logos is visible */
 .logo-slider {
     width: 100%;
     max-width: 1100px;
@@ -452,6 +468,10 @@ html {
     overflow: hidden;
 }
 
+/* The actual strip of logos. width: max-content lets it be as
+   wide as it needs to fit every logo in a row. The scroll-left
+   animation (defined below in @keyframes) moves this strip
+   continuously from right to left, forever (infinite) */
 .logo-slider__track {
     display: flex;
     align-items: center;
@@ -467,27 +487,93 @@ html {
     opacity: 0.7;
 }
 
+/* Defines what "scroll-left" (used above) actually does:
+   moves the track from its normal position (0) to 50% of its own
+   width to the left. It's 50%, not 100%, because the logo list in
+   the HTML is duplicated — so at the halfway point, the second
+   (duplicate) set of logos lines up exactly where the first set
+   started, making the loop look seamless */
 @keyframes scroll-left {
     from { transform: translateX(0); }
     to   { transform: translateX(-50%); }
 }
 
-@media (max-width: 480px) {
-    .logo-slider__track {
-        gap: 36px;
-        animation-duration: 14s;
-    }
+/* ============================= */
+/* CASE STUDY CARDS                */
+/* ============================= */
+/* flex-wrap lets cards drop to a new row on narrower screens
+   instead of squeezing or overflowing */
 
-    .logo-slider__logo {
-        height: 34px;
-    }
+/* --- OLD/UNUSED CARD-GRID VERSION OF CASE STUDIES, kept commented
+       out for reference — replaced by the slideshow version below --- */
+/*
+.case-studies {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 80px 20px;
+    background: var(--color-white);
 }
+
+.case-card {
+    background: var(--color-light);
+    border-radius: 8px;
+    padding: 30px;
+    width: 300px;
+    text-align: center;
+    border-top: 3px solid var(--color-accent);  fun light blue accent stripe 
+}
+
+.case-card h3 {
+    color: var(--color-dark);
+    margin-bottom: 10px;
+}
+
+.case-card p {
+    color: #535151; summary 
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.case-card__link {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.case-card__link:hover {
+    color: var(--color-accent);
+}
+
+.more__cases-btn {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 1420%);
+    z-index: 5;
+    display: inline-block;
+    background: var(--color-primary);
+    color: var(--color-white);
+    text-decoration: none;
+    padding: 15px 40px;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-shadow: 0 4px 16px rgba(93, 193, 245, 0.4); light blue glow
+}
+
+.more__cases-btn:hover {
+    background: var(--color-accent);
+    color: var(--color-dark);
+    transition: all 0.3s ease;
+}
+*/
 
 /* ============================= */
 /* CASE STUDY SLIDESHOWS          */
 /* ============================= */
 .case-studies {
-    padding: 80px 20px 140px;
+    padding: 80px 20px 140px; /* extra bottom padding so the "More Case Studies" button has room */
     background: var(--color-dark);
     position: relative;
 }
@@ -504,15 +590,7 @@ html {
     margin: 0 auto;
 }
 
-/* FIX: this grid previously had NO responsive rule at all —
-   it stayed 2 columns down to 0px, squeezing cards unreadably thin */
-@media (max-width: 700px) {
-    .case-studies__grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-}
-
+/* Each quadrant — same fade-crossover technique as .hero__slideshow */
 .case-slideshow {
     position: relative;
     height: 320px;
@@ -529,7 +607,7 @@ html {
     height: 100%;
     background-size: cover;
     background-position: center;
-    background-color: #444;
+    background-color: #444; /* fallback while image loads / if missing */
     opacity: 0;
     transition: opacity 1.5s ease-in-out;
 }
@@ -538,6 +616,7 @@ html {
     opacity: 1;
 }
 
+/* Bottom-up gradient so the text stays readable over any photo */
 .case-slideshow__overlay {
     position: absolute;
     top: 0;
@@ -578,6 +657,9 @@ html {
     color: var(--color-white);
 }
 
+/* "More Case Studies" — sits centered below the grid now instead of
+   the old fixed pixel-offset hack, so it stays put regardless of
+   grid height */
 .more__cases-btn {
     position: absolute;
     bottom: 40px;
@@ -591,7 +673,6 @@ html {
     border-radius: 4px;
     font-size: 1rem;
     box-shadow: 0 4px 16px rgba(93, 193, 245, 0.4);
-    white-space: nowrap;
 }
 
 .more__cases-btn:hover {
@@ -600,25 +681,46 @@ html {
     transition: all 0.3s ease;
 }
 
-@media (max-width: 480px) {
-    .case-studies {
-        padding: 50px 16px 120px;
-    }
-
-    .case-slideshow {
-        height: 260px;
-    }
-
-    .more__cases-btn {
-        padding: 12px 28px;
-        font-size: 0.9rem;
-        bottom: 30px;
-    }
-}
-
 /* ============================= */
 /* STATS                          */
 /* ============================= */
+
+/* --- OLD/UNUSED PLAIN STATS VERSION, kept commented out for
+       reference — replaced by the "card" version below --- */
+/*
+.stats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 60px;
+    padding: 80px 20px;
+    background: var(--color-dark);
+}
+
+.stat {
+    text-align: center;
+    color: var(--color-white);
+}
+ 
+/*
+/* The big number itself. Starts as "0" in the HTML — app.js
+   animates the actual counting-up effect via JavaScript, this
+   class just controls how the number LOOKS */
+
+/*
+.stat__number {
+    display: block;
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--color-accent);
+}
+
+.stat__label {
+    margin-top: 8px;
+    font-size: 1rem;
+}
+*/
+
 .stats {
     display: flex;
     flex-wrap: wrap;
@@ -626,7 +728,7 @@ html {
     gap: 30px;
     padding: 80px 20px;
     background: var(--color-dark);
-    border-top: 1px solid rgba(93, 193, 245, 0.2);
+    border-top: 1px solid rgba(93, 193, 245, 0.2); /* subtle separator from case studies */
 }
 
 .stat {
@@ -652,39 +754,15 @@ html {
     color: #ccc;
 }
 
-@media (max-width: 480px) {
-    .stats {
-        padding: 50px 16px;
-        gap: 16px;
-    }
-
-    .stat {
-        padding: 20px 28px;
-        flex: 1 1 calc(50% - 16px);
-    }
-
-    .stat__number {
-        font-size: 2.4rem;
-    }
-
-    .stat__label {
-        font-size: 0.85rem;
-    }
-}
-
 /* ============================= */
 /* MISSION PAGE (mission.html)    */
 /* ============================= */
+/* Extra top padding clears the fixed navbar so content doesn't
+   start hidden underneath it */
 .mission-page {
     padding: 180px 20px 100px;
     background: var(--color-white);
     min-height: 100vh;
-}
-
-@media (max-width: 480px) {
-    .mission-page {
-        padding: 140px 16px 70px;
-    }
 }
 
 /* ============================= */
@@ -696,6 +774,7 @@ html {
     text-align: center;
 }
 
+/* Row of the two toggle buttons (History / Our Projects) */
 .toggle-buttons {
     display: flex;
     justify-content: center;
@@ -703,6 +782,9 @@ html {
     margin-bottom: 40px;
 }
 
+/* toggle-btn now only styles the single History button.
+   No --active fill state needed since it's not switching between
+   two equal options anymore — just show/hide. */
 .toggle-btn {
     padding: 12px 28px;
     border: 2px solid var(--color-primary);
@@ -720,11 +802,14 @@ html {
     color: var(--color-dark);
 }
 
+/* Applied by app.js to whichever button was last clicked —
+   solid fill instead of outline, shows which panel is currently showing */
 .toggle-btn--active {
     background: var(--color-primary);
     color: var(--color-white);
 }
 
+/* History panel: hidden by default, fades in when toggled open */
 .toggle-panel {
     display: none;
     opacity: 0;
@@ -732,15 +817,11 @@ html {
     margin-bottom: 40px;
 }
 
+/* Applied by app.js to whichever panel should currently be visible
+   (History panel starts with this by default in the HTML) */
 .toggle-panel--active {
     display: block;
     opacity: 1;
-}
-
-@media (max-width: 480px) {
-    .history-projects {
-        padding: 50px 16px;
-    }
 }
 
 /* ============================= */
@@ -754,6 +835,9 @@ html {
     margin: 0 auto;
 }
 
+/* Each row: text + image side by side. Alternates direction via
+   the --reverse modifier below (image left / text right, or
+   text left / image right) */
 .project-row {
     display: flex;
     align-items: center;
@@ -803,6 +887,8 @@ html {
     display: block;
 }
 
+
+/* Stack vertically on smaller screens instead of squeezing side by side */
 @media (max-width: 768px) {
     .project-row,
     .project-row--reverse {
@@ -814,20 +900,6 @@ html {
     }
 }
 
-@media (max-width: 480px) {
-    .projects-list {
-        gap: 50px;
-    }
-
-    .project-row__text h3 {
-        font-size: 1.4rem;
-    }
-
-    .project-row__image img {
-        height: 220px;
-    }
-}
-
 
 /* ============================= */
 /* SCREEN 4: NEWS                 */
@@ -836,13 +908,14 @@ html {
     padding: 80px 20px;
     background: var(--color-dark);
     text-align: center;
-    border-bottom: 1px solid rgba(93, 193, 245, 0.2);
+    border-bottom: 1px solid rgba(93, 193, 245, 0.2); /* separates from Careers below, since both are dark now */
 }
 
 .news .section__title {
     color: var(--color-white);
 }
 
+/* Same horizontal-scroll technique as .project-scroller above */
 .news-scroller {
     display: flex;
     justify-content: center;
@@ -873,7 +946,7 @@ html {
     width: 100%;
     height: 160px;
     object-fit: cover;
-    background: #ccc;
+    background: #ccc; /* shows while the real image loads or if missing */
 }
 
 .news-card h3 {
@@ -887,23 +960,10 @@ html {
     line-height: 1.5;
 }
 
+/* Reuses .case-card__link's styling, just adjusts its left spacing
+   to line up with the padding of the news card */
 .news-card .case-card__link {
     margin-left: 20px;
-}
-
-@media (max-width: 480px) {
-    .news {
-        padding: 50px 16px;
-    }
-
-    .news-scroller {
-        justify-content: flex-start; /* lets it scroll naturally instead of centering oversized content */
-        gap: 16px;
-    }
-
-    .news-card {
-        flex: 0 0 240px;
-    }
 }
 
 
@@ -917,6 +977,8 @@ html {
     color: var(--color-white);
 }
 
+/* Overrides .section__title's default dark colour, since this
+   section has a dark background and needs white text instead */
 .careers .section__title {
     color: var(--color-white);
 }
@@ -925,21 +987,13 @@ html {
     color: #ccc;
 }
 
+/* Modifier for .button — makes it size to its content instead of
+   stretching full-width, used for the "View Opportunities" and
+   "Send Message" buttons */
 .button--wide {
     display: inline-flex;
     width: auto;
     padding: 15px 40px;
-}
-
-@media (max-width: 480px) {
-    .careers {
-        padding: 50px 16px;
-    }
-
-    .button--wide {
-        padding: 13px 28px;
-        font-size: 0.95rem;
-    }
 }
 
 /* ============================= */
@@ -950,6 +1004,7 @@ html {
     background: var(--color-light);
 }
 
+/* Stacks form fields vertically with even spacing between them */
 .contact-form {
     max-width: 600px;
     margin: 0 auto;
@@ -958,6 +1013,7 @@ html {
     gap: 15px;
 }
 
+/* First Name / Last Name sit side by side */
 .contact-form__row {
     display: flex;
     gap: 15px;
@@ -973,6 +1029,8 @@ html {
     width: 100%;
 }
 
+/* Highlights whichever field the user has clicked into, using the
+   light blue accent colour as a glow/border */
 .contact-form input:focus,
 .contact-form textarea:focus {
     outline: none;
@@ -980,6 +1038,10 @@ html {
     box-shadow: 0 0 0 3px rgba(93, 193, 245, 0.25);
 }
 
+/* ============================= */
+/* CONTACT FORM — SELECT STYLING  */
+/* Matches the input/textarea styling already defined above */
+/* ============================= */
 .contact-form select {
     padding: 12px 15px;
     border: 1px solid #ccc;
@@ -998,11 +1060,15 @@ html {
     box-shadow: 0 0 0 3px rgba(93, 193, 245, 0.25);
 }
 
+/* Placeholder-style option (disabled, selected by default) shows
+   in a lighter grey until a real choice is made */
 .contact-form select:invalid,
 .contact-form select option[value=""] {
     color: #888;
 }
 
+/* Work-related fields container: hidden by default, fades in when
+   app.js adds "contact-form__work-fields--active" */
 .contact-form__work-fields {
     display: none;
     flex-direction: column;
@@ -1015,9 +1081,7 @@ html {
 
 .contact-form__work-fields--active {
     display: flex;
-}
-
-.enquiry-toggle {
+}.enquiry-toggle {
     display: flex;
     gap: 15px;
 }
@@ -1055,27 +1119,6 @@ html {
 
 .contact-form__fields--active {
     display: flex;
-}
-
-@media (max-width: 480px) {
-    .contact {
-        padding: 50px 16px;
-    }
-
-    .contact-form__row {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .enquiry-toggle {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .enquiry-toggle__btn {
-        font-size: 0.9rem;
-        padding: 12px;
-    }
 }
 
 /* ============================= */
@@ -1144,6 +1187,8 @@ html {
     text-decoration: underline;
 }
 
+/* Vertical divider between contact info and address,
+   matching the line in the sketch */
 .footer__divider {
     width: 1px;
     background: rgba(255, 255, 255, 0.15);
@@ -1201,26 +1246,15 @@ html {
     }
 }
 
-/* FIX: footer__row still used gap:60px between 480–700px causing
-   awkward wrapping on mid-size phones/small tablets */
-@media (max-width: 480px) {
-    .footer {
-        padding: 40px 16px 20px;
-    }
 
-    .footer__row {
-        gap: 20px;
-        flex-direction: column;
-    }
-
-    .footer__title {
-        font-size: 1rem;
-    }
-}
-
+/* ============================= */
+/* HOME PROJECTS — CARD LAYOUT    */
+/* (projects-list now built by JS, reuses project-row styling) */
+/* ============================= */
 
 /* ============================= */
 /* NEWS DETAILS MODAL (POP-UP)    */
+/* Same pattern as .case-modal / .project-modal */
 /* ============================= */
 .news-modal-overlay {
     display: none;
@@ -1314,26 +1348,10 @@ html {
     }
 }
 
-@media (max-width: 480px) {
-    .news-modal {
-        padding: 20px;
-        max-height: 90vh;
-    }
-
-    .news-modal__img {
-        width: 130px;
-        height: 130px;
-    }
-
-    .news-modal__right h3 {
-        font-size: 1.3rem;
-        padding-right: 0;
-    }
-}
-
 
 /* ============================= */
 /* SUSTAINABILITY & SOCIAL VALUE  */
+/* Green-blue accent theme, distinct from the primary site blue */
 /* ============================= */
 :root {
     --color-sustain-start: #1F9678;
@@ -1441,31 +1459,12 @@ html {
     }
 }
 
-@media (max-width: 480px) {
-    .sustainability {
-        padding: 60px 16px;
-    }
-
-    .sustainability__title {
-        font-size: 1.6rem;
-    }
-
-    .sustainability__container {
-        gap: 30px;
-    }
-
-    .sustainability__point {
-        padding: 14px 16px;
-        gap: 12px;
-    }
-}
-
 /* ============================= */
 /* ABOUT HERO (about.html)        */
 /* ============================= */
 .about-hero {
     background: var(--color-dark);
-    padding: 180px 20px 100px;
+    padding: 180px 20px 100px; /* top padding clears the fixed navbar */
 }
 
 .about-hero__container {
@@ -1477,6 +1476,7 @@ html {
     flex-wrap: wrap;
 }
 
+/* "About" / "Us" stacked big title, left-aligned */
 .about-hero__title {
     flex: 1;
     min-width: 280px;
@@ -1488,6 +1488,8 @@ html {
     color: var(--color-white);
 }
 
+/* "Us" sits under "About", nudged right and picked out in the
+   accent blue — echoes the logo's stacked text treatment */
 .about-hero__title span:last-child {
     color: var(--color-accent);
     margin-left: 45px;
@@ -1512,25 +1514,6 @@ html {
     }
 }
 
-@media (max-width: 480px) {
-    .about-hero {
-        padding: 130px 16px 60px;
-    }
-
-    .about-hero__title {
-        font-size: 2.6rem;
-    }
-
-    .about-hero__title span:last-child {
-        margin-left: 15px;
-    }
-
-    .about-hero__text {
-        font-size: 1rem;
-        padding-top: 10px;
-    }
-}
-
 /* ============================= */
 /* ABOUT FULL-WIDTH IMAGE         */
 /* ============================= */
@@ -1550,12 +1533,6 @@ html {
 @media (max-width: 768px) {
     .about-fullimage {
         height: 300px;
-    }
-}
-
-@media (max-width: 480px) {
-    .about-fullimage {
-        height: 200px;
     }
 }
 
@@ -1583,16 +1560,6 @@ html {
 
 .about-more p {
     margin-bottom: 20px;
-}
-
-@media (max-width: 480px) {
-    .about-more {
-        padding: 50px 16px;
-    }
-
-    .about-more h2 {
-        font-size: 1.5rem;
-    }
 }
 
 /* ============================= */
@@ -1647,25 +1614,6 @@ html {
     }
 }
 
-@media (max-width: 480px) {
-    .mission-hero {
-        padding: 130px 16px 60px;
-    }
-
-    .mission-hero__title {
-        font-size: 2.6rem;
-    }
-
-    .mission-hero__title span:last-child {
-        margin-left: 15px;
-    }
-
-    .mission-hero__text {
-        font-size: 1rem;
-        padding-top: 10px;
-    }
-}
-
 /* ============================= */
 /* MISSION PILLARS                */
 /* ============================= */
@@ -1693,6 +1641,7 @@ html {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Big faded number sitting in the background of the card, top-right */
 .pillar-card__ghost-number {
     position: absolute;
     top: -20px;
@@ -1705,6 +1654,7 @@ html {
     pointer-events: none;
 }
 
+/* Small coloured circle behind the emoji icon */
 .pillar-card__icon {
     width: 56px;
     height: 56px;
@@ -1735,6 +1685,8 @@ html {
     z-index: 1;
 }
 
+/* Hover lift + accent-coloured glow, alternating slightly per card
+   via nth-child so the row doesn't feel too uniform */
 .pillar-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 16px 32px rgba(31, 78, 150, 0.18);
@@ -1764,20 +1716,6 @@ html {
     }
 }
 
-@media (max-width: 480px) {
-    .mission-pillars {
-        padding: 40px 16px 70px;
-    }
-
-    .pillar-card {
-        padding: 30px 22px 26px;
-    }
-
-    .pillar-card__ghost-number {
-        font-size: 4rem;
-    }
-}
-
 /* ============================= */
 /* MISSION PULL QUOTE             */
 /* ============================= */
@@ -1800,16 +1738,6 @@ html {
 @media (max-width: 768px) {
     .mission-quote p {
         font-size: 1.5rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .mission-quote {
-        padding: 55px 16px;
-    }
-
-    .mission-quote p {
-        font-size: 1.2rem;
     }
 }
 
@@ -1852,16 +1780,6 @@ html {
     margin-bottom: 20px;
 }
 
-@media (max-width: 480px) {
-    .mission-more {
-        padding: 50px 16px;
-    }
-
-    .mission-more h2 {
-        font-size: 1.5rem;
-    }
-}
-
 /* ============================= */
 /* CASE STUDIES PAGE HERO         */
 /* ============================= */
@@ -1873,6 +1791,8 @@ html {
     overflow: hidden;
 }
 
+/* Big faded word sitting behind the heading for a bit of
+   editorial flair — purely decorative, ignored by screen readers */
 .case-studies-hero__ghost {
     position: absolute;
     top: 90px;
@@ -1896,6 +1816,7 @@ html {
     display: inline-block;
 }
 
+/* Little accent underline beneath the title */
 .case-studies-hero h1::after {
     content: "";
     display: block;
@@ -1926,25 +1847,6 @@ html {
     }
 }
 
-@media (max-width: 480px) {
-    .case-studies-hero {
-        padding: 130px 16px 50px;
-    }
-
-    .case-studies-hero h1 {
-        font-size: 1.7rem;
-    }
-
-    .case-studies-hero p {
-        font-size: 0.9rem;
-    }
-
-    .case-studies-hero__ghost {
-        font-size: 3.5rem;
-        top: 120px;
-    }
-}
-
 /* ============================= */
 /* CASE STUDIES PAGE GRID         */
 /* ============================= */
@@ -1961,6 +1863,10 @@ html {
     gap: 25px;
 }
 
+/* Cards themselves keep the exact .case-slideshow styling from the
+   homepage (dark overlay, image, white text) — that's intentional,
+   since photos need the dark gradient to keep text readable. The
+   card frame gets a soft shadow so it lifts off the light page. */
 .case-studies-page .case-slideshow {
     box-shadow: 0 10px 26px rgba(31, 78, 150, 0.12);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -1980,16 +1886,6 @@ html {
 @media (max-width: 600px) {
     .case-studies-page__grid {
         grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 480px) {
-    .case-studies-page {
-        padding: 40px 16px 60px;
-    }
-
-    .case-studies-page__grid {
-        gap: 18px;
     }
 }
 
@@ -2089,23 +1985,6 @@ html {
     }
 }
 
-@media (max-width: 480px) {
-    .case-modal {
-        padding: 20px;
-        max-height: 90vh;
-    }
-
-    .case-modal__img {
-        width: 130px;
-        height: 130px;
-    }
-
-    .case-modal__right h3 {
-        font-size: 1.3rem;
-        padding-right: 0;
-    }
-}
-
 /* ============================= */
 /* PROJECTS PAGE HERO             */
 /* ============================= */
@@ -2167,25 +2046,6 @@ html {
     .projects-hero__ghost { font-size: 5.5rem; top: 110px; }
 }
 
-@media (max-width: 480px) {
-    .projects-hero {
-        padding: 130px 16px 50px;
-    }
-
-    .projects-hero h1 {
-        font-size: 1.7rem;
-    }
-
-    .projects-hero p {
-        font-size: 0.9rem;
-    }
-
-    .projects-hero__ghost {
-        font-size: 3.5rem;
-        top: 120px;
-    }
-}
-
 /* ============================= */
 /* PROJECTS PAGE GRID             */
 /* ============================= */
@@ -2202,6 +2062,9 @@ html {
     gap: 25px;
 }
 
+/* Each card gets a colour-coded top border + matching glow on
+   hover, cycling through a warm/cool palette so the grid feels
+   playful rather than uniform blue like the case studies page */
 .projects-page .case-slideshow {
     border-top: 5px solid transparent;
     box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
@@ -2246,16 +2109,6 @@ html {
 
 @media (max-width: 600px) {
     .projects-page__grid { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 480px) {
-    .projects-page {
-        padding: 40px 16px 60px;
-    }
-
-    .projects-page__grid {
-        gap: 18px;
-    }
 }
 
 
@@ -2333,6 +2186,8 @@ html {
     display: block;
 }
 
+/* Hides a card without removing it from the DOM, so the modal
+   click-handlers (which use array index) still line up correctly */
 .project-card--hidden {
     display: none !important;
 }
@@ -2344,17 +2199,6 @@ html {
     }
 
     .projects-filters__group select {
-        width: 100%;
-    }
-}
-
-@media (max-width: 480px) {
-    .projects-filters {
-        margin-bottom: 25px;
-        gap: 14px;
-    }
-
-    .projects-filters__clear {
         width: 100%;
     }
 }
@@ -2454,44 +2298,24 @@ html {
     }
 }
 
-@media (max-width: 480px) {
-    .project-modal {
-        padding: 20px;
-        max-height: 90vh;
-    }
-
-    .project-modal__img {
-        width: 130px;
-        height: 130px;
-    }
-
-    .project-modal__right h3 {
-        font-size: 1.3rem;
-        padding-right: 0;
-    }
-}
-
 /* ============================= */
 /* SERVICES PAGE GRID             */
 /* ============================= */
+/* Reuses .case-studies / .case-slideshow styling from the homepage,
+   this just gives the Services page its own subtle identity */
+
 #services-grid {
-    padding-bottom: 100px;
+    padding-bottom: 100px; /* no "More Case Studies" button here, so less bottom padding needed */
 }
 
 #services-grid .case-slideshow {
-    box-shadow: 0 10px 26px rgba(93, 193, 245, 0.15);
+    box-shadow: 0 10px 26px rgba(93, 193, 245, 0.15); /* light blue glow instead of the default dark shadow */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 #services-grid .case-slideshow:hover {
     transform: translateY(-6px);
     box-shadow: 0 16px 34px rgba(93, 193, 245, 0.3);
-}
-
-@media (max-width: 480px) {
-    #services-grid {
-        padding-bottom: 60px;
-    }
 }
 
 /* ============================= */
@@ -2522,6 +2346,7 @@ html {
     padding: 70px 20px 100px;
 }
 
+/* The grid of boxes */
 .team-grid {
     max-width: 1100px;
     margin: 0 auto;
@@ -2530,6 +2355,7 @@ html {
     gap: 30px;
 }
 
+/* Each box: photo, name, role, "Read Bio" button */
 .team-card {
     background: var(--color-white);
     border-radius: 8px;
@@ -2545,7 +2371,7 @@ html {
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 15px;
-    background: #ccc;
+    background: #ccc; /* fallback while photo loads / if missing */
 }
 
 .team-card__name {
@@ -2582,29 +2408,6 @@ html {
 
 @media (max-width: 600px) {
     .team-grid { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 480px) {
-    .team-hero {
-        padding: 130px 16px 40px;
-    }
-
-    .team-hero h1 {
-        font-size: 2rem;
-    }
-
-    .team-page {
-        padding: 40px 16px 60px;
-    }
-
-    .team-card {
-        padding: 20px;
-    }
-
-    .team-card__img {
-        width: 100px;
-        height: 100px;
-    }
 }
 
 
@@ -2703,27 +2506,11 @@ html {
     }
 }
 
-@media (max-width: 480px) {
-    .service-modal {
-        padding: 20px;
-        max-height: 90vh;
-    }
-
-    .service-modal__img {
-        width: 130px;
-        height: 130px;
-    }
-
-    .service-modal__right h3 {
-        font-size: 1.3rem;
-        padding-right: 0;
-    }
-}
-
 /* ============================= */
 /* TEAM BIO MODAL (POP-UP)        */
 /* ============================= */
 
+/* Full-screen dark backdrop, hidden by default */
 .team-modal-overlay {
     display: none;
     position: fixed;
@@ -2738,10 +2525,12 @@ html {
     padding: 20px;
 }
 
+/* JS adds "active" to show it */
 .team-modal-overlay.active {
     display: flex;
 }
 
+/* The white pop-up box itself: image on left, info on right */
 .team-modal {
     position: relative;
     background: var(--color-white);
@@ -2754,6 +2543,7 @@ html {
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
 }
 
+/* X close button, top-right corner of the pop-up */
 .team-modal__close {
     position: absolute;
     top: 15px;
@@ -2786,6 +2576,7 @@ html {
     background: #ccc;
 }
 
+/* LinkedIn icon under the image */
 .team-modal__linkedin {
     color: var(--color-primary);
     display: flex;
@@ -2825,6 +2616,7 @@ html {
     line-height: 1.7;
 }
 
+/* Stack image above text on smaller screens */
 @media (max-width: 600px) {
     .team-modal {
         flex-direction: column;
@@ -2835,21 +2627,6 @@ html {
 
     .team-modal__right {
         text-align: center;
-    }
-}
-
-@media (max-width: 480px) {
-    .team-modal {
-        padding: 20px;
-    }
-
-    .team-modal__img {
-        width: 120px;
-        height: 120px;
-    }
-
-    .team-modal__left {
-        flex: 0 0 auto;
     }
 }
 
@@ -2882,6 +2659,7 @@ html {
     padding: 70px 20px 100px;
 }
 
+/* Grid of job boxes — same footprint as team-grid so both pages feel consistent */
 .jobs-grid {
     max-width: 1100px;
     margin: 0 auto;
@@ -2898,6 +2676,7 @@ html {
     padding: 40px 0;
 }
 
+/* Each job box */
 .job-card {
     background: var(--color-white);
     border-radius: 8px;
@@ -2957,24 +2736,6 @@ html {
     .jobs-grid { grid-template-columns: 1fr; }
 }
 
-@media (max-width: 480px) {
-    .jobs-hero {
-        padding: 130px 16px 40px;
-    }
-
-    .jobs-hero h1 {
-        font-size: 2rem;
-    }
-
-    .jobs-page {
-        padding: 40px 16px 60px;
-    }
-
-    .job-card {
-        padding: 24px 18px;
-    }
-}
-
 /* ============================= */
 /* JOB DETAILS MODAL (POP-UP)     */
 /* ============================= */
@@ -3030,7 +2791,7 @@ html {
     font-size: 1.6rem;
     color: var(--color-dark);
     margin-bottom: 12px;
-    padding-right: 20px;
+    padding-right: 20px; /* keeps title clear of the close button */
 }
 
 .job-modal__meta {
@@ -3084,17 +2845,6 @@ html {
     }
 }
 
-@media (max-width: 480px) {
-    .job-modal {
-        padding: 20px;
-    }
-
-    .job-modal h3 {
-        font-size: 1.3rem;
-        padding-right: 0;
-    }
-}
-
 /* ============================= */
 /* CONTACT US PAGE               */
 /* ============================= */
@@ -3132,6 +2882,7 @@ html {
     align-items: start;
 }
 
+/* ===== Left column: direct contact info ===== */
 .contact-info {
     background: var(--color-white);
     border-radius: 10px;
@@ -3215,6 +2966,7 @@ html {
     margin-bottom: 6px;
 }
 
+/* ===== Right column: form card ===== */
 .contact-form-card {
     background: var(--color-white);
     border-radius: 10px;
@@ -3263,45 +3015,10 @@ html {
     }
 }
 
-@media (max-width: 480px) {
-    .contactus-hero {
-        padding: 130px 16px 45px;
-    }
-
-    .contactus-hero h1 {
-        font-size: 1.7rem;
-    }
-
-    .contactus-page {
-        padding: 40px 16px 60px;
-    }
-
-    .contact-info,
-    .contact-form-card {
-        padding: 24px 18px;
-    }
-
-    .contact-info__item {
-        gap: 12px;
-        margin-bottom: 20px;
-    }
-
-    .contact-info__icon {
-        flex: 0 0 38px;
-        width: 38px;
-        height: 38px;
-        font-size: 1.1rem;
-    }
-
-    .contact-info__text a,
-    .contact-info__text span {
-        font-size: 1rem;
-    }
-}
-
 
 /* ============================= */
 /* LEGAL PAGES (privacy, terms, cookies) */
+/* Shared hero + content styling for all legal/policy pages */
 /* ============================= */
 
 .legal-hero {
@@ -3345,6 +3062,7 @@ html {
     border-bottom: 2px solid rgba(93, 193, 245, 0.25);
 }
 
+/* First heading shouldn't have the big top gap the others get */
 .legal-page__container h2:first-child {
     margin-top: 0;
 }
@@ -3380,26 +3098,10 @@ html {
     }
 }
 
-@media (max-width: 480px) {
-    .legal-hero {
-        padding: 130px 16px 40px;
-    }
-
-    .legal-page {
-        padding: 40px 16px 60px;
-    }
-
-    .legal-page__container {
-        padding: 24px 16px;
-    }
-
-    .legal-page__container h2 {
-        font-size: 1.1rem;
-    }
-}
-
 /* ============================= */
 /* COOKIE CONSENT BANNER          */
+/* Only shown once — hidden permanently after "Got it" is clicked */
+/* (functionality lives in app.js, this is just the look)         */
 /* ============================= */
 
 .cookie-banner {
@@ -3448,17 +3150,4 @@ html {
 .cookie-banner__accept:hover {
     background: var(--color-accent);
     color: var(--color-dark);
-}
-
-@media (max-width: 480px) {
-    .cookie-banner {
-        padding: 14px 16px;
-        gap: 12px;
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .cookie-banner__accept {
-        width: 100%;
-    }
 }

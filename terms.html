@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Case Studies | Manstal Limited</title>
+    <title>Terms of Use | Manstal Limited</title>
     <link rel="icon" type="image/png" href="images/logo.png">
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -36,47 +36,74 @@
         </div>
     </nav>
 
-    <!-- ========================================================
-         PAGE HERO — light, with a big ghost number + accent
-         underline for a bit of editorial flair
-    ========================================================= -->
-    <section class="case-studies-hero">
-        <span class="case-studies-hero__ghost">Case Studies</span>
-        <h1>Case Studies</h1>
-        <p>A closer look at the work we've delivered for clients across every sector we support.</p>
+    <section class="legal-hero">
+        <h1>Terms of Use</h1>
+        <p>Last updated: 15 July 2026</p>
     </section>
 
-    <!-- ========================================================
-         FULL CASE STUDY GRID — this stays EMPTY in the HTML.
-         JavaScript reads the CASE_STUDIES array (in app.js) and
-         builds one card per case study into this container.
-    ========================================================= -->
-    <section class="case-studies-page">
-        <div class="case-studies-page__grid" id="caseStudiesGrid">
-            <!-- cards injected by JS -->
+    <section class="legal-page">
+        <div class="legal-page__container">
+
+            <h2>1. Acceptance of Terms</h2>
+            <p>
+                By accessing and using this website, you accept and agree to be bound by
+                these Terms of Use. If you do not agree, please do not use this site.
+            </p>
+
+            <h2>2. Use of the Site</h2>
+            <p>
+                This website and its content are provided for general information about
+                Manstal Limited's services. You may browse the site and submit enquiries
+                for legitimate business purposes only.
+            </p>
+
+            <h2>3. Intellectual Property</h2>
+            <p>
+                All content on this site — including text, images, logos, and project
+                photography — is the property of Manstal Limited unless otherwise stated,
+                and may not be reproduced without permission.
+            </p>
+
+            <h2>4. Accuracy of Information</h2>
+            <p>
+                We make reasonable efforts to keep information on this site accurate and
+                up to date, but we do not guarantee completeness or accuracy at all times.
+                Project examples and case studies are illustrative of past work.
+            </p>
+
+            <h2>5. Limitation of Liability</h2>
+            <p>
+                Manstal Limited accepts no liability for any loss or damage arising from
+                use of this website, to the fullest extent permitted by law.
+            </p>
+
+            <h2>6. External Links</h2>
+            <p>
+                This site may link to third-party websites. We are not responsible for the
+                content or practices of any linked external site.
+            </p>
+
+            <h2>7. Changes to These Terms</h2>
+            <p>
+                We may update these Terms of Use from time to time. Continued use of the
+                site after changes constitutes acceptance of the revised terms.
+            </p>
+
+            <h2>8. Governing Law</h2>
+            <p>
+                These terms are governed by the laws of England and Wales.
+            </p>
+
+            <h2>9. Contact</h2>
+            <p>
+                Questions about these terms can be directed to
+                <a href="mailto:info@manstal.co.uk">info@manstal.co.uk</a>.
+            </p>
+
         </div>
     </section>
 
     <!-- ========================================================
-         CASE STUDY DETAILS MODAL (POP-UP)
-         Only ONE modal exists on the page. Clicking "Find Out
-         More" on any card fills this box with that case study's
-         info and shows it.
-    ========================================================= -->
-    <div class="case-modal-overlay" id="caseModalOverlay">
-        <div class="case-modal">
-            <button class="case-modal__close" id="caseModalClose" aria-label="Close">&times;</button>
-
-            <img src="" alt="" class="case-modal__img" id="caseModalImg">
-
-            <div class="case-modal__right">
-                <h3 id="caseModalTitle"></h3>
-                <p class="case-modal__body" id="caseModalBody"></p>
-            </div>
-        </div>
-    </div>
-
-        <!-- ========================================================
          FOOTER
          Contact info + address on top, copyright/contact link below
     ========================================================= -->
@@ -123,6 +150,7 @@
         <p>We don't currently use tracking cookies. Read our <a href="cookies.html">Cookie Policy</a> for details.</p>
         <button class="cookie-banner__accept" id="cookieAccept">Got it</button>
     </div>
+
 
 
     <script src="app.js"></script>

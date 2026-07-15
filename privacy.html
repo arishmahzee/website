@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Case Studies | Manstal Limited</title>
+    <title>Privacy Policy | Manstal Limited</title>
     <link rel="icon" type="image/png" href="images/logo.png">
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -36,47 +36,86 @@
         </div>
     </nav>
 
-    <!-- ========================================================
-         PAGE HERO — light, with a big ghost number + accent
-         underline for a bit of editorial flair
-    ========================================================= -->
-    <section class="case-studies-hero">
-        <span class="case-studies-hero__ghost">Case Studies</span>
-        <h1>Case Studies</h1>
-        <p>A closer look at the work we've delivered for clients across every sector we support.</p>
+    <!-- ======================= LEGAL PAGE HERO ======================= -->
+    <section class="legal-hero">
+        <h1>Privacy Policy</h1>
+        <p>Last updated: 15 July 2026</p>
     </section>
 
-    <!-- ========================================================
-         FULL CASE STUDY GRID — this stays EMPTY in the HTML.
-         JavaScript reads the CASE_STUDIES array (in app.js) and
-         builds one card per case study into this container.
-    ========================================================= -->
-    <section class="case-studies-page">
-        <div class="case-studies-page__grid" id="caseStudiesGrid">
-            <!-- cards injected by JS -->
+    <!-- ======================= LEGAL PAGE CONTENT ======================= -->
+    <section class="legal-page">
+        <div class="legal-page__container">
+
+            <h2>1. Who We Are</h2>
+            <p>
+                Manstal Limited ("we", "us", "our") is a construction and project services
+                company registered in England and Wales. This policy explains what personal
+                data we collect through this website, why, and how we look after it.
+            </p>
+
+            <h2>2. What We Collect</h2>
+            <p>When you submit an enquiry through our contact form, we collect:</p>
+            <ul>
+                <li>First name and surname</li>
+                <li>Email address</li>
+                <li>Phone number, project type, and indicative budget (business enquiries only)</li>
+                <li>The contents of your message</li>
+            </ul>
+            <p>We do not use cookies for tracking or analytics on this site at this time.</p>
+
+            <h2>3. How We Use It</h2>
+            <p>
+                We use the information you submit solely to respond to your enquiry, discuss
+                your project, and provide a quote or further information where relevant. We
+                do not sell, rent, or share your data with third parties for marketing
+                purposes.
+            </p>
+
+            <h2>4. How It's Processed</h2>
+            <p>
+                Form submissions are processed by Netlify Forms and delivered to our team by
+                email. Netlify acts as a data processor on our behalf. You can read
+                Netlify's own privacy policy on their website for details of how they handle
+                submitted data in transit.
+            </p>
+
+            <h2>5. How Long We Keep It</h2>
+            <p>
+                We retain enquiry data for as long as necessary to respond to you and, where
+                a project proceeds, for the duration of our business relationship plus a
+                reasonable period afterwards for legal and accounting purposes. You can
+                request deletion at any time — see Section 7.
+            </p>
+
+            <h2>6. Legal Basis</h2>
+            <p>
+                We process your data on the basis of legitimate interest (responding to
+                enquiries you have voluntarily submitted) under UK GDPR.
+            </p>
+
+            <h2>7. Your Rights</h2>
+            <p>Under UK GDPR, you have the right to:</p>
+            <ul>
+                <li>Request a copy of the data we hold about you</li>
+                <li>Request correction of inaccurate data</li>
+                <li>Request deletion of your data</li>
+                <li>Object to how your data is processed</li>
+            </ul>
+            <p>
+                To exercise any of these rights, contact us at
+                <a href="mailto:info@manstal.co.uk">info@manstal.co.uk</a>.
+            </p>
+
+            <h2>8. Contact</h2>
+            <p>
+                Questions about this policy can be directed to
+                <a href="mailto:info@manstal.co.uk">info@manstal.co.uk</a> or
+                01234 567890.
+            </p>
+
         </div>
     </section>
-
     <!-- ========================================================
-         CASE STUDY DETAILS MODAL (POP-UP)
-         Only ONE modal exists on the page. Clicking "Find Out
-         More" on any card fills this box with that case study's
-         info and shows it.
-    ========================================================= -->
-    <div class="case-modal-overlay" id="caseModalOverlay">
-        <div class="case-modal">
-            <button class="case-modal__close" id="caseModalClose" aria-label="Close">&times;</button>
-
-            <img src="" alt="" class="case-modal__img" id="caseModalImg">
-
-            <div class="case-modal__right">
-                <h3 id="caseModalTitle"></h3>
-                <p class="case-modal__body" id="caseModalBody"></p>
-            </div>
-        </div>
-    </div>
-
-        <!-- ========================================================
          FOOTER
          Contact info + address on top, copyright/contact link below
     ========================================================= -->

@@ -910,3 +910,37 @@ if (homeNewsScroller) {
         if (e.key === 'Escape' && homeNewsOverlay.classList.contains('active')) closeHomeNewsModal();
     });
 }
+
+
+// ============================= //
+// COOKIE CONSENT BANNER          //
+// Shows once on first visit, remembers dismissal in a cookie.
+// NOTE: only include this if/when you actually add tracking —
+// right now the site sets no cookies, so this banner is optional
+// scaffolding for later, not currently required.
+// ============================= //
+
+function getCookie(name) {
+    const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+    return match ? match[2] : null;
+}
+
+function setCookie(name, value, days) {
+    const expires = new Date(Date.now() + days * 864e5).toUTCString();
+    document.cookie = `${name}=${value}; expires=${expires}; path=/`;
+}
+
+const cookieBanner = document.getElementById('cookieBanner');
+const cookieAccept = document.getElementById('cookieAccept');
+
+if (cookieBanner && cookieAccept) {
+    // Only show if the person hasn't already accepted
+    if (!getCookie('cookieConsent')) {
+        cookieBanner.classList.add('active');
+    }
+
+    cookieAccept.addEventListener('click', () => {
+        setCookie('cookieConsent', 'accepted', 365);
+        cookieBanner.classList.remove('active');
+    });
+}

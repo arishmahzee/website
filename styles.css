@@ -3010,3 +3010,140 @@ html {
         font-size: 2.2rem;
     }
 }
+
+
+/* ============================= */
+/* LEGAL PAGES (privacy, terms, cookies) */
+/* Shared hero + content styling for all legal/policy pages */
+/* ============================= */
+
+.legal-hero {
+    background: var(--color-dark);
+    padding: 180px 20px 60px;
+    text-align: center;
+    color: var(--color-white);
+}
+
+.legal-hero h1 {
+    font-size: 2.6rem;
+    margin-bottom: 10px;
+}
+
+.legal-hero p {
+    color: #aaa;
+    font-size: 0.95rem;
+}
+
+.legal-page {
+    background: var(--color-light);
+    padding: 70px 20px 100px;
+}
+
+.legal-page__container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--color-white);
+    border-radius: 10px;
+    padding: 50px 45px;
+    box-shadow: 0 6px 20px rgba(31, 78, 150, 0.08);
+    color: #444;
+    line-height: 1.7;
+}
+
+.legal-page__container h2 {
+    color: var(--color-dark);
+    font-size: 1.3rem;
+    margin: 35px 0 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid rgba(93, 193, 245, 0.25);
+}
+
+/* First heading shouldn't have the big top gap the others get */
+.legal-page__container h2:first-child {
+    margin-top: 0;
+}
+
+.legal-page__container p {
+    margin-bottom: 16px;
+}
+
+.legal-page__container ul {
+    margin: 0 0 16px 20px;
+}
+
+.legal-page__container ul li {
+    margin-bottom: 8px;
+}
+
+.legal-page__container a {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+.legal-page__container a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .legal-hero h1 {
+        font-size: 2rem;
+    }
+
+    .legal-page__container {
+        padding: 35px 25px;
+    }
+}
+
+/* ============================= */
+/* COOKIE CONSENT BANNER          */
+/* Only shown once — hidden permanently after "Got it" is clicked */
+/* (functionality lives in app.js, this is just the look)         */
+/* ============================= */
+
+.cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: var(--color-dark);
+    color: var(--color-white);
+    padding: 18px 25px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    z-index: 3000;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.cookie-banner.active {
+    display: flex;
+}
+
+.cookie-banner p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #ddd;
+    max-width: 600px;
+}
+
+.cookie-banner p a {
+    color: var(--color-accent);
+}
+
+.cookie-banner__accept {
+    background: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+    padding: 10px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.cookie-banner__accept:hover {
+    background: var(--color-accent);
+    color: var(--color-dark);
+}

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Case Studies | Manstal Limited</title>
+    <title>Cookie Policy | Manstal Limited</title>
     <link rel="icon" type="image/png" href="images/logo.png">
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -36,47 +36,52 @@
         </div>
     </nav>
 
-    <!-- ========================================================
-         PAGE HERO — light, with a big ghost number + accent
-         underline for a bit of editorial flair
-    ========================================================= -->
-    <section class="case-studies-hero">
-        <span class="case-studies-hero__ghost">Case Studies</span>
-        <h1>Case Studies</h1>
-        <p>A closer look at the work we've delivered for clients across every sector we support.</p>
+    <section class="legal-hero">
+        <h1>Cookie Policy</h1>
+        <p>Last updated: 15 July 2026</p>
     </section>
 
-    <!-- ========================================================
-         FULL CASE STUDY GRID — this stays EMPTY in the HTML.
-         JavaScript reads the CASE_STUDIES array (in app.js) and
-         builds one card per case study into this container.
-    ========================================================= -->
-    <section class="case-studies-page">
-        <div class="case-studies-page__grid" id="caseStudiesGrid">
-            <!-- cards injected by JS -->
+    <section class="legal-page">
+        <div class="legal-page__container">
+
+            <h2>1. What Are Cookies</h2>
+            <p>
+                Cookies are small text files placed on your device when you visit a
+                website. They're commonly used to make sites work, remember preferences,
+                or gather anonymous usage statistics.
+            </p>
+
+            <h2>2. Cookies on This Site</h2>
+            <p>
+                This website currently does not use tracking, advertising, or analytics
+                cookies. The contact form is submitted directly via Netlify Forms and does
+                not set any cookies as part of that process.
+            </p>
+
+            <h2>3. If This Changes</h2>
+            <p>
+                If we introduce analytics or other cookie-based tools in future (for
+                example, to understand how visitors use the site), this page will be
+                updated accordingly, and a cookie consent banner will be shown to first-time
+                visitors.
+            </p>
+
+            <h2>4. Managing Cookies</h2>
+            <p>
+                Should cookies be introduced in future, you will be able to manage or
+                disable them at any time through your browser settings. Instructions vary
+                by browser and are available on each browser provider's support pages.
+            </p>
+
+            <h2>5. Contact</h2>
+            <p>
+                Questions about this policy can be directed to
+                <a href="mailto:info@manstal.co.uk">info@manstal.co.uk</a>.
+            </p>
+
         </div>
     </section>
-
     <!-- ========================================================
-         CASE STUDY DETAILS MODAL (POP-UP)
-         Only ONE modal exists on the page. Clicking "Find Out
-         More" on any card fills this box with that case study's
-         info and shows it.
-    ========================================================= -->
-    <div class="case-modal-overlay" id="caseModalOverlay">
-        <div class="case-modal">
-            <button class="case-modal__close" id="caseModalClose" aria-label="Close">&times;</button>
-
-            <img src="" alt="" class="case-modal__img" id="caseModalImg">
-
-            <div class="case-modal__right">
-                <h3 id="caseModalTitle"></h3>
-                <p class="case-modal__body" id="caseModalBody"></p>
-            </div>
-        </div>
-    </div>
-
-        <!-- ========================================================
          FOOTER
          Contact info + address on top, copyright/contact link below
     ========================================================= -->
@@ -123,6 +128,7 @@
         <p>We don't currently use tracking cookies. Read our <a href="cookies.html">Cookie Policy</a> for details.</p>
         <button class="cookie-banner__accept" id="cookieAccept">Got it</button>
     </div>
+
 
 
     <script src="app.js"></script>

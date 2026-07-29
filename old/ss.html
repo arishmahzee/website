@@ -1,0 +1,88 @@
+
+    <!-- ========================================================
+         CAREERS
+         Simple CTA banner linking to the Join The Team page
+    ========================================================= -->
+    <section class="careers" id="careers">
+        <h2 class="section__title">Join The Team</h2>
+        <p class="section__text">Find out about current opportunities at Manstal Limited.</p>
+        <a href="joinTeam.html" class="button button--wide">View Opportunities</a>
+    </section>
+
+    <!-- ========================================================
+         CONTACT FORM
+         General enquiry form. "Work Related" fields are hidden by
+         default and shown/required via app.js based on the
+         enquiryType dropdown selection
+
+         NETLIFY FORMS: data-netlify="true" + name="contact" tell
+         Netlify to detect and store this form at deploy time. The
+         hidden "form-name" input and the honeypot field below are
+         both required for that detection + spam filtering to work.
+    ========================================================= -->
+    <section class="contact" id="contact">
+    <h2 class="section__title">Send an Enquiry</h2>
+
+   <form class="contact-form" id="contact-form" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+
+    <!-- Required so Netlify's build process recognises which form this is -->
+    <input type="hidden" name="form-name" value="contact">
+
+    <!-- Honeypot spam trap: real visitors never see or fill this in.
+         Any bot that does gets silently rejected by Netlify. -->
+    <p style="position:absolute; left:-9999px; top:-9999px;" aria-hidden="true">
+        <label>Leave this field blank if you're human: <input name="bot-field" tabindex="-1" autocomplete="off"></label>
+    </p>
+
+    <div class="enquiry-toggle">
+        <button type="button" class="enquiry-toggle__btn" id="btnGeneral" data-type="general">General Enquiry</button>
+        <button type="button" class="enquiry-toggle__btn" id="btnWork" data-type="work">Business Enquiry</button>
+    </div>
+
+    <input type="hidden" name="enquiryType" id="enquiryType" required>
+
+    <div class="contact-form__fields" id="formFields">
+
+        <div class="contact-form__row">
+            <input type="text" name="firstName" placeholder="Your first name" required>
+            <input type="text" name="lastName" placeholder="Surname" required>
+        </div>
+
+        <input type="email" name="email" placeholder="Email Address" required>
+
+        <div class="contact-form__work-fields" id="workFields">
+
+            <input type="tel" name="phone" placeholder="Phone Number">
+
+            <select name="projectType" id="projectType">
+                <option value="" disabled selected>Project type</option>
+                <option value="new-build">New Build</option>
+                <option value="refurbishment">Refurbishment</option>
+                <option value="ppm">Planned Maintenance (PPM)</option>
+                <option value="reactive">Reactive / 24hr Cover</option>
+                <option value="other">Other</option>
+            </select>
+
+            <select name="budget" id="budget">
+                <option value="" disabled selected>Indicative budget</option>
+                <option value="prefer-not-to-say">Prefer not to say</option>
+                <option value="under-250k">Under £250k</option>
+                <option value="250k-1m">£250k - £1m</option>
+                <option value="1m-3m">£1m - £3m</option>
+                <option value="3m-8m">£3m - £8m</option>
+                <option value="8m-plus">£8m+</option>
+            </select>
+
+        </div>
+
+        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+
+        <button type="submit" class="button button--wide">Send Enquiry</button>
+
+        <p id="formStatus" role="status" aria-live="polite"></p>
+
+    </div>
+
+</form>
+</section>
+

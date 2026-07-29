@@ -51,15 +51,43 @@
             <div class="hero__slide" style="background-image: url('images/replaceTeam.jpg');"></div>
             <div class="hero__slide" style="background-image: url('images/replaceCAD.jpg');"></div>
             <div class="hero__slide" style="background-image: url('images/replaceTeam.jpg');"></div>
+
+     
+                     
+               <!-- ===========================================
+
+                     SCROLL DOWN ICON
+                =============================================-->
+            <a href = "#about">
+                <div class="scroll-down"> </div>
+            </a>
+            
+  
+
         </div>
         <div class="hero__overlay"></div>
+
+
+        <div class="hero__accreditations">
+            <img src="images/chas_logo.png" alt="Chas Accreditation Manstal Limited" class="accreditations-img">
+            <img src="images/constructionOnline_Logo.png" alt="Chas Accreditation Manstal Limited" class="accreditations-img">
+            <img src="images/nicEIC_logo.png" alt="Chas Accreditation Manstal Limited" class="accreditations-img">
+            <img src="images/safeContractor_logo.png" alt="Chas Accreditation Manstal Limited" class="accreditations-img">
+            <img src="images/SMAS_logo.png" alt="Chas Accreditation Manstal Limited" class="accreditations-img">
+            <img src="images/ECA_logo.png" alt="Chas Accreditation Manstal Limited" class="accreditations-img">
+
+        </div>
+
+
         <div class="hero__content">
             <p class="hero__subtitle">A short line about what the company does goes here.</p>
             <!--<a href="#contact" class="hero__enquire-btn">Enquire Now</a> OPTIONAL BUTTON-->
-            
+   
         </div>
         <a href="mission.html" class="hero__mission-btn">Our Mission</a>
     </header>
+
+ 
 
     <!-- ========================================================
          ABOUT US
@@ -69,7 +97,6 @@
     <section class="about" id="about">
         <div class="about__container">
             <div class="about__text">
-                <img src="images/Accreditations.png" alt="Accreditations Manstal Limited" class="accreditations-img">
                 <h2 class="section__title">About Us</h2>
                 <p class="section__text">
                     A brief description about the company's story, values, or approach goes here
@@ -81,6 +108,7 @@
             <div class="about__image">
                 <img src="images/about-us.jpg" alt="About Manstal Limited">
             </div>
+
         </div>
     </section>
 
@@ -101,8 +129,11 @@
             <span class="stat__number" data-target="12">0</span>
             <p class="stat__label">Years of experience</p>
         </div>
+
+    
     </section>
 
+    
     <!-- ========================================================
      SCREEN 3: PROJECTS (home page preview)
      Grid stays EMPTY in the HTML — app.js reads the HOME_PROJECTS
@@ -123,63 +154,13 @@
             <a href="projects.html" class="toggle-btn">More Projects</a>
         </div>
 
+       
+
+
     </section>
 
-    <!-- ========================================================
-         CASE STUDIES (home page preview)
-         Grid stays EMPTY in the HTML — app.js reads the
-         HOME_CASE_STUDIES array and builds cards into it, same
-         popup pattern as caseStudies.html
-    ========================================================= -->
-    <section class="case-studies" id="case-studies">
-        <h2 class="section__title">Case Studies</h2>
-
-        <div class="case-studies__grid" id="homeCaseStudiesGrid">
-            <!-- cards injected by JS -->
-        </div>
-
-        <a href="caseStudies.html" class="more__cases-btn">More Case Studies</a>
-    </section>
-
-    <!-- ========================================================
-     SUSTAINABILITY & SOCIAL VALUE
-     Heading + intro on the left, 3 value points on the right
-     with a green-blue accent theme (distinct from the primary
-     blue used elsewhere on the site)
-    ========================================================= -->
-    <section class="sustainability" id="sustainability">
-    <div class="sustainability__container">
-
-        <div class="sustainability__text">
-            <h2 class="sustainability__title">
-                Sustainability<br>
-                <span>and</span><br>
-                Social Value
-            </h2>
-            <p class="sustainability__intro">
-                A brief line on how sustainability and social value shape the way we work goes here.
-            </p>
-        </div>
-
-        <div class="sustainability__points">
-            <div class="sustainability__point">
-                <span class="sustainability__icon">🌱</span>
-                <p>Short line about an environmental commitment or initiative goes here.</p>
-            </div>
-            <div class="sustainability__point">
-                <span class="sustainability__icon">🤝</span>
-                <p>Short line about community impact or social value goes here.</p>
-            </div>
-            <div class="sustainability__point">
-                <span class="sustainability__icon">♻️</span>
-                <p>Short line about responsible practices or ethics goes here.</p>
-            </div>
-        </div>
-
-    </div>
-    </section>
-
-    <!-- ========================================================
+    
+     <!-- ========================================================
          WHO WE HELP
          Intro text + infinite auto-scrolling client logo strip
          (logo list is duplicated in the HTML so the loop is seamless)
@@ -224,6 +205,68 @@
         </div>
     </section>
 
+
+    <!-- ========================================================
+     SUSTAINABILITY & SOCIAL VALUE
+     Heading + intro on the left, 3 value points on the right
+     with a green-blue accent theme (distinct from the primary
+     blue used elsewhere on the site)
+    ========================================================= -->
+    <section class="sustainability" id="sustainability">
+    <div class="sustainability__container">
+
+        <div class="sustainability__text">
+            <h2 class="sustainability__title">
+                Sustainability<br>
+                <span>and</span><br>
+                Social Value
+            </h2>
+            <p class="sustainability__intro">
+                A brief line on how sustainability and social value shape the way we work goes here.
+            </p>
+        </div>
+
+        <div class="sustainability__points">
+            <div class="sustainability__point">
+                <span class="sustainability__icon">🌱</span>
+                <p>Short line about an environmental commitment or initiative goes here.</p>
+            </div>
+            <div class="sustainability__point">
+                <span class="sustainability__icon">🤝</span>
+                <p>Short line about community impact or social value goes here.</p>
+            </div>
+            <div class="sustainability__point">
+                <span class="sustainability__icon">♻️</span>
+                <p>Short line about responsible practices or ethics goes here.</p>
+            </div>
+        </div>
+
+    </div>
+    </section>
+
+   
+    <!-- ========================================================
+         CASE STUDIES (home page preview)
+         Grid stays EMPTY in the HTML — app.js reads the
+         HOME_CASE_STUDIES array and builds cards into it, same
+         popup pattern as caseStudies.html
+    ========================================================= -->
+    <section class="case-studies" id="case-studies">
+        <h2 class="section__title">Case Studies</h2>
+
+        <div class="case-studies__grid" id="homeCaseStudiesGrid">
+            <!-- cards injected by JS -->
+        </div>
+
+        <a href="caseStudies.html" class="more__cases-btn">More Case Studies</a>
+
+        <div class="section-scroll-down-wrap">
+        <a href="#news">
+        <div class="section-scroll-down section-scroll-down--light"></div>
+        </a>
+        </div>
+    </section>
+
     <!-- ========================================================
          NEWS (home page preview)
          Row stays EMPTY in the HTML — app.js reads the HOME_NEWS
@@ -234,96 +277,52 @@
 
         <div class="news-scroller" id="homeNewsScroller">
             <!-- cards injected by JS -->
+            
+        <div class="section-scroll-down-wrap">
+        <a href="#careers">
+        <div class="section-scroll-down"></div>
+        </a>
         </div>
+        </div>
+
+
+        
     </section>
 
-    <!-- ========================================================
-         CAREERS
-         Simple CTA banner linking to the Join The Team page
-    ========================================================= -->
-    <section class="careers" id="careers">
-        <h2 class="section__title">Join The Team</h2>
-        <p class="section__text">Find out about current opportunities at Manstal Limited.</p>
-        <a href="joinTeam.html" class="button button--wide">View Opportunities</a>
-    </section>
 
-    <!-- ========================================================
-         CONTACT FORM
-         General enquiry form. "Work Related" fields are hidden by
-         default and shown/required via app.js based on the
-         enquiryType dropdown selection
 
-         NETLIFY FORMS: data-netlify="true" + name="contact" tell
-         Netlify to detect and store this form at deploy time. The
-         hidden "form-name" input and the honeypot field below are
-         both required for that detection + spam filtering to work.
-    ========================================================= -->
-    <section class="contact" id="contact">
-    <h2 class="section__title">Send an Enquiry</h2>
 
-   <form class="contact-form" id="contact-form" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
 
-    <!-- Required so Netlify's build process recognises which form this is -->
-    <input type="hidden" name="form-name" value="contact">
+<!-- ========================================================
+     CAREERS + ENQUIRY (combined, redesigned)
+========================================================= -->
+<!-- ========================================================
+     CAREERS + ENQUIRY (combined, redesigned)
+========================================================= -->
+<section class="ctaBand" id="careers">
+    <div class="ctaBand__container">
 
-    <!-- Honeypot spam trap: real visitors never see or fill this in.
-         Any bot that does gets silently rejected by Netlify. -->
-    <p style="position:absolute; left:-9999px; top:-9999px;" aria-hidden="true">
-        <label>Leave this field blank if you're human: <input name="bot-field" tabindex="-1" autocomplete="off"></label>
-    </p>
-
-    <div class="enquiry-toggle">
-        <button type="button" class="enquiry-toggle__btn" id="btnGeneral" data-type="general">General Enquiry</button>
-        <button type="button" class="enquiry-toggle__btn" id="btnWork" data-type="work">Business Enquiry</button>
-    </div>
-
-    <input type="hidden" name="enquiryType" id="enquiryType" required>
-
-    <div class="contact-form__fields" id="formFields">
-
-        <div class="contact-form__row">
-            <input type="text" name="firstName" placeholder="Your first name" required>
-            <input type="text" name="lastName" placeholder="Surname" required>
+        <div class="ctaBand__card ctaBand__card--careers">
+            <span class="ctaBand__eyebrow">Careers</span>
+            <h2 class="ctaBand__title">Join The Team</h2>
+            <p class="ctaBand__text">Find out about current opportunities at Manstal Limited.</p>
+            <a href="joinTeam.html" class="ctaBand__btn ctaBand__btn--solid ctaBand__btn--wide">View Opportunities</a>
         </div>
 
-        <input type="email" name="email" placeholder="Email Address" required>
+        <div class="ctaBand__divider"></div>
 
-        <div class="contact-form__work-fields" id="workFields">
-
-            <input type="tel" name="phone" placeholder="Phone Number">
-
-            <select name="projectType" id="projectType">
-                <option value="" disabled selected>Project type</option>
-                <option value="new-build">New Build</option>
-                <option value="refurbishment">Refurbishment</option>
-                <option value="ppm">Planned Maintenance (PPM)</option>
-                <option value="reactive">Reactive / 24hr Cover</option>
-                <option value="other">Other</option>
-            </select>
-
-            <select name="budget" id="budget">
-                <option value="" disabled selected>Indicative budget</option>
-                <option value="prefer-not-to-say">Prefer not to say</option>
-                <option value="under-250k">Under £250k</option>
-                <option value="250k-1m">£250k - £1m</option>
-                <option value="1m-3m">£1m - £3m</option>
-                <option value="3m-8m">£3m - £8m</option>
-                <option value="8m-plus">£8m+</option>
-            </select>
-
+        <div class="ctaBand__card ctaBand__card--enquiry">
+            <span class="ctaBand__eyebrow">Contact Us</span>
+            <h2 class="ctaBand__title">Send an Enquiry</h2>
+            <p class="ctaBand__text">Whether it's a general question or a project brief, we'd love to hear from you.</p>
+            <div class="ctaBand__btnRow">
+                <a href="contactUs.html?type=general" class="ctaBand__btn ctaBand__btn--outline">General Enquiry</a>
+                <a href="contactUs.html?type=work" class="ctaBand__btn ctaBand__btn--solid">Business Enquiry</a>
+            </div>
         </div>
 
-        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-
-        <button type="submit" class="button button--wide">Send Enquiry</button>
-
-        <p id="formStatus" role="status" aria-live="polite"></p>
-
     </div>
-
-</form>
 </section>
-
 
     <!-- ========================================================
          PROJECT DETAILS MODAL (POP-UP) — shared by home Projects

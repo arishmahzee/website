@@ -8,7 +8,6 @@
     --color-dark: #1E2124;
     --color-light: #F4F6F9;
     --color-white: #FFFFFF;
-
 }
 
 * {
@@ -71,7 +70,7 @@ html {
     align-items: center;
     gap: 12px;
     text-decoration: none;
-    min-width: 0;
+    min-width: 0; /* allows text truncation to work inside a flex child */
 }
 
 #navbar__logo-icon {
@@ -192,6 +191,7 @@ html {
 .navbar__toggle.active .bar:nth-child(2) { opacity: 0; }
 .navbar__toggle.active .bar:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 
+/* Small-phone navbar tightening — prevents logo/hamburger/button collision */
 @media (max-width: 480px) {
     .navbar__container {
         padding: 0 12px;
@@ -305,49 +305,10 @@ html {
     transition: all 0.3s ease;
 }
 
-.hero__accreditations {
-    position: absolute;
-    bottom: 90px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 4;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: clamp(10px, 2vw, 24px);
-    flex-wrap: wrap;
-    max-width: 90%;
-}
-
-.hero__accreditations img {
-    width: clamp(50px, 6vw, 90px);
-    height: auto;
-    object-fit: contain;
-    background: transparent;
-    padding: 0;
-    border-radius: 0;
-    box-shadow: none;
-}
-
-.hero__accreditations img {
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-.hero__accreditations img.expanded {
-    transform: scale(2.2);
-    z-index: 10;
-    position: relative;
-    background: var(--color-white);
-    padding: 6px;
-    border-radius: 6px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-}
 .scroll-down{
     height: 50px;
     width: 30px;
-    border: 2px solid rgb(255, 255, 255);
+    border: 2px solid rgb(249, 248, 248);
     position: absolute;
     left: 90%;
     bottom: 20px;
@@ -401,16 +362,9 @@ html {
         padding: 12px 24px;
         font-size: 0.9rem;
     }
-
-    .hero__accreditations {
-        bottom: 70px;
-        gap: 6px;
-    }
-
-    .hero__accreditations img {
-        width: clamp(30px, 10vw, 45px);
-    }
 }
+
+
 
 
 /* ============================= */
@@ -431,6 +385,8 @@ html {
     line-height: 1.6;
 }
 
+
+
 @media (max-width: 480px) {
     .section__title {
         font-size: 1.6rem;
@@ -439,67 +395,6 @@ html {
     .section__text {
         font-size: 0.95rem;
         padding: 0 8px;
-    }
-}
-
-/* ============================= */
-/* SECTION SCROLL-DOWN INDICATORS */
-/* Reusable version of the hero scroll icon for other sections    */
-/* ============================= */
-.section-scroll-down {
-    height: 40px;
-    width: 24px;
-    border: 2px solid var(--color-primary);
-    position: relative;
-    margin: 10px auto 0;
-    border-radius: 50px;
-    cursor: pointer;
-    display: block;
-}
-
-.section-scroll-down::before,
-.section-scroll-down::after {
-    content: '';
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    border: 2px solid var(--color-primary);
-    height: 8px;
-    width: 8px;
-    transform: translate(-50%, -100%) rotate(45deg);
-    border-top: transparent;
-    border-left: transparent;
-    animation: scroll-down 1s ease-in-out infinite;
-}
-
-.section-scroll-down::after {
-    top: 30%;
-    animation-delay: .3s;
-}
-
-.section-scroll-down--light {
-    border-color: var(--color-white);
-}
-
-.section-scroll-down--light::before,
-.section-scroll-down--light::after {
-    border-color: var(--color-white);
-}
-
-.section-scroll-down-wrap {
-    display: flex;
-    justify-content: flex-end;
-    padding-top: 40px;
-}
-
-@media (max-width: 480px) {
-    .section-scroll-down {
-        height: 32px;
-        width: 20px;
-    }
-
-    .section-scroll-down-wrap {
-        padding-top: 25px;
     }
 }
 
@@ -596,7 +491,7 @@ html {
 /* ============================= */
 .who-we-help {
     padding: 100px 20px 100px;
-    background: var(--color-white);
+    background: var(--color-light);
 }
 
 @media (max-width: 480px) {
@@ -651,7 +546,7 @@ html {
 /* ============================= */
 .case-studies {
     padding: 80px 20px 140px;
-    background:  rgb(15, 28, 34);
+    background: var(--color-dark);
     position: relative;
 }
 
@@ -667,6 +562,8 @@ html {
     margin: 0 auto;
 }
 
+/* FIX: this grid previously had NO responsive rule at all —
+   it stayed 2 columns down to 0px, squeezing cards unreadably thin */
 @media (max-width: 700px) {
     .case-studies__grid {
         grid-template-columns: 1fr;
@@ -793,10 +690,10 @@ html {
 .stat {
     text-align: center;
     color: var(--color-white);
-    background: transparent;
-    padding: 10px 30px;
-    border-radius: 0;
-    border: none;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 30px 45px;
+    border-radius: 8px;
+    border: 1px solid rgba(93, 193, 245, 0.25);
 }
 
 .stat__number {
@@ -804,7 +701,7 @@ html {
     font-size: 3.2rem;
     font-weight: bold;
     color: var(--color-accent);
-    text-shadow: 0 0 20px rgba(93, 193, 245, 0.5), 0 0 40px rgba(93, 193, 245, 0.25);
+    text-shadow: 0 0 20px rgba(93, 193, 245, 0.35);
 }
 
 .stat__label {
@@ -820,7 +717,7 @@ html {
     }
 
     .stat {
-        padding: 10px 20px;
+        padding: 20px 28px;
         flex: 1 1 calc(50% - 16px);
     }
 
@@ -862,8 +759,6 @@ html {
     justify-content: center;
     gap: 15px;
     margin-bottom: 40px;
-    position: relative;
-    z-index: 2;
 }
 
 .toggle-btn {
@@ -902,7 +797,7 @@ html {
 
 @media (max-width: 480px) {
     .history-projects {
-        padding: 50px 16px 110px;
+        padding: 50px 16px;
     }
 }
 
@@ -915,8 +810,6 @@ html {
     gap: 80px;
     max-width: 1100px;
     margin: 0 auto;
-    position: relative;
-    z-index: 2;
 }
 
 .project-row {
@@ -994,19 +887,18 @@ html {
 }
 
 
-
 /* ============================= */
 /* SCREEN 4: NEWS                 */
 /* ============================= */
 .news {
     padding: 80px 20px;
-    background: var(--color-light);
+    background: var(--color-dark);
     text-align: center;
     border-bottom: 1px solid rgba(93, 193, 245, 0.2);
 }
 
 .news .section__title {
-    color: var(--color-dark);
+    color: var(--color-white);
 }
 
 .news-scroller {
@@ -1039,17 +931,16 @@ html {
     width: 100%;
     height: 160px;
     object-fit: cover;
-    background: var(--color-primary-dark)
- 
+    background: #ccc;
 }
 
 .news-card h3 {
-    color: var(--color-primary-dark);
+    color: var(--color-white);
     margin: 15px 20px 8px;
 }
 
 .news-card p {
-    color: var(--color-primary-dark);
+    color: #ccc;
     margin: 0 20px 15px;
     line-height: 1.5;
 }
@@ -1064,7 +955,7 @@ html {
     }
 
     .news-scroller {
-        justify-content: flex-start;
+        justify-content: flex-start; /* lets it scroll naturally instead of centering oversized content */
         gap: 16px;
     }
 
@@ -1072,176 +963,49 @@ html {
         flex: 0 0 240px;
     }
 }
+
+
 /* ============================= */
-/* CTA BAND (Careers + Enquiry)   */
+/* CAREERS                        */
 /* ============================= */
-.ctaBand {
-    position: relative;
-    padding: 100px 20px;
+.careers {
+    padding: 80px 20px;
     background: var(--color-dark);
-    overflow: hidden;
-}
-
-.ctaBand::before {
-    content: "";
-    position: absolute;
-    top: -40%;
-    right: -10%;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(93, 193, 245, 0.15) 0%, transparent 70%);
-    pointer-events: none;
-}
-
-.ctaBand__container {
-    position: relative;
-    z-index: 1;
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    gap: 60px;
-}
-
-.ctaBand__divider {
-    width: 1px;
-    align-self: stretch;
-    background: linear-gradient(to bottom, transparent, rgba(93, 193, 245, 0.35), transparent);
-}
-
-.ctaBand__card {
-    flex: 1;
-    text-align: left;
-    min-width: 0;
-}
-
-.ctaBand__eyebrow {
-    display: inline-block;
-    color: var(--color-accent);
-    font-size: 0.8rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-bottom: 12px;
-}
-
-.ctaBand__title {
+    text-align: center;
     color: var(--color-white);
-    font-size: 2rem;
-    margin-bottom: 14px;
-    line-height: 1.2;
 }
 
-.ctaBand__text {
-    color: #bbb;
-    line-height: 1.6;
-    margin-bottom: 28px;
-    max-width: 380px;
+.careers .section__title {
+    color: var(--color-white);
 }
 
-.ctaBand__btn {
+.careers .section__text {
+    color: #ccc;
+}
+
+.button--wide {
     display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 14px 32px;
-    border: 2px solid transparent;
-    border-radius: 4px;
-    font-size: 1rem;
-    text-decoration: none;
-    white-space: nowrap;
     width: auto;
-    box-sizing: border-box;
-}
-
-.ctaBand__btn--wide {
     padding: 15px 40px;
 }
 
-.ctaBand__btn--solid {
-    background: var(--color-primary);
-    color: var(--color-white);
-    border-color: var(--color-primary);
-}
-
-.ctaBand__btn--solid:hover {
-    background: var(--color-accent);
-    border-color: var(--color-accent);
-    color: var(--color-dark);
-    transition: all 0.3s ease;
-}
-
-.ctaBand__btn--outline {
-    background: transparent;
-    border-color: var(--color-accent);
-    color: var(--color-accent);
-}
-
-.ctaBand__btn--outline:hover {
-    background: var(--color-accent);
-    color: var(--color-dark);
-}
-
-.ctaBand__btnRow {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-
-@media (max-width: 768px) {
-    .ctaBand__container {
-        flex-direction: column;
-        gap: 40px;
-        text-align: center;
-    }
-
-    .ctaBand__card {
-        text-align: center;
-        width: 100%;
-    }
-
-    .ctaBand__text {
-        margin: 0 auto 28px;
-    }
-
-    .ctaBand__divider {
-        width: 60%;
-        height: 1px;
-        background: linear-gradient(to right, transparent, rgba(93, 193, 245, 0.35), transparent);
-    }
-
-    .ctaBand__btnRow {
-        justify-content: center;
-    }
-}
-
 @media (max-width: 480px) {
-    .ctaBand {
-        padding: 60px 16px;
+    .careers {
+        padding: 50px 16px;
     }
 
-    .ctaBand__title {
-        font-size: 1.6rem;
-    }
-
-    .ctaBand__btnRow {
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .ctaBand__btn {
-        width: 100%;
+    .button--wide {
+        padding: 13px 28px;
+        font-size: 0.95rem;
     }
 }
-
-
-
 
 /* ============================= */
-/* CONTACT FORM (contactUs.html)  */
+/* CONTACT FORM                   */
 /* ============================= */
 .contact {
     padding: 80px 20px;
-    background: linear-gradient(135deg, #eaf3fc 0%, var(--color-white) 50%, #eaf3fc 100%);
+    background: var(--color-light);
 }
 
 .contact-form {
@@ -1270,7 +1034,7 @@ html {
 .contact-form input:focus,
 .contact-form textarea:focus {
     outline: none;
-    border-color: var(--color-white);
+    border-color: var(--color-accent);
     box-shadow: 0 0 0 3px rgba(93, 193, 245, 0.25);
 }
 
@@ -1495,6 +1259,8 @@ html {
     }
 }
 
+/* FIX: footer__row still used gap:60px between 480–700px causing
+   awkward wrapping on mid-size phones/small tablets */
 @media (max-width: 480px) {
     .footer {
         padding: 40px 16px 20px;
@@ -1624,7 +1390,6 @@ html {
 }
 
 
-
 /* ============================= */
 /* SUSTAINABILITY & SOCIAL VALUE  */
 /* ============================= */
@@ -1635,8 +1400,8 @@ html {
 
 .sustainability {
     padding: 90px 20px;
-    background: linear-gradient(135deg, #0f1c22 0%, #0f1c22 30%, #10201d 100%);
-    border-top: 1px solid var(--color-dark);
+    background: linear-gradient(135deg, #10201d 0%, var(--color-dark) 55%, #0f1c22 100%);
+    border-top: 1px solid rgba(31, 150, 120, 0.25);
     border-bottom: 1px solid rgba(31, 150, 120, 0.25);
 }
 
@@ -1714,7 +1479,7 @@ html {
 }
 
 .sustainability__point p {
-    color: #fff;
+    color: #ddd;
     line-height: 1.6;
     padding-top: 6px;
 }

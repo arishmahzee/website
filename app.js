@@ -60,6 +60,21 @@ if (slides.length > 0) {
     setInterval(showNextSlide, 5000);
 }
 
+// ============================= //
+// ACCREDITATIONS DISPLAY ON HERO//
+// ============================= //
+
+
+document.querySelectorAll('.hero__accreditations img').forEach(img => {
+    img.addEventListener('click', () => {
+        const isExpanded = img.classList.contains('expanded');
+        document.querySelectorAll('.hero__accreditations img').forEach(i => i.classList.remove('expanded'));
+        if (!isExpanded) {
+            img.classList.add('expanded');
+        }
+    });
+});
+
 
 // ============================= //
 // STATS COUNT-UP (Screen 2)      //
@@ -834,19 +849,19 @@ if (homeCaseStudiesGrid) {
 const HOME_NEWS = [
     {
         title: "News Title One",
-        image: "images/news1.jpg",
+        image: "images/replaceTeam.jpg",
         summary: "Short paragraph summary goes here.",
         details: "A longer version of News Title One goes here — the full story, context, and why it matters."
     },
     {
         title: "News Title Two",
-        image: "images/news2.jpg",
+        image: "images/replaceCAD.jpg",
         summary: "Short paragraph summary goes here.",
         details: "A longer version of News Title Two goes here — the full story, context, and why it matters."
     },
     {
         title: "News Title Three",
-        image: "images/news3.jpg",
+        image: "images/renameAbout.jpg",
         summary: "Short paragraph summary goes here.",
         details: "A longer version of News Title Three goes here — the full story, context, and why it matters."
     }
@@ -946,62 +961,7 @@ if (cookieBanner && cookieAccept) {
 }
 
 
-// =========================================================
-// CONTACT US FORM — sends data to the backend server
-// =========================================================
-// While testing on your own computer, this points at
-// http://localhost:3000 — that's the small backend server
-// from the "manstal-backend" folder, running via `npm start`.
-//
-// Once your backend is hosted live on the internet, change
-// BACKEND_URL below to that live address, e.g.
-// "https://your-backend-address.com/api/contact"
-// =========================================================
 
-const contactUsForm = document.getElementById('contact-us-form');
-
-if (contactUsForm) {
-    const BACKEND_URL = "http://localhost:3000/api/contact";
-    const statusEl = document.getElementById('contact-form-status');
-    const submitBtn = document.getElementById('contact-submit-btn');
-
-    contactUsForm.addEventListener('submit', async (event) => {
-        event.preventDefault();
-
-        const formData = new FormData(contactUsForm);
-        const data = Object.fromEntries(formData);
-
-        submitBtn.disabled = true;
-        submitBtn.textContent = "Sending...";
-        statusEl.textContent = "";
-
-        try {
-            const response = await fetch(BACKEND_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data)
-            });
-
-            const result = await response.json();
-
-            if (result.success) {
-                statusEl.textContent = "Thanks! Your message has been sent — we'll be in touch soon.";
-                statusEl.style.color = "#1F4E96";
-                contactUsForm.reset();
-            } else {
-                statusEl.textContent = "Something went wrong sending your message. Please try again, or email us directly.";
-                statusEl.style.color = "#c0392b";
-            }
-        } catch (error) {
-            console.error('Contact form error:', error);
-            statusEl.textContent = "Couldn't reach the server. Please try again, or email us directly at info@manstallimited.com.";
-            statusEl.style.color = "#c0392b";
-        } finally {
-            submitBtn.disabled = false;
-            submitBtn.textContent = "Send Message";
-        }
-    });
-}
 
 
 

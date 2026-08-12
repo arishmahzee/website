@@ -75,7 +75,6 @@ document.querySelectorAll('.hero__accreditations img').forEach(img => {
     });
 });
 
-
 // ============================= //
 // STATS COUNT-UP (Screen 2)      //
 // ============================= //
@@ -83,19 +82,44 @@ document.querySelectorAll('.hero__accreditations img').forEach(img => {
 const statNumbers = document.querySelectorAll('.stat__number');
 
 function animateCount(el) {
-    const target = parseInt(el.dataset.target, 10);
+    const targetStr = el.dataset.target;   // e.g. "£50k–£10m", "75–100", "40+ "
     const duration = 1500;
     const startTime = performance.now();
+
+    // Find every run of digits in the string, with its position
+    const matches = [...targetStr.matchAll(/\d+/g)];
+
+    // Rebuild the string for a given progress (0 -> 1)
+    function buildString(progress) {
+        let result = '';
+        let lastIndex = 0;
+
+        matches.forEach(match => {
+            const numStr = match[0];
+            const start = match.index;
+            const end = start + numStr.length;
+            const targetNum = parseInt(numStr, 10);
+            const currentNum = Math.floor(progress * targetNum);
+
+            result += targetStr.slice(lastIndex, start); // text before this number, unchanged
+            result += currentNum;                        // animated number
+            lastIndex = end;
+        });
+
+        result += targetStr.slice(lastIndex); // any trailing text
+        return result;
+    }
 
     function update(currentTime) {
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / duration, 1);
-        el.textContent = Math.floor(progress * target);
+
+        el.textContent = buildString(progress);
 
         if (progress < 1) {
             requestAnimationFrame(update);
         } else {
-            el.textContent = target;
+            el.textContent = targetStr; // snap to exact final text, no rounding drift
         }
     }
 
@@ -562,26 +586,40 @@ if (caseStudiesGrid) {
 // =========================================================
 const SERVICES = [
     {
-        title: "Service One",
-        image: "images/service-1.jpg",
+        title: "Electrical installation ",
+        image: "images/services-elec.jpg",
         summary: "One line description of the service goes here.",
         details: "A longer description of Service One goes here — what it involves, who it's for, and what the client gets out of it."
     },
     {
-        title: "Service Two",
-        image: "images/service-2.jpg",
+        title: "Mechanical installation ",
+        image: "images/services-mech.jpg",
         summary: "One line description of the service goes here.",
         details: "A longer description of Service Two goes here — what it involves, who it's for, and what the client gets out of it."
     },
     {
-        title: "Service Three",
-        image: "images/service-3.jpg",
+        title: "Project design and BIM ",
+        image: "images/services-bim.jpg",
         summary: "One line description of the service goes here.",
         details: "A longer description of Service Three goes here — what it involves, who it's for, and what the client gets out of it."
     },
     {
-        title: "Service Four",
-        image: "images/service-4.jpg",
+        title: "Project Management ",
+        image: "images/services-pm.jpg",
+        summary: "One line description of the service goes here.",
+        details: "A longer description of Service Four goes here — what it involves, who it's for, and what the client gets out of it."
+    },
+
+    {
+        title: "Planned and Reactive Maintenance ",
+        image: "images/services-maintin.jpg",
+        summary: "One line description of the service goes here.",
+        details: "A longer description of Service Four goes here — what it involves, who it's for, and what the client gets out of it."
+    },
+
+    {
+        title: "Renewables and Energy Efficiency  ",
+        image: "images/services-energy.jpg",
         summary: "One line description of the service goes here.",
         details: "A longer description of Service Four goes here — what it involves, who it's for, and what the client gets out of it."
     }
@@ -659,25 +697,25 @@ if (servicesGrid) {
 const HOME_PROJECTS = [
     {
         title: "Project One",
-        image: "images/project-1.jpg",
+        image: "images/replace_project1.png",
         summary: "Short description of the project goes here and what it involved and the outcome for the client.",
         details: "A longer description of Project One goes here — what it involved, the challenges, and the outcome for the client."
     },
     {
         title: "Project Two",
-        image: "images/project-2.jpg",
+        image: "images/replace_project2.png",
         summary: "Short description of the project goes here and what it involved and the outcome for the client.",
         details: "A longer description of Project Two goes here — what it involved, the challenges, and the outcome for the client."
     },
     {
         title: "Project Three",
-        image: "images/project-3.jpg",
+        image: "images/replace_project_3.png",
         summary: "Short description of the project goes here and what it involved and the outcome for the client.",
         details: "A longer description of Project Three goes here — what it involved, the challenges, and the outcome for the client."
     },
     {
         title: "Project Four",
-        image: "images/project-4.jpg",
+        image: "images/replace_project_4.png",
         summary: "Short description of the project goes here and what it involved and the outcome for the client.",
         details: "A longer description of Project Four goes here — what it involved, the challenges, and the outcome for the client."
     }
@@ -754,25 +792,25 @@ if (homeProjectsGrid) {
 const HOME_CASE_STUDIES = [
     {
         title: "Case Study One",
-        image: "images/case-1-a.jpg",
+        image: "images/replace_cs1.png",
         summary: "Short summary of the project goes here.",
         details: "A longer description of Case Study One goes here — what it involved, the challenges, and the outcome for the client."
     },
     {
         title: "Case Study Two",
-        image: "images/case-2-a.jpg",
+        image: "images/replace_cs2.png",
         summary: "Short summary of the project goes here.",
         details: "A longer description of Case Study Two goes here — what it involved, the challenges, and the outcome for the client."
     },
     {
         title: "Case Study Three",
-        image: "images/case-3-a.jpg",
+        image: "images/replace_cs3.png",
         summary: "Short summary of the project goes here.",
         details: "A longer description of Case Study Three goes here — what it involved, the challenges, and the outcome for the client."
     },
     {
         title: "Case Study Four",
-        image: "images/case-4-a.jpg",
+        image: "images/replace_cs4.png",
         summary: "Short summary of the project goes here.",
         details: "A longer description of Case Study Four goes here — what it involved, the challenges, and the outcome for the client."
     }
@@ -1107,20 +1145,22 @@ if (teamGrid) {
     // linkedin  -> full https://linkedin.com/in/... URL
     // bio       -> shown in the pop-up only (keep cards clean)
     const TEAM_MEMBERS = [
-        {
-            name: "Jane Doe",
-            role: "Managing Director",
-            image: "images/team/jane-doe.jpg",
-            linkedin: "https://www.linkedin.com/in/jane-doe",
-            bio: "A short bio about Jane's background, experience, and role at Manstal Limited goes here."
-        },
-        {
-            name: "John Smith",
-            role: "Head of Operations",
+
+            {
+            name: "Aaron Arnold",
+            role: "Project Director ",
             image: "images/team/john-smith.jpg",
-            linkedin: "https://www.linkedin.com/in/john-smith",
-            bio: "A short bio about John's background, experience, and role at Manstal Limited goes here."
+            linkedin: "https://uk.linkedin.com/in/aaron-arnold-669667192",
+            bio: "Aaron Arnold is an accomplished Project Director with 25 years of experience in electrical installation, project management, and commercial office fit-out. With a comprehensive understanding of the industry from initial survey and design through to estimating, project delivery, and completion, Aaron brings a wealth of technical expertise and practical experience to every project. Over the course of his career, Aaron has successfully delivered more than 200 commercial office fit-out projects across London and the surrounding areas. His extensive experience enables him to manage complex projects effectively, ensuring high standards of quality, programme, and client satisfaction. Known for his hands-on approach, attention to detail, and strong project leadership, Aaron works closely with clients, consultants, contractors, and project teams to deliver solutions that meet both technical requirements and commercial objectives."
         },
+        {
+            name: "Edward Williams",
+            role: "Senior Mechanical Project Manager",
+            image: "images/team/jane-doe.jpg",
+            linkedin: "https://uk.linkedin.com/in/edward-williams-76a98925",
+            bio: "Edward Williams is a Senior Mechanical Project Manager with over 25 years of experience in the mechanical engineering and MEP sector. He specialises in the delivery of complex mechanical building services projects, combining strong technical knowledge with commercial management, design coordination and client liaison.Having progressed from hands-on project engineering into senior design, estimating and pre-construction roles, Edward brings a broad understanding of projects from pre-construction and design through to installation and completion.   He has worked across commercial, healthcare, education, logistics, residential, office and leisure sectors and has successfully supported the delivery and tendering of projects ranging from £5m to £26.5m."
+        },
+
         {
             name: "Amara Okafor",
             role: "Lead Engineer",

@@ -9,22 +9,14 @@
 </head>
 <body>
 
-    <!-- ========================================================
-         NAVBAR (same as homepage, but with navbar--solid so it
-         has a dark background right away — no hero image behind
-         it on this page to fade the ribbon in against)
-    ========================================================= -->
     <nav class="navbar navbar--solid">
         <div class="navbar__container">
-
             <div class="navbar__logo-ribbon"></div>
-
             <div class="navbar__toggle" id="mobile-menu">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
             </div>
-
             <a href="/" id="navbar__logo">
                 <img src="images/logo.png" alt="Manstal Limited icon" id="navbar__logo-icon">
                 <div class="navbar__logo-text">
@@ -41,69 +33,53 @@
                 <li class="navbar__item"><a href="meetTeam.html" class="navbar__links">Meet the Team</a></li>
                 <li class="navbar__btn"><a href="contactUs.html" class="button">Contact Us</a></li>
             </ul>
-
         </div>
     </nav>
 
     <!-- ========================================================
-         ABOUT HERO
-         Big "About / Us" title left-aligned, paragraph on the
-         right. Two columns that stack on mobile.
+         ABOUT HERO — split layout: full-bleed image left,
+         dark panel with eyebrow/title/text/link right
     ========================================================= -->
     <section class="about-hero">
-        <div class="about-hero__container">
-
-            <h1 class="about-hero__title">
-                <span>About</span>
-                <span>Us</span>
-            </h1>
-
-            <div class="about-hero__text">
-                <p>
-                    A longer paragraph about the company's story, values, and approach
-                    goes here. This is where you can talk about how Manstal Limited
-                    started, what drives the team, and what makes the way you work
-                    different from everyone else in the industry.
-                </p>
-            </div>
-
+        <div class="about-hero__image">
+            <img src="images/about_us_index.png" alt="Manstal Limited">
         </div>
+
+
+       <div class="about-hero__panel">
+        <div class="about-hero__title-wrap">
+            <span class="about-hero__ghost">About</span>
+            <h1 class="about-hero__title">About Us</h1>
+            <span class="about-hero__underline"></span>
+        </div>
+        <p class="about-hero__text">
+            For over 40 years, Manstal Limited has been delivering high-quality Mechanical and Electrical building services to clients across the UK, spanning commercial, retail, education, healthcare, industrial, public sector, and residential projects. Our expertise covers the full project lifecycle — from design and pre-construction, through installation and commissioning, to ongoing maintenance — giving clients a single, trusted partner from concept to completion.
+        </p>
+        <a href="contactUs.html" class="about-hero__link">Contact us <span class="arrow">&#8594;</span></a>
+    </div>
+
     </section>
 
-    <!-- ========================================================
-         FULL-WIDTH IMAGE
-         Spans the entire horizontal length of the screen, then
-         the image stops and normal content resumes below.
-    ========================================================= -->
-    <section class="about-fullimage">
-        <img src="images/renameAbout.jpg" alt="Manstal Limited">
-    </section>
-
-    <!-- ========================================================
-         MORE INFO
-         Additional content underneath the image
-    ========================================================= -->
     <section class="about-more">
         <div class="about-more__container">
             <h2>Our Approach</h2>
             <p>
-                More detail about how the company operates goes here — your process,
-                what clients can expect, and the values that guide every project.
+                Our approach is collaborative by design. We work in close partnership with developers, main contractors, consultants, and end users, taking the time to understand the unique demands of every project before we begin. This attention to detail, combined with genuine technical expertise, allows us to deliver efficient, cost-effective, and sustainable solutions — whatever the scale or complexity.
             </p>
             <p>
-                A second paragraph can go here if you want to expand on your history,
-                your team, or specific things that set Manstal Limited apart.
+                We hold ourselves to the highest standards of health, safety, and quality, and we take pride in delivering projects safely, on time, and within budget. It's this consistency that has earned us long-term relationships with our clients — more than 50% of whom have worked with us for over 15 years.
+            </p>
+            <p>
+                Sustainability sits at the core of how we work. We help clients reduce environmental impact and improve building performance through low-carbon technologies such as heat pumps, EV charging infrastructure, and Building Management Systems (BMS), supporting smarter, more energy-efficient buildings for the future.
+            </p>
+            <p>
+                At Manstal Limited, our commitment to continuous improvement and engineering excellence drives everything we do — helping us build lasting value for every client, on every project.
             </p>
         </div>
     </section>
 
-        <!-- ========================================================
-         FOOTER
-         Contact info + address on top, copyright/contact link below
-    ========================================================= -->
    <footer class="footer">
     <div class="footer__container">
-
         <div class="footer__block">
             <h3 class="footer__title">Get In Touch</h3>
             <div class="footer__row">
@@ -117,9 +93,7 @@
                 </div>
             </div>
         </div>
-
         <div class="footer__divider"></div>
-
         <div class="footer__block footer__block--address">
             <h3 class="footer__title">Address</h3>
             <p class="footer__address">
@@ -128,9 +102,7 @@
                 AB1 2CD
             </p>
         </div>
-
     </div>
-
     <div class="footer__bottom">
         <p>&copy; 2026 Manstal Limited. All rights reserved.</p>
         <a href="contactUs.html" class="footer__contact-link">Contact Us</a>
@@ -144,7 +116,6 @@
         <p>We don't currently use tracking cookies. Read our <a href="cookies.html">Cookie Policy</a> for details.</p>
         <button class="cookie-banner__accept" id="cookieAccept">Got it</button>
     </div>
-
 
     <script src="app.js"></script>
 </body>

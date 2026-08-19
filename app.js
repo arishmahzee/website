@@ -286,7 +286,7 @@ const PROJECTS = [
     {
         title: "Project One",
         image: "images/project-1.jpg",
-        colorClass: "project-card--amber",
+        colorClass: "",
         summary: "Short summary of the project goes here.",
         sector: "Retail",
         service: "Design & Build",
@@ -295,43 +295,43 @@ const PROJECTS = [
     {
         title: "Project Two",
         image: "images/project-2.jpg",
-        colorClass: "project-card--coral",
+        colorClass: "",
         summary: "Short summary of the project goes here.",
-        sector: "Retail",
-        service: "Design & Build",
+        sector: "Health",
+        service: "Project Design & BIM",
         details: "A longer description of Project Two goes here — what it involved, the challenges, and the outcome for the client."
     },
     {
         title: "Project Three",
         image: "images/project-3.jpg",
-        colorClass: "project-card--teal",
+        colorClass: "",
         summary: "Short summary of the project goes here.",
-        sector: "Retail",
-        service: "Design & Build",
+        sector: "Health",
+        service: "Project Management",
         details: "A longer description of Project Three goes here — what it involved, the challenges, and the outcome for the client."
     },
     {
         title: "Project Four",
         image: "images/project-4.jpg",
-        colorClass: "project-card--violet",
+        colorClass: "",
         summary: "Short summary of the project goes here.",
-        sector: "Retail",
+        sector: "Industrial",
         service: "Design & Build",
         details: "A longer description of Project Four goes here — what it involved, the challenges, and the outcome for the client."
     },
     {
         title: "Project Five",
         image: "images/project-5-a.jpg",
-        colorClass: "project-card--amber",
+        colorClass: "",
         summary: "Short summary of the project goes here.",
-        sector: "Retail",
-        service: "Design & Build",
+        sector: "Commercial",
+        service: "Planned & Reactive Maintainence",
         details: "A longer description of Project Five goes here — what it involved, the challenges, and the outcome for the client."
     },
     {
         title: "Project Six",
         image: "images/project-6-a.jpg",
-        colorClass: "project-card--coral",
+        colorClass: "",
         summary: "Short summary of the project goes here.",
         sector: "Education",
         service: "Design & Build",
@@ -459,58 +459,89 @@ if (projectsGrid) {
     });
 }
 
-
 // =========================================================
 // CASE STUDIES PAGE — DATA
 // EDIT THIS ARRAY TO ADD / REMOVE / CHANGE CASE STUDIES
+// bulletPoints is OPTIONAL — omit it or leave as [] if a
+// case study doesn't need a bullet list.
 // =========================================================
 const CASE_STUDIES = [
     {
-        title: "Case Study One",
-        image: "images/case-1-a.jpg",
+        title: "Waverly School",
+        image: "images/REPLACE_CS1_waverly_school.png",
         summary: "Short summary of the project goes here.",
-        details: "A longer description of Case Study One goes here — what it involved, the challenges, and the outcome for the client."
+        sector: "Education",
+        service: "Electrical Installation",
+        details: "Waverly School is a community and sixth form school located in the Small Heath Area of Birmingham. The project consisted of two new two storey blocks, one being a teaching facility consisting of science, IT and multi-use rooms. The second block was a community facility offering a new dining area, and multi-use activity centre.",
+        bulletPoints: [
+            "LV distribution systems",
+            "Small power system",
+            "Internal lighting",
+            "Data distribution",
+            "Telecoms system",
+            "Access control",
+            "CCTV",
+            "Intruder alarms",
+            "Fire alarms",
+            "AV Systems",
+            "Emergency voice system",
+            "Lightning protection",
+        ]
     },
     {
         title: "Case Study Two",
         image: "images/case-2-a.jpg",
         summary: "Short summary of the project goes here.",
+        sector: "Retail",
+        service: "Design & Build",
         details: "A longer description of Case Study Two goes here — what it involved, the challenges, and the outcome for the client."
     },
     {
         title: "Case Study Three",
         image: "images/case-3-a.jpg",
         summary: "Short summary of the project goes here.",
+        sector: "Retail",
+        service: "Design & Build",
         details: "A longer description of Case Study Three goes here — what it involved, the challenges, and the outcome for the client."
     },
     {
         title: "Case Study Four",
         image: "images/case-4-a.jpg",
         summary: "Short summary of the project goes here.",
+        sector: "Retail",
+        service: "Design & Build",
         details: "A longer description of Case Study Four goes here — what it involved, the challenges, and the outcome for the client."
     },
     {
         title: "Case Study Five",
         image: "images/case-5-a.jpg",
         summary: "Short summary of the project goes here.",
+        sector: "Retail",
+        service: "Design & Build",
         details: "A longer description of Case Study Five goes here — what it involved, the challenges, and the outcome for the client."
     },
     {
         title: "Case Study Six",
         image: "images/case-6-a.jpg",
         summary: "Short summary of the project goes here.",
+        sector: "Retail",
+        service: "Design & Build",
         details: "A longer description of Case Study Six goes here — what it involved, the challenges, and the outcome for the client."
     },
     {
         title: "Case Study Seven",
         image: "images/case-7-a.jpg",
         summary: "Short summary of the project goes here.",
+        sector: "Retail",
+        service: "Design & Build",
         details: "A longer description of Case Study Seven goes here — what it involved, the challenges, and the outcome for the client."
     },
     {
         title: "Case Study Eight",
         image: "images/case-8-a.jpg",
         summary: "Short summary of the project goes here.",
+        sector: "Retail",
+        service: "Design & Build",
         details: "A longer description of Case Study Eight goes here — what it involved, the challenges, and the outcome for the client."
     }
     // Add more case studies here following the same format...
@@ -539,17 +570,28 @@ if (caseStudiesGrid) {
         caseStudiesGrid.appendChild(card);
     });
 
-    const caseOverlay    = document.getElementById('caseModalOverlay');
-    const caseModalImg   = document.getElementById('caseModalImg');
-    const caseModalTitle = document.getElementById('caseModalTitle');
-    const caseModalBody  = document.getElementById('caseModalBody');
-    const caseModalClose = document.getElementById('caseModalClose');
+    const caseOverlay     = document.getElementById('caseModalOverlay');
+    const caseModalImg    = document.getElementById('caseModalImg');
+    const caseModalTitle  = document.getElementById('caseModalTitle');
+    const caseModalBody   = document.getElementById('caseModalBody');
+    const caseModalBullets = document.getElementById('caseModalBullets');
+    const caseModalClose  = document.getElementById('caseModalClose');
 
     function openCaseModal(study) {
         caseModalImg.src = study.image;
         caseModalImg.alt = study.title;
         caseModalTitle.textContent = study.title;
         caseModalBody.textContent  = study.details;
+
+        // NEW — build the bullet list, or clear it if none provided
+        caseModalBullets.innerHTML = '';
+        if (study.bulletPoints && study.bulletPoints.length > 0) {
+            study.bulletPoints.forEach(point => {
+                const li = document.createElement('li');
+                li.textContent = point;
+                caseModalBullets.appendChild(li);
+            });
+        }
 
         caseOverlay.classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -578,8 +620,6 @@ if (caseStudiesGrid) {
         if (e.key === 'Escape' && caseOverlay.classList.contains('active')) closeCaseModal();
     });
 }
-
-
 // =========================================================
 // SERVICES PAGE — DATA
 // EDIT THIS ARRAY TO ADD / REMOVE / CHANGE SERVICES
@@ -712,13 +752,8 @@ const HOME_PROJECTS = [
         image: "images/replace_project_3.png",
         summary: "Short description of the project goes here and what it involved and the outcome for the client.",
         details: "A longer description of Project Three goes here — what it involved, the challenges, and the outcome for the client."
-    },
-    {
-        title: "Project Four",
-        image: "images/replace_project_4.png",
-        summary: "Short description of the project goes here and what it involved and the outcome for the client.",
-        details: "A longer description of Project Four goes here — what it involved, the challenges, and the outcome for the client."
     }
+    
 ];
 
 // =========================================================
@@ -1146,35 +1181,122 @@ if (teamGrid) {
     // bio       -> shown in the pop-up only (keep cards clean)
     const TEAM_MEMBERS = [
 
-            {
+        {
             name: "Aaron Arnold",
             role: "Project Director ",
-            image: "images/team/john-smith.jpg",
+            image: "images/replace_bio.jpg",
             linkedin: "https://uk.linkedin.com/in/aaron-arnold-669667192",
             bio: "Aaron Arnold is an accomplished Project Director with 25 years of experience in electrical installation, project management, and commercial office fit-out. With a comprehensive understanding of the industry from initial survey and design through to estimating, project delivery, and completion, Aaron brings a wealth of technical expertise and practical experience to every project. Over the course of his career, Aaron has successfully delivered more than 200 commercial office fit-out projects across London and the surrounding areas. His extensive experience enables him to manage complex projects effectively, ensuring high standards of quality, programme, and client satisfaction. Known for his hands-on approach, attention to detail, and strong project leadership, Aaron works closely with clients, consultants, contractors, and project teams to deliver solutions that meet both technical requirements and commercial objectives."
         },
+
         {
-            name: "Edward Williams",
-            role: "Senior Mechanical Project Manager",
-            image: "images/team/jane-doe.jpg",
-            linkedin: "https://uk.linkedin.com/in/edward-williams-76a98925",
-            bio: "Edward Williams is a Senior Mechanical Project Manager with over 25 years of experience in the mechanical engineering and MEP sector. He specialises in the delivery of complex mechanical building services projects, combining strong technical knowledge with commercial management, design coordination and client liaison.Having progressed from hands-on project engineering into senior design, estimating and pre-construction roles, Edward brings a broad understanding of projects from pre-construction and design through to installation and completion.   He has worked across commercial, healthcare, education, logistics, residential, office and leisure sectors and has successfully supported the delivery and tendering of projects ranging from £5m to £26.5m."
+            name: "Harry Maskell",
+            role: "Project Director ",
+            image: "images/replace_bio.jpg",
+            linkedin: "linkedin.com/in/alfie-timmins-581a422b3 ",
+            bio: "Harry Maskell is a Director with 18 years of experience in installation, project management, and commercial office fit-outs. He has a proven track record of successfully delivering projects of various sizes, primarily across London, from pre-construction through to completion. Harry is recognised for meeting tight deadlines, maintaining high standards, and building strong relationships with both new and existing clients."
         },
 
         {
-            name: "Amara Okafor",
-            role: "Lead Engineer",
-            image: "images/team/amara-okafor.jpg",
+            name: "David Climo",
+            role: "Contracts Director ",
+            image: "images/replace_bio.jpg",
             linkedin: "https://www.linkedin.com/in/amara-okafor",
-            bio: "A short bio about Amara's background, experience, and role at Manstal Limited goes here."
+            bio: "David joined Manstal Ltd in 2006 and is involved in a number of projects across many different market sectors from initial conception to completion of employers requirements through to commissioning. David has experience of managing and delivering live education campus projects and strives to achieve client expectations. His role is to ensure the delivery of the M&E services to a project high standard, safe and on time."
+        },
+
+        {
+            name: "Edward Williams",
+            role: "Senior Mechanical Project Manager",
+            image: "images/replace_bio.jpg",
+            linkedin: "https://uk.linkedin.com/in/edward-williams-76a98925",
+            bio: "Edward Williams is a Senior Mechanical Project Manager with over 25 years of experience in the mechanical engineering and MEP sector. He specialises in the delivery of complex mechanical building services projects, combining strong technical knowledge with commercial management, design coordination and client liaison.Having progressed from hands-on project engineering into senior design, estimating and pre-construction roles, Edward brings a broad understanding of projects from pre-construction and design through to installation and completion.   He has worked across commercial, healthcare, education, logistics, residential, office and leisure sectors and has successfully supported the delivery and tendering of projects ranging from £5m to £26.5m."
+        },
+      
+        
+        {
+            name: "Andy Wilkinson",
+            role: "Electrical Project Manager",
+            image: "images/replace_bio.jpg",
+            linkedin: "https://www.linkedin.com/in/amara-okafor",
+            bio: "Andy Wilkinson is an accomplished Project Manager with 27 years of experience in electrical installation, project management, estimating and commercial office fit-out. With a comprehensive understanding of the industry from initial survey and design through to estimating, project delivery, and completion, Andy brings a wealth of technical expertise and practical experience to every project. Over the course of his career, Andy has successfully project managed more than 50 projects in and around London and the surrounding areas and other areas of the country from office fit outs to LV panel upgrades. His extensive experience enables him to manage complex projects effectively, ensuring high standards of quality, programme, and client satisfaction. As of recent Andy has been spending more of his time carrying out pre-contracts side of the business but also still carries some project management due to his time been split between the two rolls. Known for hands-on approach, attention to detail, and strong project leadership, Andy has closely with consultants, contractors, and project teams to deliver solutions that meet both technical requirements and commercial objectives. "
         },
         {
-            name: "Arishmah Zeeshan",
-            role: "Best Intern Ever",
-            image: "images/team/amara-okafor.jpg",
-            linkedin: "https://www.linkedin.com/in/arishmah-zeeshan",
-            bio: "A short bio about background, experience, and role at Manstal Limited goes here."
+
+            name: "Trevor Savatard",
+            role: "Electrical Project Manager",
+            image: "images/replace_bio.jpg",
+            linkedin: "https://www.linkedin.com/in/trevor-savatard-76572960/",
+            bio: "Trevor Savatard is an Electrical Project Manager with over 30 years of industry-leading experience. At Manstal Ltd, he oversees the end-to-end execution of electrical construction projects valued up to £750k. Specialising in Design & Build (D&B) frameworks, Trevor Savatard manages projects from initial pre-contract design and in-depth site surveys through to final client handover. He excels at precise labour coordination and implementing value engineering techniques that optimize budgets without sacrificing quality.Trevor Savatard is deeply committed to operational safety, ensuring rigid compliance with risk and method statements (RAMS) and obtaining all necessary compliance certifications. A natural leader and problem-solver, he serves as the core bridge between subcontractors and clients, consistently driving project efficiency, timeline adherence, and exceptional service value"
+        },
+     
+        {
+            name: "Keith Macbeth ",
+            role: "Electrical Projects Manager ",
+            image: "images/replace_bio.jpg",
+            linkedin: "https://www.linkedin.com/in/amara-okafor",
+            bio: "I have been employed by Mansal since June 1997. After completing my apprenticeship with Mansal, I quickly became a site supervisor for many projects. In 2010 I became the lead site manager on various projects including a new build in 2021 for the University of Birmingham (TSE SRIC Tyseley Business Park).In 2022 I was offered a position as Project manager within Mansal, and have worked within that role on the complex refurbishment of Two Colmore Square, in Birmingham city centre."
+        },
+
+        {
+            name: "Kshitij Rajiv Nigadikar",
+            role: "BIM Manager",
+            image: "images/replace_bio.jpg",
+            linkedin: "https://www.linkedin.com/in/amara-okafor",
+            bio: "Kshitij Rajiv Nigadikar is a BIM Manager with 8 years of experience in BIM, digital construction, architectural design, and M&E project coordination. He is highly skilled in BIM coordination, model management, multidisciplinary coordination, and BIM software, including Revit, Navisworks, Solibri, BIMcollab, and other digital construction platforms. Kshitij has extensive experience in managing BIM workflows, coordinating complex projects, maintaining model standards, and supporting teams in delivering accurate, compliant, and information-rich models."
+        },
+       
+        
+        {
+            name: "Brian Oguno",
+            role: "BIM Technician",
+            image: "images/replace_bio.jpg",
+            linkedin: "www.linkedin.com/in/brian-oguno",
+            bio: "Brian is an Architectural Technology graduate and BIM Technician with a strong focus on digital design, multidisciplinary coordination, and the delivery of accurate, efficient documentation. With professional experience across commercial, healthcare, retail, office, and film studio projects, Brian works with architectural and structural disciplines to develop and coordinate BIM models throughout the technical design stage. His technical expertise includes Revit, AutoCAD, and Navisworks, with particular experience in clash detection, model management, drawing production, and BIM coordination in accordance with ISO 19650 standards. "
+        },
+
+        {
+            name: "Alfie Timmins",
+            role: "Junior Project Manager",
+            image: "images/replace_bio.jpg",
+            linkedin: "linkedin.com/in/alfie-timmins-581a422b3 ",
+            bio: "Alfie is a Junior Project Manager at Manstal, working across building services projects from pre-construction through to delivery. He supports the coordination of mechanical and electrical services, working closely with clients, consultants, subcontractors and site teams to help ensure projects are delivered efficiently and to a high standard. Alfie holds a HNC in Building Services Engineering, which provides a strong technical foundation for his role and supports his understanding of mechanical and electrical building services. This technical knowledge, combined with his project experience, supports his involvement across project coordination, commercial management and on-site delivery. " 
+        },
+
+         {
+            name: "Richard Beardmore",
+            role: "Qualifying Supervisor",
+            image: "images/replace_bio.jpg",
+            linkedin: "https://www.linkedin.com/in/amara-okafor",
+            bio: "Richard Beardmore is the Qualifying Supervisor and holder of the company’s NICEIC registration. He has over 18 years’ experience within the electrical industry and has worked on a wide range of projects, from commercial developments and large industrial installations to hospitals and other complex environments. Richard is an experienced Electrical Test Engineer, with 12 years’ experience in electrical testing and inspection. In his current role at Manstal, he is responsible for ensuring that electrical projects comply with the relevant standards and regulations. He oversees the testing and inspection of electrical installations, ensuring that all works are completed to the required standards and that appropriate testing is undertaken to maintain ongoing electrical safety and compliance."
+        },
+
+        {
+            name: "Sarah Drayton",
+            role: "Contracts Administrator",
+            image: "images/replace_bio.jpg",
+            linkedin: "https://www.linkedin.com/in/amara-okafor",
+            bio: "Sarah Drayton is an experienced Contracts Administrator working within the Electrical and Mechanical contracting sector, with strong experience in contract administration and commercial support. Sarah is responsible for managing and reviewing subcontractor applications for payment, assessing valuations, approving applications, and issuing payment notices. She also prepares applications for payment to clients, manages sales invoicing, and provides wider contracts administration support throughout the project lifecycle. With a highly organised and detail-oriented approach, Sarah works closely with subcontractors, clients, contractors, and internal teams to ensure contractual requirements, documentation, applications, and payment processes are managed accurately and efficiently. She is confident in managing competing priorities within a fast-paced environment while maintaining strong professional relationships and clear communication. Known for her thorough approach, attention to detail and commitment to delivering quality outcomes, Sarah provides reliable commercial and contractual support and contributes to the effective financial and contractual management of projects."
+        },
+        
+        {
+            name: "Rachel Savatard",
+            role: "Office Administrator/Fleet Manager",
+            image: "images/replace_bio.jpg",
+            linkedin: "https://www.linkedin.com/in/amara-okafor",
+            bio: "Rachel is an Office Administrator/ Fleet Manager with 8yrs experience within the business. Mainly dealing with Supplier invoices and the general day to day running of the office. Also running a small fleet of Company vehicles."
+        },
+
+
+        {
+            name: "Helena Plant",
+            role: "Assistant Accountant",
+            image: "images/replace_bio.jpg",
+            linkedin: "https://www.linkedin.com/in/amara-okafor",
+            bio: "Helena is an assistant accountant with over 10 years experience in the finance sector. She currently specialises on the purchase ledger but also acts as a supporting role through-out the accounts department.   "
         }
+    
+        
     ];
 
     // ---- 2. BUILD THE CARDS (you shouldn't need to edit this) ----

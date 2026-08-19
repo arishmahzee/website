@@ -37,72 +37,97 @@
     </nav>
 
     <!-- ========================================================
-         ABOUT HERO — split layout: full-bleed image left,
-         dark panel with eyebrow/title/text/link right
+         ABOUT HERO — split layout: dark panel with
+         eyebrow/title/text/link on the left, image slideshow right
     ========================================================= -->
     <section class="about-hero">
-        <div class="about-hero__image">
-            <img src="images/about_us_index.png" alt="Manstal Limited">
+
+        <div class="about-hero__panel">
+            <div class="about-hero__title-wrap">
+                <span class="about-hero__ghost">About</span>
+                <h1 class="about-hero__title">About Us</h1>
+                <span class="about-hero__underline"></span>
+            </div>
+            <p class="about-hero__text">
+                For over 40 years, Manstal Limited has been delivering high-quality Mechanical and Electrical building services to clients across the UK, spanning commercial, retail, education, healthcare, industrial, public sector, and residential projects. Our expertise covers the full project lifecycle — from design and pre-construction, through installation and commissioning, to ongoing maintenance — giving clients a single, trusted partner from concept to completion.
+            </p>
+            <a href="contactUs.html" class="about-hero__link">Contact us <span class="arrow">&#8594;</span></a>
         </div>
 
-
-       <div class="about-hero__panel">
-        <div class="about-hero__title-wrap">
-            <span class="about-hero__ghost">About</span>
-            <h1 class="about-hero__title">About Us</h1>
-            <span class="about-hero__underline"></span>
+        <div class="about-hero__slideshow">
+            <!-- Add/replace image sources below to add more slides to the rotation -->
+            <img src="images/replace_project_3.png" alt="Manstal Limited" class="about-hero__slide">
+            <img src="images/replace_cs1.png" alt="Manstal Limited" class="about-hero__slide">
+            <img src="images/replace_cs4.png" alt="Manstal Limited" class="about-hero__slide">
         </div>
-        <p class="about-hero__text">
-            For over 40 years, Manstal Limited has been delivering high-quality Mechanical and Electrical building services to clients across the UK, spanning commercial, retail, education, healthcare, industrial, public sector, and residential projects. Our expertise covers the full project lifecycle — from design and pre-construction, through installation and commissioning, to ongoing maintenance — giving clients a single, trusted partner from concept to completion.
-        </p>
-        <a href="contactUs.html" class="about-hero__link">Contact us <span class="arrow">&#8594;</span></a>
-    </div>
 
     </section>
 
     <section class="about-more">
         <div class="about-more__container">
             <h2>Our Approach</h2>
-            <p>
-                Our approach is collaborative by design. We work in close partnership with developers, main contractors, consultants, and end users, taking the time to understand the unique demands of every project before we begin. This attention to detail, combined with genuine technical expertise, allows us to deliver efficient, cost-effective, and sustainable solutions — whatever the scale or complexity.
-            </p>
-            <p>
-                We hold ourselves to the highest standards of health, safety, and quality, and we take pride in delivering projects safely, on time, and within budget. It's this consistency that has earned us long-term relationships with our clients — more than 50% of whom have worked with us for over 15 years.
-            </p>
-            <p>
-                Sustainability sits at the core of how we work. We help clients reduce environmental impact and improve building performance through low-carbon technologies such as heat pumps, EV charging infrastructure, and Building Management Systems (BMS), supporting smarter, more energy-efficient buildings for the future.
-            </p>
-            <p>
-                At Manstal Limited, our commitment to continuous improvement and engineering excellence drives everything we do — helping us build lasting value for every client, on every project.
-            </p>
+        <p>
+        Our approach is collaborative by design. We work closely with developers, main contractors, consultants and end users, taking the time to understand the specific demands of each project before we begin, delivering efficient, cost-effective solutions whatever the scale or complexity.
+        </p>
+
+        <p>
+        We're proud of the scale we operate at without losing the personal touch: projects ranging from £50,000 to £10 million, a team of 50+ skilled M&E staff, and circa 75–100 projects delivered nationwide every year. It's the reason more than half our clients have stayed with us for 15+ years. We hold NICEIC, CHAS, Constructionline Gold and SafeContractor accreditations.
+
+        </p>
+
+        <p>
+        Sustainability is central to how we build. We help clients cut environmental impact and improve building performance through low-carbon technologies such as heat pumps, EV charging infrastructure and Building Management Systems (BMS), supporting smarter, more energy-efficient buildings for the future.
+
+        </p>
+
+        <p>
+             At Manstal Limited, our commitment to continuous improvement and engineering excellence drives everything we do :  helping us build lasting value for every client, on every project.
+         </p>
+
         </div>
     </section>
 
+    <!-- ========================================================
+         FULL WIDTH IMAGE — original about hero image, moved here
+    ========================================================= -->
+    <section class="about-full-image">
+        <img src="images/about_us_index.png" alt="Manstal Limited">
+    </section>
+
+    <!-- ========================================================
+         FOOTER
+         Contact info + address on top, copyright/contact link below
+    ========================================================= -->
    <footer class="footer">
     <div class="footer__container">
+
         <div class="footer__block">
             <h3 class="footer__title">Get In Touch</h3>
             <div class="footer__row">
                 <div class="footer__item">
                     <span class="footer__label">Contact No.</span>
-                    <a href="tel:+441234567890">01234 567890</a>
+                    <a href="tel:+441234567890"> 0121 3601445 </a>
                 </div>
                 <div class="footer__item">
                     <span class="footer__label">Email</span>
-                    <a href="mailto:info@manstal.co.uk">info@manstal.co.uk</a>
+                    <a href="mailto:general@manstal.co.uk ">general@manstal.co.uk</a>
                 </div>
             </div>
         </div>
+
         <div class="footer__divider"></div>
+
         <div class="footer__block footer__block--address">
             <h3 class="footer__title">Address</h3>
             <p class="footer__address">
-                123 Example Street<br>
-                Example City<br>
-                AB1 2CD
+                Peels Wharf, Evans Croft<br>
+                Fazeley, Tamworth <br>
+                B78 3QY
             </p>
         </div>
+
     </div>
+
     <div class="footer__bottom">
         <p>&copy; 2026 Manstal Limited. All rights reserved.</p>
         <a href="contactUs.html" class="footer__contact-link">Contact Us</a>

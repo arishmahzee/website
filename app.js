@@ -1294,6 +1294,14 @@ if (teamGrid) {
             image: "images/replace_bio.jpg",
             linkedin: "https://www.linkedin.com/in/amara-okafor",
             bio: "Helena is an assistant accountant with over 10 years experience in the finance sector. She currently specialises on the purchase ledger but also acts as a supporting role through-out the accounts department.   "
+        },
+
+        {
+            name: "Thomas Kyriakou",
+            role: "Project Coordinator",
+            image: "images/replace_bio.jpg",
+            linkedin: "https://www.linkedin.com/in/amara-okafor",
+            bio: "Thomas Kyriakou is a Project Coordinator with 1 year of experience in the industry. Specialising in mechanical systems, Thomas currently supervises installations for Sainsburys’ and Argos’ across the UK.   "
         }
     
         

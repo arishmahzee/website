@@ -1195,6 +1195,13 @@ if (teamGrid) {
             bio: "David joined Manstal Ltd in 2006 and is involved in a number of projects across many different market sectors from initial conception to completion of employers requirements through to commissioning. David has experience of managing and delivering live education campus projects and strives to achieve client expectations. His role is to ensure the delivery of the M&E services to a project high standard, safe and on time."
         },
 
+         {
+            name: "Brad Baker",
+            role: "Head of Pre-Contracts",
+            image: "images/replace_bio.jpg",
+            linkedin: "https://www.linkedin.com/in/brad-baker-320527260/",
+            bio: "Brad Baker is Head of Pre-Contracts at Manstal, having joined the company in October 2018. A Mechanical and Public Health specialist, Brad leads the company's pre-construction activities, managing M&E enquiries, client engagement, mechanical design and build estimating, and the development of detailed MEP proposals. Working closely with the Electrical Pre-Construction team, he helps deliver coordinated and commercially competitive building services solutions. Brad works with clients and project teams throughout the pre-construction process, supporting projects from initial enquiry through to contract award."
+        },
         {
             name: "Edward Williams",
             role: "Senior Mechanical Project Manager",
@@ -1203,6 +1210,7 @@ if (teamGrid) {
             bio: "Edward Williams is a Senior Mechanical Project Manager with over 25 years of experience in the mechanical engineering and MEP sector. He specialises in the delivery of complex mechanical building services projects, combining strong technical knowledge with commercial management, design coordination and client liaison.Having progressed from hands-on project engineering into senior design, estimating and pre-construction roles, Edward brings a broad understanding of projects from pre-construction and design through to installation and completion.   He has worked across commercial, healthcare, education, logistics, residential, office and leisure sectors and has successfully supported the delivery and tendering of projects ranging from £5m to £26.5m."
         },
       
+       
         
         {
             name: "Andy Wilkinson",
@@ -1252,6 +1260,14 @@ if (teamGrid) {
             linkedin: "linkedin.com/in/alfie-timmins-581a422b3 ",
             bio: "Alfie is a Junior Project Manager at Manstal, working across building services projects from pre-construction through to delivery. He supports the coordination of mechanical and electrical services, working closely with clients, consultants, subcontractors and site teams to help ensure projects are delivered efficiently and to a high standard. Alfie holds a HNC in Building Services Engineering, which provides a strong technical foundation for his role and supports his understanding of mechanical and electrical building services. This technical knowledge, combined with his project experience, supports his involvement across project coordination, commercial management and on-site delivery. " 
         },
+        
+        {
+            name: "Thomas Kyriakou",
+            role: "Project Coordinator",
+            image: "images/replace_bio.jpg",
+            linkedin: "https://www.linkedin.com/in/amara-okafor",
+            bio: "Thomas Kyriakou is a Project Coordinator with 1 year of experience in the industry. Specialising in mechanical systems, Thomas currently supervises installations for Sainsburys’ and Argos’ across the UK.   "
+        },
 
          {
             name: "Richard Beardmore",
@@ -1286,12 +1302,12 @@ if (teamGrid) {
             bio: "Helena is an assistant accountant with over 10 years experience in the finance sector. She currently specialises on the purchase ledger but also acts as a supporting role through-out the accounts department.   "
         },
 
-        {
-            name: "Thomas Kyriakou",
-            role: "Project Coordinator",
+          {
+            name: "Sanju Karki",
+            role: "Accounts/Payroll",
             image: "images/replace_bio.jpg",
             linkedin: "https://www.linkedin.com/in/amara-okafor",
-            bio: "Thomas Kyriakou is a Project Coordinator with 1 year of experience in the industry. Specialising in mechanical systems, Thomas currently supervises installations for Sainsburys’ and Argos’ across the UK.   "
+            bio: "Payroll Professional with more than 10 years of experience. Specialising in PAYE and Subcontractor Payroll with strong expertise in payroll processing, HMRC compliance and end to end payroll administration."
         }
     
         

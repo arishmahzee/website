@@ -1174,7 +1174,7 @@ if (teamGrid) {
         {
             name: "Aaron Arnold",
             role: "Project Director ",
-            image: "images/replace_bio.jpg",
+            image: "images/team/aaron.png",
             linkedin: "https://uk.linkedin.com/in/aaron-arnold-669667192",
             bio: "Aaron Arnold is an accomplished Project Director with 25 years of experience in electrical installation, project management, and commercial office fit-out. With a comprehensive understanding of the industry from initial survey and design through to estimating, project delivery, and completion, Aaron brings a wealth of technical expertise and practical experience to every project. Over the course of his career, Aaron has successfully delivered more than 200 commercial office fit-out projects across London and the surrounding areas. His extensive experience enables him to manage complex projects effectively, ensuring high standards of quality, programme, and client satisfaction. Known for his hands-on approach, attention to detail, and strong project leadership, Aaron works closely with clients, consultants, contractors, and project teams to deliver solutions that meet both technical requirements and commercial objectives."
         },
@@ -1182,7 +1182,7 @@ if (teamGrid) {
         {
             name: "Harry Maskell",
             role: "Project Director ",
-            image: "images/replace_bio.jpg",
+            image: "images/team/harry.jpg",
             linkedin: "linkedin.com/in/alfie-timmins-581a422b3 ",
             bio: "Harry Maskell is a Director with 18 years of experience in installation, project management, and commercial office fit-outs. He has a proven track record of successfully delivering projects of various sizes, primarily across London, from pre-construction through to completion. Harry is recognised for meeting tight deadlines, maintaining high standards, and building strong relationships with both new and existing clients."
         },
@@ -1190,7 +1190,7 @@ if (teamGrid) {
         {
             name: "David Climo",
             role: "Contracts Director ",
-            image: "images/replace_bio.jpg",
+            image: "images/team/dave.png",
             linkedin: "https://www.linkedin.com/in/amara-okafor",
             bio: "David joined Manstal Ltd in 2006 and is involved in a number of projects across many different market sectors from initial conception to completion of employers requirements through to commissioning. David has experience of managing and delivering live education campus projects and strives to achieve client expectations. His role is to ensure the delivery of the M&E services to a project high standard, safe and on time."
         },
@@ -1205,7 +1205,7 @@ if (teamGrid) {
         {
             name: "Edward Williams",
             role: "Senior Mechanical Project Manager",
-            image: "images/replace_bio.jpg",
+            image: "images/team/ed.png",
             linkedin: "https://uk.linkedin.com/in/edward-williams-76a98925",
             bio: "Edward Williams is a Senior Mechanical Project Manager with over 25 years of experience in the mechanical engineering and MEP sector. He specialises in the delivery of complex mechanical building services projects, combining strong technical knowledge with commercial management, design coordination and client liaison.Having progressed from hands-on project engineering into senior design, estimating and pre-construction roles, Edward brings a broad understanding of projects from pre-construction and design through to installation and completion.   He has worked across commercial, healthcare, education, logistics, residential, office and leisure sectors and has successfully supported the delivery and tendering of projects ranging from £5m to £26.5m."
         },
@@ -1223,7 +1223,7 @@ if (teamGrid) {
 
             name: "Trevor Savatard",
             role: "Electrical Project Manager",
-            image: "images/replace_bio.jpg",
+            image: "images/team/trevor.png",
             linkedin: "https://www.linkedin.com/in/trevor-savatard-76572960/",
             bio: "Trevor Savatard is an Electrical Project Manager with over 30 years of industry-leading experience. At Manstal Ltd, he oversees the end-to-end execution of electrical construction projects valued up to £750k. Specialising in Design & Build (D&B) frameworks, Trevor Savatard manages projects from initial pre-contract design and in-depth site surveys through to final client handover. He excels at precise labour coordination and implementing value engineering techniques that optimize budgets without sacrificing quality.Trevor Savatard is deeply committed to operational safety, ensuring rigid compliance with risk and method statements (RAMS) and obtaining all necessary compliance certifications. A natural leader and problem-solver, he serves as the core bridge between subcontractors and clients, consistently driving project efficiency, timeline adherence, and exceptional service value"
         },
@@ -1231,7 +1231,7 @@ if (teamGrid) {
         {
             name: "Keith Macbeth ",
             role: "Electrical Projects Manager ",
-            image: "images/replace_bio.jpg",
+            image: "images/team/keith.png",
             linkedin: "https://www.linkedin.com/in/amara-okafor",
             bio: "I have been employed by Mansal since June 1997. After completing my apprenticeship with Mansal, I quickly became a site supervisor for many projects. In 2010 I became the lead site manager on various projects including a new build in 2021 for the University of Birmingham (TSE SRIC Tyseley Business Park).In 2022 I was offered a position as Project manager within Mansal, and have worked within that role on the complex refurbishment of Two Colmore Square, in Birmingham city centre."
         },
@@ -1239,7 +1239,7 @@ if (teamGrid) {
         {
             name: "Kshitij Rajiv Nigadikar",
             role: "BIM Manager",
-            image: "images/replace_bio.jpg",
+            image: "images/team/krish.png",
             linkedin: "https://www.linkedin.com/in/amara-okafor",
             bio: "Kshitij Rajiv Nigadikar is a BIM Manager with 8 years of experience in BIM, digital construction, architectural design, and M&E project coordination. He is highly skilled in BIM coordination, model management, multidisciplinary coordination, and BIM software, including Revit, Navisworks, Solibri, BIMcollab, and other digital construction platforms. Kshitij has extensive experience in managing BIM workflows, coordinating complex projects, maintaining model standards, and supporting teams in delivering accurate, compliant, and information-rich models."
         },
@@ -1248,7 +1248,7 @@ if (teamGrid) {
         {
             name: "Brian Oguno",
             role: "BIM Technician",
-            image: "images/replace_bio.jpg",
+            image: "images/team/brian.png",
             linkedin: "www.linkedin.com/in/brian-oguno",
             bio: "Brian is an Architectural Technology graduate and BIM Technician with a strong focus on digital design, multidisciplinary coordination, and the delivery of accurate, efficient documentation. With professional experience across commercial, healthcare, retail, office, and film studio projects, Brian works with architectural and structural disciplines to develop and coordinate BIM models throughout the technical design stage. His technical expertise includes Revit, AutoCAD, and Navisworks, with particular experience in clash detection, model management, drawing production, and BIM coordination in accordance with ISO 19650 standards. "
         },
@@ -1264,7 +1264,7 @@ if (teamGrid) {
         {
             name: "Thomas Kyriakou",
             role: "Project Coordinator",
-            image: "images/replace_bio.jpg",
+            image: "images/team/thomas.png",
             linkedin: "https://www.linkedin.com/in/amara-okafor",
             bio: "Thomas Kyriakou is a Project Coordinator with 1 year of experience in the industry. Specialising in mechanical systems, Thomas currently supervises installations for Sainsburys’ and Argos’ across the UK.   "
         },
@@ -1280,7 +1280,7 @@ if (teamGrid) {
         {
             name: "Sarah Drayton",
             role: "Contracts Administrator",
-            image: "images/replace_bio.jpg",
+            image: "images/team/sarah.jpg",
             linkedin: "https://www.linkedin.com/in/amara-okafor",
             bio: "Sarah Drayton is an experienced Contracts Administrator working within the Electrical and Mechanical contracting sector, with strong experience in contract administration and commercial support. Sarah is responsible for managing and reviewing subcontractor applications for payment, assessing valuations, approving applications, and issuing payment notices. She also prepares applications for payment to clients, manages sales invoicing, and provides wider contracts administration support throughout the project lifecycle. With a highly organised and detail-oriented approach, Sarah works closely with subcontractors, clients, contractors, and internal teams to ensure contractual requirements, documentation, applications, and payment processes are managed accurately and efficiently. She is confident in managing competing priorities within a fast-paced environment while maintaining strong professional relationships and clear communication. Known for her thorough approach, attention to detail and commitment to delivering quality outcomes, Sarah provides reliable commercial and contractual support and contributes to the effective financial and contractual management of projects."
         },
@@ -1305,7 +1305,7 @@ if (teamGrid) {
           {
             name: "Sanju Karki",
             role: "Accounts/Payroll",
-            image: "images/replace_bio.jpg",
+            image: "images/team/sanju.png",
             linkedin: "https://www.linkedin.com/in/amara-okafor",
             bio: "Payroll Professional with more than 10 years of experience. Specialising in PAYE and Subcontractor Payroll with strong expertise in payroll processing, HMRC compliance and end to end payroll administration."
         }

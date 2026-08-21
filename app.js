@@ -458,9 +458,100 @@ if (projectsGrid) {
         applyFilters();
     });
 }
+// =========================================================
+// HOME PAGE CASE STUDIES
+// (unchanged logic — used on index.html)
+// EDIT THIS ARRAY TO ADD / REMOVE / CHANGE HOME CASE STUDY CARDS
+// =========================================================
+const HOME_CASE_STUDIES = [
+    {
+        title: "Case Study One",
+        image: "images/replace_cs1.png",
+        summary: "Short summary of the project goes here.",
+        details: "A longer description of Case Study One goes here — what it involved, the challenges, and the outcome for the client."
+    },
+    {
+        title: "Case Study Two",
+        image: "images/replace_cs2.png",
+        summary: "Short summary of the project goes here.",
+        details: "A longer description of Case Study Two goes here — what it involved, the challenges, and the outcome for the client."
+    },
+    {
+        title: "Case Study Three",
+        image: "images/replace_cs3.png",
+        summary: "Short summary of the project goes here.",
+        details: "A longer description of Case Study Three goes here — what it involved, the challenges, and the outcome for the client."
+    },
+    {
+        title: "Case Study Four",
+        image: "images/replace_cs4.png",
+        summary: "Short summary of the project goes here.",
+        details: "A longer description of Case Study Four goes here — what it involved, the challenges, and the outcome for the client."
+    }
+];
+
+const homeCaseStudiesGrid = document.getElementById('homeCaseStudiesGrid');
+
+if (homeCaseStudiesGrid) {
+    HOME_CASE_STUDIES.forEach((study, index) => {
+        const card = document.createElement('div');
+        card.className = 'case-slideshow';
+        card.innerHTML = `
+            <div class="case-slideshow__slide case-slideshow__slide--active" style="background-image: url('${study.image}');">
+                <div class="case-slideshow__overlay"></div>
+                <div class="case-slideshow__content">
+                    <h3>${study.title}</h3>
+                    <p>${study.summary}</p>
+                    <a href="#" class="case-card__link" data-index="${index}">Find Out More</a>
+                </div>
+            </div>
+        `;
+        homeCaseStudiesGrid.appendChild(card);
+    });
+
+    const homeCaseOverlay    = document.getElementById('homeCaseModalOverlay');
+    const homeCaseModalImg   = document.getElementById('homeCaseModalImg');
+    const homeCaseModalTitle = document.getElementById('homeCaseModalTitle');
+    const homeCaseModalBody  = document.getElementById('homeCaseModalBody');
+    const homeCaseModalClose = document.getElementById('homeCaseModalClose');
+
+    function openHomeCaseModal(study) {
+        homeCaseModalImg.src = study.image;
+        homeCaseModalImg.alt = study.title;
+        homeCaseModalTitle.textContent = study.title;
+        homeCaseModalBody.textContent  = study.details;
+
+        homeCaseOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeHomeCaseModal() {
+        homeCaseOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    homeCaseStudiesGrid.addEventListener('click', (e) => {
+        if (e.target.classList.contains('case-card__link')) {
+            e.preventDefault();
+            const index = e.target.dataset.index;
+            openHomeCaseModal(HOME_CASE_STUDIES[index]);
+        }
+    });
+
+    homeCaseModalClose.addEventListener('click', closeHomeCaseModal);
+
+    homeCaseOverlay.addEventListener('click', (e) => {
+        if (e.target === homeCaseOverlay) closeHomeCaseModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && homeCaseOverlay.classList.contains('active')) closeHomeCaseModal();
+    });
+}
 
 // =========================================================
-// CASE STUDIES PAGE — DATA
+// CASE STUDIES PAGE
+// (renamed/scoped to cs-page-card — used on caseStudies.html)
 // EDIT THIS ARRAY TO ADD / REMOVE / CHANGE CASE STUDIES
 // bulletPoints is OPTIONAL — omit it or leave as [] if a
 // case study doesn't need a bullet list.
@@ -469,10 +560,14 @@ const CASE_STUDIES = [
     {
         title: "Waverly School",
         image: "images/REPLACE_CS1_waverly_school.png",
-        summary: "Short summary of the project goes here.",
+        summary: "Delivering full electrical fit-out across two new teaching and community blocks.",
         sector: "Education",
         service: "Electrical Installation",
         details: "Waverly School is a community and sixth form school located in the Small Heath Area of Birmingham. The project consisted of two new two storey blocks, one being a teaching facility consisting of science, IT and multi-use rooms. The second block was a community facility offering a new dining area, and multi-use activity centre.",
+        location: "Birmingham",
+        client: "Galliford Try",
+        buildingType: "Teaching and Community Blocks",
+        mepValue: "£540,000.00",
         bulletPoints: [
             "LV distribution systems",
             "Small power system",
@@ -487,139 +582,128 @@ const CASE_STUDIES = [
             "Emergency voice system",
             "Lightning protection",
         ]
-    },
-    {
-        title: "Case Study Two",
-        image: "images/case-2-a.jpg",
-        summary: "Short summary of the project goes here.",
-        sector: "Retail",
-        service: "Design & Build",
-        details: "A longer description of Case Study Two goes here — what it involved, the challenges, and the outcome for the client."
-    },
-    {
-        title: "Case Study Three",
-        image: "images/case-3-a.jpg",
-        summary: "Short summary of the project goes here.",
-        sector: "Retail",
-        service: "Design & Build",
-        details: "A longer description of Case Study Three goes here — what it involved, the challenges, and the outcome for the client."
-    },
-    {
-        title: "Case Study Four",
-        image: "images/case-4-a.jpg",
-        summary: "Short summary of the project goes here.",
-        sector: "Retail",
-        service: "Design & Build",
-        details: "A longer description of Case Study Four goes here — what it involved, the challenges, and the outcome for the client."
-    },
-    {
-        title: "Case Study Five",
-        image: "images/case-5-a.jpg",
-        summary: "Short summary of the project goes here.",
-        sector: "Retail",
-        service: "Design & Build",
-        details: "A longer description of Case Study Five goes here — what it involved, the challenges, and the outcome for the client."
-    },
-    {
-        title: "Case Study Six",
-        image: "images/case-6-a.jpg",
-        summary: "Short summary of the project goes here.",
-        sector: "Retail",
-        service: "Design & Build",
-        details: "A longer description of Case Study Six goes here — what it involved, the challenges, and the outcome for the client."
-    },
-    {
-        title: "Case Study Seven",
-        image: "images/case-7-a.jpg",
-        summary: "Short summary of the project goes here.",
-        sector: "Retail",
-        service: "Design & Build",
-        details: "A longer description of Case Study Seven goes here — what it involved, the challenges, and the outcome for the client."
-    },
-    {
-        title: "Case Study Eight",
-        image: "images/case-8-a.jpg",
-        summary: "Short summary of the project goes here.",
-        sector: "Retail",
-        service: "Design & Build",
-        details: "A longer description of Case Study Eight goes here — what it involved, the challenges, and the outcome for the client."
     }
-    // Add more case studies here following the same format...
 ];
 
 // =========================================================
-// CASE STUDIES PAGE — BUILD CARDS + MODAL LOGIC
-// Only runs if #caseStudiesGrid exists on the page (i.e. caseStudies.html)
+// RENDER: build one card per case study into #caseStudiesGrid
 // =========================================================
-const caseStudiesGrid = document.getElementById('caseStudiesGrid');
+function renderCaseStudyCards() {
+    const grid = document.getElementById("caseStudiesGrid");
+    if (!grid) return;
 
-if (caseStudiesGrid) {
-    CASE_STUDIES.forEach((study, index) => {
-        const card = document.createElement('div');
-        card.className = 'case-slideshow';
-        card.innerHTML = `
-            <div class="case-slideshow__slide case-slideshow__slide--active" style="background-image: url('${study.image}');">
-                <div class="case-slideshow__overlay"></div>
-                <div class="case-slideshow__content">
-                    <h3>${study.title}</h3>
-                    <p>${study.summary}</p>
-                    <a href="#" class="case-card__link" data-index="${index}">Find Out More</a>
-                </div>
+    grid.innerHTML = CASE_STUDIES.map((study, index) => `
+        <article class="cs-page-card">
+            <div class="cs-page-card__image">
+                <img src="${study.image}" alt="${study.title}">
+                
             </div>
-        `;
-        caseStudiesGrid.appendChild(card);
-    });
+            <div class="cs-page-card__body">
+                
+                <h3 class="cs-page-card__title">${study.title}</h3>
+                <p class="cs-page-card__summary">${study.summary || ""}</p>
 
-    const caseOverlay     = document.getElementById('caseModalOverlay');
-    const caseModalImg    = document.getElementById('caseModalImg');
-    const caseModalTitle  = document.getElementById('caseModalTitle');
-    const caseModalBody   = document.getElementById('caseModalBody');
-    const caseModalBullets = document.getElementById('caseModalBullets');
-    const caseModalClose  = document.getElementById('caseModalClose');
+                <dl class="cs-page-card__meta">
+                    <div>
+                        <dt>Location</dt>
+                        <dd>${study.location || "—"}</dd>
+                    </div>
+                    <div>
+                        <dt>Client</dt>
+                        <dd>${study.client || "—"}</dd>
+                    </div>
+                    <div>
+                        <dt>Value</dt>
+                        <dd>${study.mepValue || "—"}</dd>
+                    </div>
+                </dl>
 
-    function openCaseModal(study) {
-        caseModalImg.src = study.image;
-        caseModalImg.alt = study.title;
-        caseModalTitle.textContent = study.title;
-        caseModalBody.textContent  = study.details;
-
-        // NEW — build the bullet list, or clear it if none provided
-        caseModalBullets.innerHTML = '';
-        if (study.bulletPoints && study.bulletPoints.length > 0) {
-            study.bulletPoints.forEach(point => {
-                const li = document.createElement('li');
-                li.textContent = point;
-                caseModalBullets.appendChild(li);
-            });
-        }
-
-        caseOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-
-    function closeCaseModal() {
-        caseOverlay.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-
-    caseStudiesGrid.addEventListener('click', (e) => {
-        if (e.target.classList.contains('case-card__link')) {
-            e.preventDefault();
-            const index = e.target.dataset.index;
-            openCaseModal(CASE_STUDIES[index]);
-        }
-    });
-
-    caseModalClose.addEventListener('click', closeCaseModal);
-
-    caseOverlay.addEventListener('click', (e) => {
-        if (e.target === caseOverlay) closeCaseModal();
-    });
-
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && caseOverlay.classList.contains('active')) closeCaseModal();
-    });
+                <button class="cs-page-card__cta" data-case-index="${index}">Find Out More</button>
+            </div>
+        </article>
+    `).join("");
 }
+
+// =========================================================
+// MODAL: populate + open/close
+// =========================================================
+function openCaseModal(index) {
+    const study = CASE_STUDIES[index];
+    if (!study) return;
+
+    const overlay = document.getElementById("caseModalOverlay");
+    const img = document.getElementById("caseModalImg");
+    const service = document.getElementById("caseModalService");
+    const title = document.getElementById("caseModalTitle");
+    const meta = document.getElementById("caseModalMeta");
+    const body = document.getElementById("caseModalBody");
+    const bullets = document.getElementById("caseModalBullets");
+
+    img.src = study.image;
+    img.alt = study.title;
+    
+    title.textContent = study.title;
+    body.textContent = study.details || "";
+
+    const metaFields = [
+        { label: "Sector", value: study.sector },
+        { label: "Location", value: study.location },
+        { label: "Client", value: study.client },
+        { label: "Building Type", value: study.buildingType },
+        { label: "MEP Value", value: study.mepValue },
+    ].filter(field => field.value);
+
+    meta.innerHTML = metaFields.map(field => `
+        <div>
+            <dt>${field.label}</dt>
+            <dd>${field.value}</dd>
+        </div>
+    `).join("");
+
+    const points = study.bulletPoints || [];
+    bullets.innerHTML = points.map(point => `<li>${point}</li>`).join("");
+
+    overlay.classList.add("active");
+    document.body.style.overflow = "hidden";
+}
+
+function closeCaseModal() {
+    const overlay = document.getElementById("caseModalOverlay");
+    overlay.classList.remove("active");
+    document.body.style.overflow = "";
+}
+
+// =========================================================
+// EVENT WIRING
+// =========================================================
+document.addEventListener("DOMContentLoaded", () => {
+    renderCaseStudyCards();
+
+    const grid = document.getElementById("caseStudiesGrid");
+    if (!grid) return;
+
+    const overlay = document.getElementById("caseModalOverlay");
+    const closeBtn = document.getElementById("caseModalClose");
+
+    grid.addEventListener("click", (e) => {
+        const btn = e.target.closest(".cs-page-card__cta");
+        if (!btn) return;
+        openCaseModal(Number(btn.dataset.caseIndex));
+    });
+
+    closeBtn.addEventListener("click", closeCaseModal);
+
+    overlay.addEventListener("click", (e) => {
+        if (e.target === overlay) closeCaseModal();
+    });
+
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && overlay.classList.contains("active")) {
+            closeCaseModal();
+        }
+    });
+});
+
 // =========================================================
 // SERVICES PAGE — DATA
 // EDIT THIS ARRAY TO ADD / REMOVE / CHANGE SERVICES
@@ -819,100 +903,6 @@ if (homeProjectsGrid) {
     });
 }
 
-
-// =========================================================
-// HOME PAGE — CASE STUDIES PREVIEW DATA
-// EDIT THIS ARRAY TO ADD / REMOVE / CHANGE HOME CASE STUDY CARDS
-// =========================================================
-const HOME_CASE_STUDIES = [
-    {
-        title: "Case Study One",
-        image: "images/replace_cs1.png",
-        summary: "Short summary of the project goes here.",
-        details: "A longer description of Case Study One goes here — what it involved, the challenges, and the outcome for the client."
-    },
-    {
-        title: "Case Study Two",
-        image: "images/replace_cs2.png",
-        summary: "Short summary of the project goes here.",
-        details: "A longer description of Case Study Two goes here — what it involved, the challenges, and the outcome for the client."
-    },
-    {
-        title: "Case Study Three",
-        image: "images/replace_cs3.png",
-        summary: "Short summary of the project goes here.",
-        details: "A longer description of Case Study Three goes here — what it involved, the challenges, and the outcome for the client."
-    },
-    {
-        title: "Case Study Four",
-        image: "images/replace_cs4.png",
-        summary: "Short summary of the project goes here.",
-        details: "A longer description of Case Study Four goes here — what it involved, the challenges, and the outcome for the client."
-    }
-];
-
-// =========================================================
-// HOME PAGE — CASE STUDIES PREVIEW: BUILD CARDS + MODAL LOGIC
-// Only runs if #homeCaseStudiesGrid exists (i.e. index.html)
-// =========================================================
-const homeCaseStudiesGrid = document.getElementById('homeCaseStudiesGrid');
-
-if (homeCaseStudiesGrid) {
-    HOME_CASE_STUDIES.forEach((study, index) => {
-        const card = document.createElement('div');
-        card.className = 'case-slideshow';
-        card.innerHTML = `
-            <div class="case-slideshow__slide case-slideshow__slide--active" style="background-image: url('${study.image}');">
-                <div class="case-slideshow__overlay"></div>
-                <div class="case-slideshow__content">
-                    <h3>${study.title}</h3>
-                    <p>${study.summary}</p>
-                    <a href="#" class="case-card__link" data-index="${index}">Find Out More</a>
-                </div>
-            </div>
-        `;
-        homeCaseStudiesGrid.appendChild(card);
-    });
-
-    const homeCaseOverlay    = document.getElementById('homeCaseModalOverlay');
-    const homeCaseModalImg   = document.getElementById('homeCaseModalImg');
-    const homeCaseModalTitle = document.getElementById('homeCaseModalTitle');
-    const homeCaseModalBody  = document.getElementById('homeCaseModalBody');
-    const homeCaseModalClose = document.getElementById('homeCaseModalClose');
-
-    function openHomeCaseModal(study) {
-        homeCaseModalImg.src = study.image;
-        homeCaseModalImg.alt = study.title;
-        homeCaseModalTitle.textContent = study.title;
-        homeCaseModalBody.textContent  = study.details;
-
-        homeCaseOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-
-    function closeHomeCaseModal() {
-        homeCaseOverlay.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-
-    homeCaseStudiesGrid.addEventListener('click', (e) => {
-        if (e.target.classList.contains('case-card__link')) {
-            e.preventDefault();
-            const index = e.target.dataset.index;
-            openHomeCaseModal(HOME_CASE_STUDIES[index]);
-        }
-    });
-
-    homeCaseModalClose.addEventListener('click', closeHomeCaseModal);
-
-    homeCaseOverlay.addEventListener('click', (e) => {
-        if (e.target === homeCaseOverlay) closeHomeCaseModal();
-    });
-
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && homeCaseOverlay.classList.contains('active')) closeHomeCaseModal();
-    });
-}
 
 
 // =========================================================

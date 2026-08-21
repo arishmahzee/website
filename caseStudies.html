@@ -40,13 +40,13 @@
          PAGE HERO — light, with a big ghost number + accent
          underline for a bit of editorial flair
     ========================================================= -->
-    
+
     <section class="projects-hero services-hero">
     <span class="projects-hero__ghost">Case Studies</span>
     <h1>Our Case Studies</h1>
     <p>A quick look at what we do and how we can help your business.</p>
     </section>
-           
+
     <!-- ========================================================
          FULL CASE STUDY GRID — this stays EMPTY in the HTML.
          JavaScript reads the CASE_STUDIES array (in app.js) and
@@ -58,7 +58,6 @@
         </div>
     </section>
 
-    
     <!-- ========================================================
          CASE STUDY DETAILS MODAL (POP-UP)
          Only ONE modal exists on the page. Clicking "Find Out
@@ -72,17 +71,18 @@
             <img src="" alt="" class="case-modal__img" id="caseModalImg">
 
             <div class="case-modal__right">
+                <span class="case-modal__service" id="caseModalService"></span>
                 <h3 id="caseModalTitle"></h3>
+
+                <dl class="case-modal__meta" id="caseModalMeta">
+                    <!-- key facts injected by JS -->
+                </dl>
+
                 <p class="case-modal__body" id="caseModalBody"></p>
                 <ul class="case-modal__bullets" id="caseModalBullets"></ul>
             </div>
-
-
-</div>
         </div>
     </div>
-
-
 
 <!-- ========================================================
      FOOTER

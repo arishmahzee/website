@@ -548,7 +548,6 @@ if (homeCaseStudiesGrid) {
         if (e.key === 'Escape' && homeCaseOverlay.classList.contains('active')) closeHomeCaseModal();
     });
 }
-
 // =========================================================
 // CASE STUDIES PAGE
 // (renamed/scoped to cs-page-card — used on caseStudies.html)
@@ -593,7 +592,7 @@ function renderCaseStudyCards() {
     if (!grid) return;
 
     grid.innerHTML = CASE_STUDIES.map((study, index) => `
-        <article class="cs-page-card">
+        <article class="cs-page-card" data-sector="${study.sector || ''}" data-service="${study.service || ''}">
             <div class="cs-page-card__image">
                 <img src="${study.image}" alt="${study.title}">
                 ${study.sector ? `<span class="cs-page-card__sector">${study.sector}</span>` : ""}
@@ -622,6 +621,57 @@ function renderCaseStudyCards() {
             </div>
         </article>
     `).join("");
+}
+
+// =========================================================
+// FILTERS: populate dropdowns + apply filtering
+// =========================================================
+function populateCaseStudyFilters() {
+    const sectorSelect = document.getElementById("csSectorFilter");
+    const serviceSelect = document.getElementById("csServiceFilter");
+    if (!sectorSelect || !serviceSelect) return;
+
+    const sectors = [...new Set(CASE_STUDIES.map(s => s.sector).filter(Boolean))].sort();
+    const services = [...new Set(CASE_STUDIES.map(s => s.service).filter(Boolean))].sort();
+
+    sectors.forEach(sector => {
+        const opt = document.createElement("option");
+        opt.value = sector;
+        opt.textContent = sector;
+        sectorSelect.appendChild(opt);
+    });
+
+    services.forEach(service => {
+        const opt = document.createElement("option");
+        opt.value = service;
+        opt.textContent = service;
+        serviceSelect.appendChild(opt);
+    });
+}
+
+function applyCaseStudyFilters() {
+    const sectorSelect = document.getElementById("csSectorFilter");
+    const serviceSelect = document.getElementById("csServiceFilter");
+    const emptyMsg = document.getElementById("csFiltersEmpty");
+    const cards = document.querySelectorAll("#caseStudiesGrid .cs-page-card");
+    if (!sectorSelect || !serviceSelect) return;
+
+    const selectedSector = sectorSelect.value;
+    const selectedService = serviceSelect.value;
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+        const matchesSector = !selectedSector || card.dataset.sector === selectedSector;
+        const matchesService = !selectedService || card.dataset.service === selectedService;
+        const isVisible = matchesSector && matchesService;
+
+        card.classList.toggle("cs-page-card--hidden", !isVisible);
+        if (isVisible) visibleCount++;
+    });
+
+    if (emptyMsg) {
+        emptyMsg.classList.toggle("active", visibleCount === 0);
+    }
 }
 
 // =========================================================
@@ -682,6 +732,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const grid = document.getElementById("caseStudiesGrid");
     if (!grid) return;
 
+    populateCaseStudyFilters();
+
+    const sectorSelect = document.getElementById("csSectorFilter");
+    const serviceSelect = document.getElementById("csServiceFilter");
+    const clearBtn = document.getElementById("csFiltersClear");
+
+    if (sectorSelect) sectorSelect.addEventListener("change", applyCaseStudyFilters);
+    if (serviceSelect) serviceSelect.addEventListener("change", applyCaseStudyFilters);
+    if (clearBtn) {
+        clearBtn.addEventListener("click", () => {
+            if (sectorSelect) sectorSelect.value = "";
+            if (serviceSelect) serviceSelect.value = "";
+            applyCaseStudyFilters();
+        });
+    }
+
     const overlay = document.getElementById("caseModalOverlay");
     const closeBtn = document.getElementById("caseModalClose");
 
@@ -703,7 +769,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
-
 // =========================================================
 // SERVICES PAGE — DATA
 // EDIT THIS ARRAY TO ADD / REMOVE / CHANGE SERVICES

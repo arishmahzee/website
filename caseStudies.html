@@ -48,11 +48,31 @@
     </section>
 
     <!-- ========================================================
-         FULL CASE STUDY GRID — this stays EMPTY in the HTML.
-         JavaScript reads the CASE_STUDIES array (in app.js) and
-         builds one card per case study into this container.
+         FULL CASE STUDY GRID — filters + grid. Grid stays EMPTY
+         in the HTML. JavaScript reads the CASE_STUDIES array
+         (in app.js) and builds one card per case study, then
+         populates the filter dropdowns and wires filtering.
     ========================================================= -->
     <section class="case-studies-page">
+
+        <div class="cs-filters">
+            <div class="cs-filters__group">
+                <label for="csSectorFilter">Sector</label>
+                <select id="csSectorFilter">
+                    <option value="">All Sectors</option>
+                </select>
+            </div>
+            <div class="cs-filters__group">
+                <label for="csServiceFilter">Service</label>
+                <select id="csServiceFilter">
+                    <option value="">All Services</option>
+                </select>
+            </div>
+            <button class="cs-filters__clear" id="csFiltersClear">Clear Filters</button>
+        </div>
+
+        <p class="cs-filters__empty" id="csFiltersEmpty">No case studies match your filters.</p>
+
         <div class="case-studies-page__grid" id="caseStudiesGrid">
             <!-- cards injected by JS -->
         </div>

@@ -596,10 +596,10 @@ function renderCaseStudyCards() {
         <article class="cs-page-card">
             <div class="cs-page-card__image">
                 <img src="${study.image}" alt="${study.title}">
-                
+                ${study.sector ? `<span class="cs-page-card__sector">${study.sector}</span>` : ""}
             </div>
             <div class="cs-page-card__body">
-                
+                ${study.service ? `<span class="cs-page-card__service">${study.service}</span>` : ""}
                 <h3 class="cs-page-card__title">${study.title}</h3>
                 <p class="cs-page-card__summary">${study.summary || ""}</p>
 
@@ -641,7 +641,7 @@ function openCaseModal(index) {
 
     img.src = study.image;
     img.alt = study.title;
-    
+    service.textContent = study.service || "";
     title.textContent = study.title;
     body.textContent = study.details || "";
 
